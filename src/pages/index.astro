@@ -2,6 +2,7 @@
 import PortfolioLayout from '~/layouts/PortfolioLayout.astro';
 import Hero from '~/components/portfolio/Hero.astro';
 import MetricRow from '~/components/portfolio/MetricRow.astro';
+import ExperienceTimeline from '~/components/portfolio/ExperienceTimeline.astro';
 import ProjectCard from '~/components/portfolio/ProjectCard.astro';
 import TechStack from '~/components/portfolio/TechStack.astro';
 import { featuredProjects } from '~/data/projects';
@@ -12,25 +13,32 @@ const metadata = {
   ignoreTitleTemplate: true,
   description: site.bio,
 };
+
+const reveal = 'intersect-once intersect-third motion-safe:opacity-0 motion-safe:intersect:animate-fade';
 ---
 
 <PortfolioLayout metadata={metadata}>
   <Hero />
   <MetricRow />
+  <ExperienceTimeline />
 
   <section id="projects" class="scroll-mt-24 mx-auto max-w-5xl px-4 py-8 sm:px-6">
-    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Work</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Featured projects</h2>
-    <p class="mt-3 max-w-2xl text-muted">
-      Selected work spanning multi-agent AI, scientific document processing, ML for imaging, and home-lab
-      experimentation. Private repos are marked until they are published.
-    </p>
+    <div class={reveal}>
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary">Work</p>
+      <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Featured projects</h2>
+      <p
+        class="mt-3 max-w-2xl rounded-lg border border-slate-200/80 bg-white/70 p-4 text-muted dark:border-slate-700/70 dark:bg-slate-900/40"
+      >
+        Selected work spanning multi-agent AI, scientific document processing, ML for imaging, and home-lab
+        experimentation. Private repos are marked until they are published.
+      </p>
+    </div>
 
-    <div class="mt-10 grid gap-8 sm:grid-cols-2">
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
       {featuredProjects.map((project) => <ProjectCard project={project} />)}
     </div>
 
-    <div class="mt-8">
+    <div class={`mt-8 ${reveal}`}>
       <a class="text-sm font-semibold text-primary hover:underline" href="/projects">View all projects →</a>
     </div>
   </section>
@@ -38,43 +46,54 @@ const metadata = {
   <TechStack />
 
   <section id="contact" class="scroll-mt-24 mx-auto max-w-5xl px-4 py-16 sm:px-6">
-    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Contact</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Let's connect</h2>
-    <p class="mt-3 max-w-2xl text-muted">
-      Interested in scientific AI, data enablement, or collaboration? Reach out via GitHub
-      {site.email ? ' or email' : ''}{site.linkedin ? ' or LinkedIn' : ''}.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a
-        href={site.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-secondary"
-      >
-        GitHub
-      </a>
-      {
-        site.email && (
-          <a
-            href={`mailto:${site.email}`}
-            class="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
-          >
-            Email
-          </a>
-        )
-      }
-      {
-        site.linkedin && (
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
-          >
-            LinkedIn
-          </a>
-        )
-      }
+    <div
+      class={`rounded-lg border border-slate-200/90 bg-white/80 p-6 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50 sm:p-8 ${reveal}`}
+    >
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary">Contact</p>
+      <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Let's connect</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Interested in scientific AI, data enablement, or collaboration? Reach out via GitHub
+        {site.email ? ' or email' : ''}{site.linkedin ? ' or LinkedIn' : ''}.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={site.resumeUrl}
+          download
+          class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-secondary"
+        >
+          Download resume
+        </a>
+        <a
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
+        >
+          GitHub
+        </a>
+        {
+          site.email && (
+            <a
+              href={`mailto:${site.email}`}
+              class="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
+            >
+              Email
+            </a>
+          )
+        }
+        {
+          site.linkedin && (
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
+            >
+              LinkedIn
+            </a>
+          )
+        }
+      </div>
     </div>
   </section>
 </PortfolioLayout>

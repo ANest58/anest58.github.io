@@ -1,0 +1,45 @@
+---
+import { experience } from '~/data/site';
+
+const reveal = 'intersect-once intersect-third motion-safe:opacity-0 motion-safe:intersect:animate-fade';
+---
+
+<section id="experience" class="scroll-mt-24 mx-auto max-w-5xl px-4 py-16 sm:px-6">
+  <div class={reveal}>
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Career</p>
+    <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Experience</h2>
+    <p class="mt-3 max-w-2xl text-muted">
+      A path from formulation science into scientific AI, data enablement, and production ML systems.
+    </p>
+  </div>
+
+  <ol class="relative mt-12 space-y-8 border-l border-teal-200/80 pl-6 dark:border-teal-900/60 sm:pl-8">
+    {
+      experience.map((item) => (
+        <li class={`relative ${reveal}`}>
+          <span
+            class="absolute -left-[1.9rem] top-5 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-primary bg-page sm:-left-[2.4rem]"
+            aria-hidden="true"
+          />
+          <article class="rounded-lg border border-slate-200/90 bg-white/80 p-5 shadow-sm backdrop-blur-sm transition duration-300 hover:border-primary/40 dark:border-slate-700/80 dark:bg-slate-900/50 sm:p-6">
+            <p class="text-xs font-semibold uppercase tracking-wider text-primary">{item.period}</p>
+            <h3 class="mt-2 font-heading text-xl font-semibold text-heading">{item.role}</h3>
+            <p class="mt-1 text-sm font-medium text-default">
+              {item.company}
+              <span class="text-muted"> · {item.location}</span>
+            </p>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.summary}</p>
+            <ul class="mt-4 space-y-2">
+              {item.highlights.map((highlight) => (
+                <li class="flex gap-2 text-sm leading-relaxed text-default">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</section>

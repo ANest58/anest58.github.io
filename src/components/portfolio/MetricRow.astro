@@ -1,12 +1,16 @@
 ---
 import { metrics } from '~/data/site';
+
+const reveal = 'intersect-once intersect-third motion-safe:opacity-0 motion-safe:intersect:animate-fade';
 ---
 
 <section class="mx-auto max-w-5xl px-4 pb-16 sm:px-6" aria-label="Highlights">
   <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
     {
       metrics.map((metric) => (
-        <div class="border-t border-primary/40 pt-4">
+        <div
+          class={`rounded-lg border border-slate-200/80 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/40 ${reveal}`}
+        >
           <div class="font-heading text-2xl font-bold tracking-tight text-heading sm:text-3xl">{metric.value}</div>
           <div class="mt-1 text-sm text-muted">{metric.label}</div>
         </div>

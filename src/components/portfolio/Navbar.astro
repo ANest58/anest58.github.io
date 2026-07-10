@@ -3,6 +3,7 @@ import { site } from '~/data/site';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 
 const links = [
+  { text: 'Experience', href: '/#experience' },
   { text: 'Projects', href: '/#projects' },
   { text: 'Tech', href: '/#tech' },
   { text: 'Contact', href: '/#contact' },
@@ -15,7 +16,7 @@ const links = [
       {site.name}
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm font-medium text-muted md:flex" aria-label="Main">
+    <nav class="hidden items-center gap-5 text-sm font-medium text-muted md:flex" aria-label="Main">
       {
         links.map((link) => (
           <a class="transition hover:text-primary" href={link.href}>
@@ -23,6 +24,13 @@ const links = [
           </a>
         ))
       }
+      <a
+        class="rounded-md border border-slate-300 px-3 py-1.5 transition hover:border-primary hover:text-primary dark:border-slate-600"
+        href={site.resumeUrl}
+        download
+      >
+        Resume
+      </a>
       <a
         class="rounded-md bg-primary px-3 py-1.5 text-white transition hover:bg-secondary"
         href={site.github}
@@ -34,8 +42,9 @@ const links = [
       <ToggleTheme />
     </nav>
 
-    <div class="flex items-center gap-2 md:hidden">
+    <div class="flex items-center gap-3 md:hidden">
       <ToggleTheme />
+      <a class="text-sm font-medium text-primary" href={site.resumeUrl} download>Resume</a>
       <a class="text-sm font-medium text-primary" href={site.github} target="_blank" rel="noopener noreferrer">
         GitHub
       </a>

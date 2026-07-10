@@ -3,11 +3,15 @@ import { getPermalink } from './utils/permalinks';
 export const headerData = {
   links: [
     { text: 'Home', href: getPermalink('/') },
+    { text: 'Experience', href: getPermalink('/#experience') },
     { text: 'Projects', href: getPermalink('/#projects') },
     { text: 'Tech', href: getPermalink('/#tech') },
     { text: 'Contact', href: getPermalink('/#contact') },
   ],
-  actions: [{ text: 'GitHub', href: 'https://github.com/ANest58', target: '_blank' }],
+  actions: [
+    { text: 'Resume', href: '/resume/Anthony-Resume.docx' },
+    { text: 'GitHub', href: 'https://github.com/ANest58', target: '_blank' },
+  ],
 };
 
 export const footerData = {

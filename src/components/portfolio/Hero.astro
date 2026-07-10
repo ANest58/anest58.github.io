@@ -1,19 +1,27 @@
 ---
 import { site, heroSkills } from '~/data/site';
+
+const reveal = 'intersect-once intersect-third motion-safe:opacity-0 motion-safe:intersect:animate-fade';
 ---
 
 <section class="relative mx-auto max-w-5xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
-  <p class="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">{site.availability}</p>
+  <p class={`mb-4 text-sm font-semibold uppercase tracking-widest text-primary ${reveal}`}>
+    {site.availability}
+  </p>
 
-  <h1 class="font-heading text-4xl font-bold tracking-tight text-heading sm:text-5xl md:text-6xl">
+  <h1 class={`font-heading text-4xl font-bold tracking-tight text-heading sm:text-5xl md:text-6xl ${reveal}`}>
     Hey, I'm {site.name}
   </h1>
 
-  <p class="mt-4 max-w-2xl text-xl font-medium text-default sm:text-2xl">{site.title}</p>
+  <p class={`mt-4 max-w-2xl text-xl font-medium text-default sm:text-2xl ${reveal}`}>{site.title}</p>
 
-  <p class="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">{site.bio}</p>
+  <div
+    class={`mt-6 max-w-2xl rounded-lg border border-slate-200/90 bg-white/75 p-5 shadow-sm backdrop-blur-sm dark:border-slate-700/80 dark:bg-slate-900/50 ${reveal}`}
+  >
+    <p class="text-base leading-relaxed text-muted sm:text-lg">{site.bio}</p>
+  </div>
 
-  <ul class="mt-8 flex flex-wrap gap-2" aria-label="Core skills">
+  <ul class={`mt-8 flex flex-wrap gap-2 ${reveal}`} aria-label="Core skills">
     {
       heroSkills.map((skill) => (
         <li class="rounded-md border border-slate-200 bg-white/70 px-3 py-1 text-sm text-default dark:border-slate-700 dark:bg-slate-900/60">
@@ -23,10 +31,17 @@ import { site, heroSkills } from '~/data/site';
     }
   </ul>
 
-  <div class="mt-10 flex flex-wrap gap-3">
+  <div class={`mt-10 flex flex-wrap gap-3 ${reveal}`}>
+    <a
+      href={site.resumeUrl}
+      download
+      class="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-secondary"
+    >
+      Download resume
+    </a>
     <a
       href="#contact"
-      class="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-secondary"
+      class="inline-flex items-center justify-center rounded-md border border-slate-300 bg-transparent px-5 py-2.5 text-sm font-semibold text-default transition hover:border-primary hover:text-primary dark:border-slate-600"
     >
       Get in touch
     </a>
