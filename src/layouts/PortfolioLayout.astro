@@ -1,0 +1,27 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import PortfolioNavbar from '~/components/portfolio/Navbar.astro';
+import PortfolioFooter from '~/components/portfolio/Footer.astro';
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <div class="relative min-h-screen overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(20,184,166,0.12),_transparent_55%),radial-gradient(ellipse_at_bottom_right,_rgba(15,23,42,0.06),_transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(45,212,191,0.08),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(15,23,42,0.9),_transparent_55%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <PortfolioNavbar />
+    <main>
+      <slot />
+    </main>
+    <PortfolioFooter />
+  </div>
+</Layout>

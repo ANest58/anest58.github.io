@@ -1,0 +1,44 @@
+---
+import { site } from '~/data/site';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+
+const links = [
+  { text: 'Projects', href: '/#projects' },
+  { text: 'Tech', href: '/#tech' },
+  { text: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-200/70 bg-page/80 backdrop-blur-md dark:border-slate-800/80">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href="/" class="font-heading text-lg font-bold tracking-tight text-heading">
+      {site.name}
+    </a>
+
+    <nav class="hidden items-center gap-6 text-sm font-medium text-muted md:flex" aria-label="Main">
+      {
+        links.map((link) => (
+          <a class="transition hover:text-primary" href={link.href}>
+            {link.text}
+          </a>
+        ))
+      }
+      <a
+        class="rounded-md bg-primary px-3 py-1.5 text-white transition hover:bg-secondary"
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+      <ToggleTheme />
+    </nav>
+
+    <div class="flex items-center gap-2 md:hidden">
+      <ToggleTheme />
+      <a class="text-sm font-medium text-primary" href={site.github} target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>

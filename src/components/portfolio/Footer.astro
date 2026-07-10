@@ -1,0 +1,31 @@
+---
+import { site } from '~/data/site';
+---
+
+<footer class="border-t border-slate-200 dark:border-slate-800">
+  <div
+    class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6"
+  >
+    <p>
+      © {new Date().getFullYear()}
+      {site.name}. {site.education}.
+    </p>
+    <div class="flex gap-4">
+      <a class="hover:text-primary" href={site.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      {
+        site.linkedin && (
+          <a class="hover:text-primary" href={site.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        )
+      }
+      {
+        site.email && (
+          <a class="hover:text-primary" href={`mailto:${site.email}`}>
+            Email
+          </a>
+        )
+      }
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,28 @@
+---
+import { techStack } from '~/data/site';
+---
+
+<section id="tech" class="scroll-mt-24 mx-auto max-w-5xl px-4 py-16 sm:px-6">
+  <p class="text-sm font-semibold uppercase tracking-widest text-primary">Stack</p>
+  <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Tech stack</h2>
+  <p class="mt-3 max-w-2xl text-muted">
+    Technologies I use for scientific AI, data engineering, and production tooling.
+  </p>
+
+  <div class="mt-10 grid gap-8 sm:grid-cols-2">
+    {
+      techStack.map((group) => (
+        <div>
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-heading">{group.group}</h3>
+          <ul class="flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <li class="rounded-md border border-slate-200 px-2.5 py-1 text-sm text-default dark:border-slate-700">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

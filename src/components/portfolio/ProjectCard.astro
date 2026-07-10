@@ -1,0 +1,58 @@
+---
+import type { Project } from '~/data/projects';
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="flex h-full flex-col border-t border-slate-200 pt-5 dark:border-slate-700">
+  <div class="mb-2 flex flex-wrap items-center gap-2">
+    <h3 class="font-heading text-lg font-semibold text-heading">{project.title}</h3>
+    {
+      project.private && (
+        <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+          Private
+        </span>
+      )
+    }
+  </div>
+  <p class="flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+  <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
+    {
+      project.tags.map((tag) => (
+        <li class="rounded bg-teal-50 px-2 py-0.5 text-xs font-medium text-teal-800 dark:bg-teal-950/50 dark:text-teal-200">
+          {tag}
+        </li>
+      ))
+    }
+  </ul>
+  {
+    (project.github || project.href) && (
+      <div class="mt-4 flex gap-3 text-sm font-medium">
+        {project.github && (
+          <a
+            class="text-primary transition hover:underline"
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        )}
+        {project.href && (
+          <a
+            class="text-primary transition hover:underline"
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live
+          </a>
+        )}
+      </div>
+    )
+  }
+</article>
