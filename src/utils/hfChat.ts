@@ -102,9 +102,10 @@ export async function chatWithHuggingFace(options: {
     }
 
     const data = (await response.json()) as {
-      choices?: { message?: { content?: string } }[];
+      choices?: { message?: { content?: string | null; reasoning_content?: string | null } }[];
     };
-    const content = data.choices?.[0]?.message?.content?.trim();
+    const message = data.choices?.[0]?.message;
+    const content = (message?.content || message?.reasoning_content || '').trim();
     if (!content) {
       return { ok: false, error: 'Hugging Face returned an empty response.' };
     }

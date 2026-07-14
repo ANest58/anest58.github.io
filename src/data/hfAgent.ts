@@ -11,13 +11,13 @@
 
 export const hfAgent = {
   /** Preferred free chat model via Inference Providers (`:fastest` picks a live provider). */
-  model: 'Qwen/Qwen2.5-7B-Instruct:fastest',
+  model: 'moonshotai/Kimi-K2-Instruct:fastest',
 
   /**
    * Your HF Space id after deploying `hf-space/` (e.g. `your-username/portfolio-fit-agent`).
    * When set, the Ask page can embed that Space. Leave empty until the Space exists.
    */
-  spaceId: '',
+  spaceId: 'Andominus58/anest58Ask',
 
   /** OpenAI-compatible HF Inference Providers gateway. */
   routerUrl: 'https://router.huggingface.co/v1/chat/completions',

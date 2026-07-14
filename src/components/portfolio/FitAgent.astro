@@ -38,7 +38,15 @@ const preferSpaceEmbed = Boolean(spaceAppUrl);
     <h1 class="mt-1 font-heading text-2xl font-bold text-heading sm:text-3xl">Ask about {profile.name}</h1>
     <p class="mt-2 text-sm text-muted">
       Paste a job description and ask if the candidate is a good fit, or ask about experience, skills, and projects.
-      Connect a free Hugging Face Inference token for an LLM-powered reply, or use the built-in local agent.
+      {
+        preferSpaceEmbed ? (
+          <>
+            Powered by the Hugging Face Space <code class="text-xs">{spaceId}</code>.
+          </>
+        ) : (
+          <>Connect a free Hugging Face Inference token for an LLM-powered reply, or use the built-in local agent.</>
+        )
+      }
     </p>
   </div>
 
@@ -202,7 +210,7 @@ const preferSpaceEmbed = Boolean(spaceAppUrl);
   if (root && log && form && input) {
     const profile = JSON.parse(root.dataset.profile || '{}') as AgentProfile;
     const tokenKey = root.dataset.tokenKey || 'aw_hf_inference_token';
-    const model = root.dataset.model || 'Qwen/Qwen2.5-7B-Instruct:fastest';
+    const model = root.dataset.model || 'moonshotai/Kimi-K2-Instruct:fastest';
     const buildToken = root.dataset.hfToken?.trim() || '';
 
     const getStoredToken = () => {

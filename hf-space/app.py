@@ -41,7 +41,7 @@ PROFILE
 {PROFILE}
 """
 
-MODEL = os.environ.get("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct:fastest")
+MODEL = os.environ.get("HF_MODEL", "moonshotai/Kimi-K2-Instruct:fastest")
 HF_TOKEN = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_API_KEY")
 
 
@@ -69,7 +69,11 @@ def respond(message: str, history: list[dict[str, str]]):
             max_tokens=900,
             temperature=0.3,
         )
-        return completion.choices[0].message.content or "Empty model response."
+        message_obj = completion.choices[0].message
+        content = getattr(message_obj, "content", None) or ""
+        if not content:
+            content = getattr(message_obj, "reasoning_content", None) or ""
+        return content.strip() or "Empty model response."
     except Exception as exc:  # noqa: BLE001 — surface provider errors in the UI
         return f"Inference error: {exc}"
 
