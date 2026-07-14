@@ -4,7 +4,7 @@ emoji: 🧭
 colorFrom: blue
 colorTo: indigo
 sdk: gradio
-sdk_version: "5.49.1"
+sdk_version: '5.49.1'
 app_file: app.py
 pinned: false
 short_description: Free LLM fit agent for a scientific AI portfolio
@@ -16,9 +16,9 @@ This Gradio Space powers the LLM backend for the portfolio **Ask** page.
 
 ## Setup (free)
 
-1. Create a Space at [huggingface.co/new-space](https://huggingface.co/new-space)  
-   - SDK: **Gradio**  
-   - Hardware: **CPU basic** (free)  
+1. Create a Space at [huggingface.co/new-space](https://huggingface.co/new-space)
+   - SDK: **Gradio**
+   - Hardware: **CPU basic** (free)
    - Visibility: Public (or Protected)
 
 2. Upload everything in this `hf-space/` folder (`app.py`, `requirements.txt`, `README.md`).

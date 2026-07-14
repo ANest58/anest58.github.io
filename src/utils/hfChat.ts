@@ -21,9 +21,7 @@ export function buildFitAgentSystemPrompt(profile: AgentProfile): string {
     )
     .join('\n');
 
-  const projects = profile.projects
-    .map((p) => `- ${p.title} [${p.tags.join(', ')}]: ${p.description}`)
-    .join('\n');
+  const projects = profile.projects.map((p) => `- ${p.title} [${p.tags.join(', ')}]: ${p.description}`).join('\n');
 
   return [
     `You are a portfolio fit agent for ${profile.name}, ${profile.title}.`,
@@ -93,8 +91,11 @@ export async function chatWithHuggingFace(options: {
     if (!response.ok) {
       const detail = truncate(await response.text().catch(() => ''), 400);
       let error = `Hugging Face request failed (${response.status}).`;
-      if (response.status === 401) error = 'Invalid Hugging Face token. Create a fine-grained token with Inference Providers permission.';
-      else if (response.status === 402) error = 'Inference credits exhausted on this Hugging Face account. Wait for reset or upgrade, or use the local agent.';
+      if (response.status === 401)
+        error = 'Invalid Hugging Face token. Create a fine-grained token with Inference Providers permission.';
+      else if (response.status === 402)
+        error =
+          'Inference credits exhausted on this Hugging Face account. Wait for reset or upgrade, or use the local agent.';
       else if (response.status === 429) error = 'Rate limited by Hugging Face. Try again in a moment.';
       else if (detail) error = `${error} ${detail}`;
       return { ok: false, error, status: response.status };
