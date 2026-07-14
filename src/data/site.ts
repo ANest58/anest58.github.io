@@ -79,7 +79,7 @@ export const heroSkills = ['LangChain', 'LangGraph', 'RAG', 'Multi-Agent Systems
 export const metrics = [
   { value: '6+', label: 'Years at Regeneron' },
   { value: 'AI + Data', label: 'Scientific enablement focus' },
-  { value: '3', label: 'Languages spoken' },
+  { value: 'Compute Clusters', label: 'Compute molecular dynamics and simulations' },
   { value: 'Home Lab', label: 'GPU cluster for local LLMs' },
 ];
 
