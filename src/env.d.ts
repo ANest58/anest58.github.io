@@ -4,6 +4,16 @@
 /// <reference types="vite/client" />
 /// <reference types="../vendor/integration/types.d.ts" />
 
+interface ImportMetaEnv {
+  readonly PUBLIC_HF_TOKEN?: string;
+  readonly PUBLIC_HF_MODEL?: string;
+  readonly PUBLIC_HF_SPACE_ID?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 // Fontsource packages ship CSS only (no type declarations); declare them so
 // side-effect imports type-check under TypeScript 6 strict (ts2882).
 declare module '@fontsource-variable/*';
