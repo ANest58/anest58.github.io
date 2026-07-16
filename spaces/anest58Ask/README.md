@@ -27,7 +27,7 @@ Uses **Hugging Face Inference Providers** with Anthony's portfolio as system con
 
 ## Setup
 
-1. Space secret: `HF_TOKEN` = a Hugging Face token with inference access  
+1. Space secret: `HF_TOKEN` = a Hugging Face token with inference access
 2. Optional vars:
    - `ASK_MODEL` (default `Qwen/Qwen2.5-72B-Instruct`)
    - `ASK_PROVIDER` (default `auto`)
