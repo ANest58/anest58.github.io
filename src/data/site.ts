@@ -83,6 +83,121 @@ export const metrics = [
   { value: 'Home Lab', label: 'GPU cluster for local LLMs' },
 ];
 
+/** Predetermined proficiency based on production use and depth of experience. */
+export type SkillLevel = 'beginner' | 'intermediate' | 'professional' | 'exceptional';
+
+export const skillLevelOrder: SkillLevel[] = ['exceptional', 'professional', 'intermediate', 'beginner'];
+
+export const skillLevelLabels: Record<SkillLevel, string> = {
+  exceptional: 'Exceptional',
+  professional: 'Professional',
+  intermediate: 'Intermediate',
+  beginner: 'Beginner',
+};
+
+export type RankedSkill = {
+  name: string;
+  level: SkillLevel;
+  group: string;
+  note?: string;
+};
+
+/**
+ * Rankings grounded in resume evidence (production delivery, years of use, ownership).
+ * Most day-to-day stack sits between intermediate and professional.
+ */
+export const skillRankings: RankedSkill[] = [
+  // Exceptional — repeated ownership / core craft
+  {
+    name: 'Python',
+    level: 'exceptional',
+    group: 'Data & Engineering',
+    note: 'Primary language across AI, ETL, and lab tooling',
+  },
+  {
+    name: 'ETL',
+    level: 'exceptional',
+    group: 'Data & Engineering',
+    note: 'End-to-end sample-to-report pipelines in production',
+  },
+  {
+    name: 'SQL Server',
+    level: 'exceptional',
+    group: 'Data & Engineering',
+    note: 'Administers GMP-compliant scientific databases',
+  },
+  {
+    name: 'JMP',
+    level: 'exceptional',
+    group: 'Web & Visualization',
+    note: 'DOE, regression, multivariate for formulation decisions',
+  },
+  {
+    name: 'LIMS',
+    level: 'exceptional',
+    group: 'Data & Engineering',
+    note: 'Enterprise LIMS integration, UAT, and workflows',
+  },
+  {
+    name: 'ELN',
+    level: 'exceptional',
+    group: 'Data & Engineering',
+    note: 'CSV/PDF ELN ingestion and scientist validation flows',
+  },
+
+  // Professional — shipped production systems
+  { name: 'LangChain', level: 'professional', group: 'AI & LLM', note: 'Production multi-agent / RAG platforms' },
+  { name: 'LangGraph', level: 'professional', group: 'AI & LLM', note: 'Agent orchestration for scientific workflows' },
+  { name: 'RAG', level: 'professional', group: 'AI & LLM', note: 'Knowledge repos + LLM querying of lab data' },
+  {
+    name: 'Multi-Agent Systems',
+    level: 'professional',
+    group: 'AI & LLM',
+    note: 'Architected agent platforms for reports/knowledge',
+  },
+  { name: 'Prompt Engineering', level: 'professional', group: 'AI & LLM' },
+  { name: 'Tool Calling', level: 'professional', group: 'AI & LLM' },
+  { name: 'OCR', level: 'professional', group: 'Machine Learning', note: 'Handwritten notebook IDP platform' },
+  { name: 'CNN', level: 'professional', group: 'Machine Learning', note: 'Deployed particle-image CNN with IT' },
+  { name: 'Computer Vision', level: 'professional', group: 'Machine Learning' },
+  { name: 'SQL', level: 'professional', group: 'Data & Engineering' },
+  { name: 'Tableau', level: 'professional', group: 'Web & Visualization' },
+  { name: 'Power BI', level: 'professional', group: 'Web & Visualization' },
+  { name: 'Docker', level: 'professional', group: 'Cloud & DevOps' },
+  { name: 'Linux', level: 'professional', group: 'Cloud & DevOps' },
+  { name: 'Git', level: 'professional', group: 'Cloud & DevOps' },
+
+  // Intermediate — solid working proficiency
+  {
+    name: 'PyTorch',
+    level: 'intermediate',
+    group: 'Machine Learning',
+    note: 'Model evaluation and CNN implementation',
+  },
+  { name: 'Scikit-learn', level: 'intermediate', group: 'Machine Learning' },
+  { name: 'KNN', level: 'intermediate', group: 'Machine Learning' },
+  { name: 'SVM', level: 'intermediate', group: 'Machine Learning' },
+  { name: 'ChromaDB', level: 'intermediate', group: 'AI & LLM' },
+  { name: 'Vector Search', level: 'intermediate', group: 'Data & Engineering' },
+  { name: 'Knowledge Graphs', level: 'intermediate', group: 'Data & Engineering' },
+  { name: 'Flask', level: 'intermediate', group: 'Web & Visualization' },
+  { name: 'Gradio', level: 'intermediate', group: 'Web & Visualization' },
+  { name: 'Streamlit', level: 'intermediate', group: 'Web & Visualization' },
+  { name: 'JavaScript', level: 'intermediate', group: 'Web & Visualization' },
+  { name: 'AWS', level: 'intermediate', group: 'Cloud & DevOps' },
+  { name: 'Azure', level: 'intermediate', group: 'Cloud & DevOps' },
+  { name: 'Proxmox', level: 'intermediate', group: 'Compute Cluster', note: 'Home GPU compute lab' },
+  { name: 'Slurm', level: 'intermediate', group: 'Compute Cluster' },
+  { name: 'Docker Swarm', level: 'intermediate', group: 'Compute Cluster' },
+  { name: 'GPU', level: 'intermediate', group: 'Compute Cluster' },
+  { name: 'Cuda', level: 'intermediate', group: 'Compute Cluster' },
+  { name: 'cudnn', level: 'intermediate', group: 'Compute Cluster' },
+  { name: 'OpenMPI', level: 'intermediate', group: 'Compute Cluster' },
+
+  // Beginner — newer / lighter use
+  { name: 'MCP', level: 'beginner', group: 'AI & LLM', note: 'Emerging tooling; actively exploring' },
+];
+
 export const techStack: { group: string; items: string[] }[] = [
   {
     group: 'AI & LLM',
@@ -111,7 +226,7 @@ export const techStack: { group: string; items: string[] }[] = [
   },
   {
     group: 'Cloud & DevOps',
-    items: ['Docker', 'AWS', 'Azure', 'Linux', 'Git', 'Docker'],
+    items: ['Docker', 'AWS', 'Azure', 'Linux', 'Git'],
   },
   {
     group: 'Compute Cluster',

@@ -1,0 +1,83 @@
+---
+import { skillLevelLabels, skillLevelOrder, skillRankings, type SkillLevel } from '~/data/site';
+
+const reveal = 'intersect-once intersect-third motion-safe:opacity-0 motion-safe:intersect:animate-fade';
+
+const levelStyles: Record<SkillLevel, { bar: string; badge: string; fill: string }> = {
+  exceptional: {
+    bar: 'bg-teal-600 dark:bg-teal-400',
+    badge: 'bg-teal-100 text-teal-900 dark:bg-teal-950 dark:text-teal-200',
+    fill: 'w-full',
+  },
+  professional: {
+    bar: 'bg-teal-500 dark:bg-teal-500',
+    badge: 'bg-slate-900/5 text-teal-800 dark:bg-teal-900/40 dark:text-teal-200',
+    fill: 'w-3/4',
+  },
+  intermediate: {
+    bar: 'bg-slate-500 dark:bg-slate-400',
+    badge: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+    fill: 'w-1/2',
+  },
+  beginner: {
+    bar: 'bg-slate-400 dark:bg-slate-500',
+    badge: 'bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400',
+    fill: 'w-1/4',
+  },
+};
+
+const grouped = skillLevelOrder
+  .map((level) => ({
+    level,
+    label: skillLevelLabels[level],
+    skills: skillRankings.filter((s) => s.level === level),
+  }))
+  .filter((g) => g.skills.length > 0);
+---
+
+<section id="skills" class="scroll-mt-24 mx-auto max-w-5xl px-4 py-16 sm:px-6">
+  <div class={reveal}>
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Proficiency</p>
+    <h2 class="mt-2 font-heading text-3xl font-bold tracking-tight text-heading">Skill rankings</h2>
+    <p class="mt-3 max-w-2xl text-muted">
+      Predetermined rankings based on depth of production use — from day-to-day ownership (exceptional / professional)
+      to solid working tools (intermediate) and newer explorations (beginner).
+    </p>
+  </div>
+
+  <div class="mt-10 space-y-8">
+    {
+      grouped.map(({ level, label, skills }) => (
+        <div
+          class={`rounded-lg border border-slate-200/90 bg-white/80 p-5 shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50 ${reveal}`}
+        >
+          <div class="mb-4 flex flex-wrap items-center gap-3">
+            <h3 class="font-heading text-lg font-semibold text-heading">{label}</h3>
+            <span
+              class={`rounded px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ${levelStyles[level].badge}`}
+            >
+              {skills.length} skills
+            </span>
+            <div
+              class="ml-auto hidden h-2 w-28 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 sm:block"
+              aria-hidden="true"
+            >
+              <div class={`h-full rounded-full ${levelStyles[level].bar} ${levelStyles[level].fill}`} />
+            </div>
+          </div>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {skills.map((skill) => (
+              <li class="border-t border-slate-200/80 pt-3 dark:border-slate-700/70">
+                <div class="flex items-baseline justify-between gap-2">
+                  <span class="font-medium text-default">{skill.name}</span>
+                  <span class="text-xs text-muted">{skill.group}</span>
+                </div>
+                {skill.note && <p class="mt-1 text-xs leading-relaxed text-muted">{skill.note}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
