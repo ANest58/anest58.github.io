@@ -14,11 +14,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Upload Space to Hugging Face
+      - name: Sync folder into existing Space via git
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          pip install -U "huggingface_hub[cli]"
-          hf upload Andominus58/anest58Ask spaces/anest58Ask \
-            --repo-type=space \
-            --commit-message "Sync Space from GitHub ${{ github.sha }}"
+          set -euo pipefail
+          if [ -z "${HF_TOKEN:-}" ]; then
+            echo "Missing HF_TOKEN secret. Add it in GitHub → Settings → Secrets → Actions."
+            exit 1
+          fi
+
+          # Push into the existing ZeroGPU Space. Do NOT use `hf upload` here —
+          # newer hub CLI may call /api/repos/create and hit a 402 for Gradio on cpu-basic.
+          git clone "https://user:${HF_TOKEN}@huggingface.co/spaces/Andominus58/anest58Ask" hf-space
+          rsync -a --delete \
+            --exclude '.git' \
+            --exclude '.gitattributes' \
+            spaces/anest58Ask/ hf-space/
+
+          cd hf-space
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No Space file changes to sync."
+            exit 0
+          fi
+          git commit -m "Sync Space from GitHub ${GITHUB_SHA}"
+          git push "https://user:${HF_TOKEN}@huggingface.co/spaces/Andominus58/anest58Ask" HEAD:main
