@@ -1,23 +1,22 @@
 """
-Anest58Ask — browser/Space fit agent for Anthony's portfolio.
-Heuristic Q&A + job-description overlap scoring (no GPU required).
+Anest58Ask — real LLM portfolio fit agent (HF Inference Providers).
 """
 
 from __future__ import annotations
 
-import re
+import os
 from typing import Any
 
 import gradio as gr
 import spaces
+from huggingface_hub import InferenceClient
 
-
+# ZeroGPU Spaces require at least one @spaces.GPU symbol at startup.
+# Inference itself uses HF Inference Providers (HTTP), not this GPU slot.
 @spaces.GPU(duration=10)
 def _zerogpu_placeholder() -> str:
-    """ZeroGPU Spaces require at least one @spaces.GPU function at startup.
-    This agent is CPU-only and does not call this from the UI.
-    """
     return "ok"
+
 
 PROFILE: dict[str, Any] = {
     "name": "Anthony",
@@ -33,6 +32,8 @@ PROFILE: dict[str, Any] = {
     "email": "anesturi@gmail.com",
     "linkedin": "https://www.linkedin.com/in/anthony-nesturi/",
     "github": "https://github.com/ANest58",
+    "portfolio": "https://anest58.github.io/",
+    "resume": "https://anest58.github.io/resume/Anthony-Resume.docx",
     "skills": [
         "LangChain",
         "LangGraph",
@@ -174,314 +175,110 @@ PROFILE: dict[str, Any] = {
     ],
 }
 
-SKILL_ALIASES: dict[str, list[str]] = {
-    "python": ["python", "py"],
-    "javascript": ["javascript", "js", "typescript", "ts"],
-    "sql": ["sql", "sql server", "mssql", "t-sql"],
-    "langchain": ["langchain"],
-    "langgraph": ["langgraph"],
-    "rag": ["rag", "retrieval-augmented", "retrieval augmented"],
-    "multi-agent": ["multi-agent", "multi agent", "agentic", "agents"],
-    "pytorch": ["pytorch", "torch"],
-    "etl": ["etl", "data pipeline", "pipelines"],
-    "ocr": ["ocr", "document processing", "idp"],
-    "computer vision": ["computer vision", "cv", "cnn", "image analysis"],
-    "docker": ["docker", "container"],
-    "aws": ["aws", "amazon web services"],
-    "azure": ["azure"],
-    "lims": ["lims"],
-    "eln": ["eln"],
-    "gmp": ["gmp", "regulated", "compliance"],
-    "flask": ["flask"],
-    "streamlit": ["streamlit"],
-    "gradio": ["gradio"],
-    "tableau": ["tableau"],
-    "power bi": ["power bi", "powerbi"],
-    "jmp": ["jmp", "doe", "design of experiments"],
-    "llm": ["llm", "large language", "generative ai", "genai"],
-    "ml": ["machine learning", "ml ", " deep learning"],
-    "formulation": ["formulation", "biologics", "drug product"],
-    "proxmox": ["proxmox", "home lab", "gpu cluster"],
-}
+# Strong open chat model available via HF Inference Providers
+MODEL_ID = os.environ.get("ASK_MODEL", "Qwen/Qwen2.5-72B-Instruct")
+PROVIDER = os.environ.get("ASK_PROVIDER", "auto")
 
 
-def normalize(text: str) -> str:
-    return re.sub(r"\s+", " ", text.lower()).strip()
-
-
-def unique_skills(profile: dict[str, Any]) -> list[str]:
-    from_stack = list(profile["skills"])
-    from_projects = [tag for p in profile["projects"] for tag in p["tags"]]
-    return list(dict.fromkeys([*from_stack, *from_projects]))
-
-
-def extract_skills_from_text(text: str, catalog: list[str]) -> list[str]:
-    hay = normalize(text)
-    found: set[str] = set()
-
-    for skill in catalog:
-        key = normalize(skill)
-        if len(key) >= 2 and key in hay:
-            found.add(skill)
-
-    for label, aliases in SKILL_ALIASES.items():
-        if any(a in hay for a in aliases):
-            match = next(
-                (s for s in catalog if label in normalize(s) or normalize(s) in label),
-                label,
-            )
-            found.add(match)
-
-    return list(found)
-
-
-def is_fit_request(message: str) -> bool:
-    m = normalize(message)
-    return any(
-        token in m
-        for token in (
-            "fit",
-            "position",
-            "job description",
-            "jd",
-            "role",
-            "hiring",
-            "candidate",
-            "requirements",
-        )
-    ) or len(m) > 280
-
-
-def analyze_fit(profile: dict[str, Any], job_text: str) -> str:
-    catalog = unique_skills(profile)
-    alias_labels = [k[:1].upper() + k[1:] for k in SKILL_ALIASES]
-    required = extract_skills_from_text(job_text, [*catalog, *alias_labels])
-
-    profile_blob = normalize(
-        " ".join(
-            [
-                profile["bio"],
-                profile["title"],
-                *catalog,
-                *[
-                    part
-                    for e in profile["experience"]
-                    for part in [e["role"], e["summary"], *e["highlights"]]
-                ],
-                *[
-                    part
-                    for p in profile["projects"]
-                    for part in [p["title"], p["description"], *p["tags"]]
-                ],
-            ]
-        )
-    )
-
-    matched: list[str] = []
-    gaps: list[str] = []
-    for skill in required:
-        aliases = SKILL_ALIASES.get(normalize(skill), [normalize(skill)])
-        hit = any(a in profile_blob for a in aliases) or normalize(skill) in profile_blob
-        (matched if hit else gaps).append(skill)
-
-    if not required:
-        return "\n".join(
-            [
-                "I couldn't extract clear skill requirements from that text.",
-                "",
-                "Paste a fuller job description (responsibilities + requirements), or ask something like:",
-                f'- "Summarize {profile["name"]}\'s AI experience"',
-                '- "What projects involve RAG or multi-agent systems?"',
-            ]
-        )
-
-    score = round(len(matched) / len(required) * 100)
-    if score >= 75:
-        verdict = "Strong fit"
-    elif score >= 50:
-        verdict = "Good fit with some gaps"
-    elif score < 35:
-        verdict = "Weak fit on stated requirements"
-    else:
-        verdict = "Partial fit"
-
-    relevant_exp = []
+def build_system_prompt(profile: dict[str, Any]) -> str:
+    exp_blocks = []
     for e in profile["experience"]:
-        blob = normalize(" ".join([e["role"], e["summary"], *e["highlights"]]))
-        if any(normalize(s)[:12] in blob for s in matched):
-            relevant_exp.append(e)
-        if len(relevant_exp) == 2:
-            break
+        bullets = "\n".join(f"  - {h}" for h in e["highlights"])
+        exp_blocks.append(
+            f"- {e['role']} @ {e['company']} ({e['period']}, {e['location']})\n"
+            f"  {e['summary']}\n{bullets}"
+        )
 
-    relevant_projects = []
-    for p in profile["projects"]:
-        blob = normalize(" ".join([p["title"], p["description"], *p["tags"]]))
-        if any(normalize(s) in blob for s in matched):
-            relevant_projects.append(p)
-        if len(relevant_projects) == 3:
-            break
-
-    lines = [
-        f"Fit assessment for {profile['name']}",
-        "",
-        f"Verdict: {verdict} (~{score}% of detected requirements overlap)",
-        "",
-        f"Matched signals ({len(matched)}): {', '.join(matched) or '—'}",
-        f"Possible gaps ({len(gaps)}): {', '.join(gaps) or 'None detected'}",
-        "",
+    project_blocks = [
+        f"- {p['title']} [{', '.join(p['tags'])}]: {p['description']}" for p in profile["projects"]
     ]
 
-    if relevant_exp:
-        lines.append("Relevant experience")
-        for e in relevant_exp:
-            lines.append(
-                f"- {e['role']} @ {e['company']} ({e['period']}) — {e['summary']}"
-            )
-        lines.append("")
+    return f"""You are Anest58Ask, a helpful hiring assistant for {profile['name']}'s portfolio.
 
-    if relevant_projects:
-        lines.append("Relevant projects")
-        for p in relevant_projects:
-            lines.append(f"- {p['title']}: {p['description']}")
-        lines.append("")
+Candidate profile (ground truth — do not invent employers, degrees, or projects):
+Name: {profile['name']}
+Title: {profile['title']}
+Location: {profile['location']}
+Current employer: {profile['employer']}
+Education: {profile['education']}
+Bio: {profile['bio']}
+Skills: {', '.join(profile['skills'])}
+Contact: email {profile['email']}; LinkedIn {profile['linkedin']}; GitHub {profile['github']}
+Portfolio: {profile['portfolio']}
+Resume: {profile['resume']}
 
-    lines.append(
-        f"Notes: This is a heuristic agent against {profile['name']}'s public portfolio data — "
-        "not a guarantee of hireability. Use it to frame interview questions, then review the resume "
-        "and speak with the candidate."
-    )
-    return "\n".join(lines)
+Experience:
+{chr(10).join(exp_blocks)}
+
+Projects:
+{chr(10).join(project_blocks)}
+
+Instructions:
+- Answer naturally and specifically using only the profile above.
+- If the user pastes a job description / asks about fit, give a clear verdict (strong / good / partial / weak), matched strengths, gaps, and suggested interview questions.
+- Be honest about gaps; never fabricate experience.
+- Keep answers concise unless the user asks for depth.
+- If asked for contact info, share the links above.
+"""
 
 
-def answer_about_profile(profile: dict[str, Any], message: str) -> str:
-    m = normalize(message)
+SYSTEM_PROMPT = build_system_prompt(PROFILE)
 
-    if any(k in m for k in ("contact", "email", "reach", "linkedin")):
-        return "\n".join(
-            [
-                f"You can reach {profile['name']} at:",
-                f"- Email: {profile.get('email') or 'see resume'}",
-                f"- LinkedIn: {profile.get('linkedin') or 'see portfolio'}",
-                f"- GitHub: {profile['github']}",
-                "- Resume: https://anest58.github.io/resume/Anthony-Resume.docx",
-                "- Portfolio: https://anest58.github.io/",
-            ]
+
+def get_client() -> InferenceClient:
+    token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+    if not token:
+        raise RuntimeError(
+            "Missing HF_TOKEN Space secret. Add a write/read token under "
+            "Space Settings → Variables and secrets → HF_TOKEN."
         )
-
-    if any(k in m for k in ("educat", "degree", "school", "college")):
-        return (
-            f"{profile['name']}'s education: {profile['education']}. "
-            "Background is chemistry (BS/MS), now applied to scientific AI and data enablement."
-        )
-
-    if "project" in m:
-        lines = ["Featured / listed projects:"]
-        for p in profile["projects"]:
-            lines.append(
-                f"- {p['title']} ({', '.join(p['tags'])}): {p['description']}"
-            )
-        return "\n".join(lines)
-
-    if any(k in m for k in ("experience", "work history", "career", "regeneron", "merck")):
-        lines = [f"{profile['name']}'s experience:"]
-        for e in profile["experience"]:
-            highlights = "; ".join(e["highlights"][:2])
-            lines.append(
-                f"- {e['role']} — {e['company']} ({e['period']})\n"
-                f"  {e['summary']}\n"
-                f"  Highlights: {highlights}"
-            )
-        return "\n".join(lines)
-
-    if any(k in m for k in ("skill", "tech", "stack")):
-        return "\n".join(
-            [
-                "Core skills and tools:",
-                *[f"- {s}" for s in profile["skills"]],
-                "",
-                f"Title: {profile['title']}",
-                f"Focus: {profile['bio']}",
-            ]
-        )
-
-    if any(k in m for k in ("who", "about", "summary", "overview")):
-        return "\n".join(
-            [
-                f"{profile['name']} — {profile['title']}",
-                profile["bio"],
-                "",
-                f"Based in {profile['location']}. Currently at {profile['employer']}.",
-                f"Education: {profile['education']}.",
-            ]
-        )
-
-    chunks = [
-        profile["bio"],
-        *[
-            f"{e['role']} at {e['company']}: {e['summary']}"
-            for e in profile["experience"]
-        ],
-        *[h for e in profile["experience"] for h in e["highlights"]],
-        *[
-            f"{p['title']}: {p['description']} [{', '.join(p['tags'])}]"
-            for p in profile["projects"]
-        ],
-    ]
-    tokens = [t for t in re.split(r"\W+", m) if len(t) > 3]
-    scored = []
-    for chunk in chunks:
-        c = normalize(chunk)
-        hits = sum(1 for t in tokens if t in c)
-        if hits:
-            scored.append((hits, chunk))
-    scored.sort(key=lambda x: x[0], reverse=True)
-
-    if scored:
-        return "\n".join(
-            [
-                f"Based on {profile['name']}'s portfolio:",
-                *[f"- {chunk}" for _, chunk in scored[:4]],
-                "",
-                'Tip: paste a job description and ask "Is this candidate a good fit for this position?"',
-            ]
-        )
-
-    return "\n".join(
-        [
-            f"I can help with questions about {profile['name']}'s fit, experience, skills, projects, education, or contact info.",
-            "",
-            "Try:",
-            '- Paste a job description, then ask: "Is this candidate a good fit for this position?"',
-            '- "Summarize AI and data experience"',
-            '- "What projects use LangGraph or RAG?"',
-        ]
-    )
+    kwargs: dict[str, Any] = {"token": token}
+    if PROVIDER and PROVIDER != "auto":
+        kwargs["provider"] = PROVIDER
+    return InferenceClient(**kwargs)
 
 
-def run_fit_agent(user_message: str) -> str:
-    text = (user_message or "").strip()
-    if not text:
-        return "Ask a question, or paste a job description to evaluate fit."
-
-    if is_fit_request(text):
-        parts = re.split(r"\n{2,}|---+|Job description:", text, flags=re.I)
-        job_text = "\n".join(parts[1:]).strip() if len(parts) > 1 else text
-        if len(normalize(job_text)) > 120 or len(parts) > 1:
-            return analyze_fit(PROFILE, job_text if len(job_text) > 80 else text)
-
-    return answer_about_profile(PROFILE, text)
+def history_to_messages(history: list[dict[str, str]] | None) -> list[dict[str, str]]:
+    messages: list[dict[str, str]] = [{"role": "system", "content": SYSTEM_PROMPT}]
+    for turn in history or []:
+        role = turn.get("role")
+        content = turn.get("content")
+        if role in {"user", "assistant"} and content:
+            messages.append({"role": role, "content": content})
+    return messages
 
 
 def chat(message: str, history: list[dict[str, str]]):
-    reply = run_fit_agent(message)
-    history = history or []
-    history.append({"role": "user", "content": message})
+    history = list(history or [])
+    text = (message or "").strip()
+    if not text:
+        return history, ""
+
+    history.append({"role": "user", "content": text})
+
+    try:
+        client = get_client()
+        completion = client.chat.completions.create(
+            model=MODEL_ID,
+            messages=[*history_to_messages(history[:-1]), {"role": "user", "content": text}],
+            max_tokens=1024,
+            temperature=0.4,
+        )
+        reply = completion.choices[0].message.content or "(empty model response)"
+    except Exception as exc:  # noqa: BLE001 — show usable error in UI
+        reply = (
+            "I couldn't reach the LLM provider.\n\n"
+            f"Details: {exc}\n\n"
+            "Fix: set Space secret `HF_TOKEN` (Hugging Face access token with inference permission), "
+            "then restart the Space."
+        )
+
     history.append({"role": "assistant", "content": reply})
     return history, ""
 
 
 EXAMPLES = [
-    "Summarize AI and data enablement experience",
+    "Summarize Anthony's AI and data enablement experience in 5 bullets.",
     "What projects involve RAG or multi-agent systems?",
     "How can I contact Anthony?",
     (
@@ -499,12 +296,13 @@ with gr.Blocks(title="Anest58Ask — Portfolio Fit Agent", theme=gr.themes.Soft(
 # Ask about {PROFILE["name"]}
 **{PROFILE["title"]}**
 
-Paste a job description and ask if the candidate is a good fit, or ask about experience, skills, and projects.
+Powered by a real LLM (`{MODEL_ID}`) with Anthony's portfolio as context.
+Paste a job description and ask about fit, or ask open questions about experience and skills.
 
 Portfolio: [anest58.github.io](https://anest58.github.io/) · GitHub: [ANest58](https://github.com/ANest58)
 """
     )
-    chatbot = gr.Chatbot(height=420, label="Fit agent", type="messages")
+    chatbot = gr.Chatbot(height=460, label="Fit agent (LLM)", type="messages")
     msg = gr.Textbox(
         label="Your question or job description",
         placeholder='Paste a JD, then ask: "Is this candidate a good fit for this position?"',
