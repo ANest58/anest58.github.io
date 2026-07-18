@@ -4,12 +4,18 @@ Anest58Ask — real LLM portfolio fit agent (HF Inference Providers).
 
 from __future__ import annotations
 
+import json
+import logging
 import os
+from datetime import datetime, timezone
 from typing import Any
+from uuid import uuid4
 
 import gradio as gr
 import spaces
-from huggingface_hub import InferenceClient
+from huggingface_hub import HfApi, InferenceClient
+
+logger = logging.getLogger("anest58ask")
 
 # ZeroGPU Spaces require at least one @spaces.GPU symbol at startup.
 # Inference itself uses HF Inference Providers (HTTP), not this GPU slot.
@@ -179,6 +185,46 @@ PROFILE: dict[str, Any] = {
 MODEL_ID = os.environ.get("ASK_MODEL", "Qwen/Qwen2.5-72B-Instruct")
 PROVIDER = os.environ.get("ASK_PROVIDER", "auto")
 
+# Q&A logs → private HF Dataset (one JSON file per turn). Set ASK_LOG_ENABLED=0 to disable.
+LOG_DATASET = os.environ.get("ASK_LOG_DATASET", "Andominus58/anest58ask-qa-logs").strip()
+LOG_ENABLED = os.environ.get("ASK_LOG_ENABLED", "1").strip().lower() not in {"0", "false", "off", ""}
+
+
+def _hf_token() -> str | None:
+    return os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+
+
+def log_qa(question: str, answer: str, *, error: bool = False) -> None:
+    """Append a Q&A turn to a private Hugging Face Dataset (best-effort)."""
+    if not LOG_ENABLED or not LOG_DATASET:
+        return
+    token = _hf_token()
+    if not token:
+        return
+    try:
+        api = HfApi(token=token)
+        api.create_repo(repo_id=LOG_DATASET, repo_type="dataset", private=True, exist_ok=True)
+        now = datetime.now(timezone.utc)
+        record = {
+            "id": uuid4().hex,
+            "timestamp": now.isoformat(),
+            "model": MODEL_ID,
+            "provider": PROVIDER,
+            "question": question,
+            "answer": answer,
+            "error": error,
+        }
+        path = f"logs/{now.strftime('%Y/%m/%d')}/{record['id']}.json"
+        api.upload_file(
+            path_or_fileobj=json.dumps(record, ensure_ascii=False, indent=2).encode("utf-8"),
+            path_in_repo=path,
+            repo_id=LOG_DATASET,
+            repo_type="dataset",
+            commit_message=f"log qa {record['id'][:8]}",
+        )
+    except Exception:  # noqa: BLE001 — never break chat on logging failure
+        logger.exception("Failed to write Q&A log to dataset %s", LOG_DATASET)
+
 
 def build_system_prompt(profile: dict[str, Any]) -> str:
     exp_blocks = []
@@ -226,7 +272,7 @@ SYSTEM_PROMPT = build_system_prompt(PROFILE)
 
 
 def get_client() -> InferenceClient:
-    token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+    token = _hf_token()
     if not token:
         raise RuntimeError(
             "Missing HF_TOKEN Space secret. Add a write/read token under "
@@ -256,6 +302,7 @@ def chat(message: str, history: list[dict[str, str]]):
 
     history.append({"role": "user", "content": text})
 
+    errored = False
     try:
         client = get_client()
         completion = client.chat.completions.create(
@@ -266,6 +313,7 @@ def chat(message: str, history: list[dict[str, str]]):
         )
         reply = completion.choices[0].message.content or "(empty model response)"
     except Exception as exc:  # noqa: BLE001 — show usable error in UI
+        errored = True
         reply = (
             "I couldn't reach the LLM provider.\n\n"
             f"Details: {exc}\n\n"
@@ -273,6 +321,7 @@ def chat(message: str, history: list[dict[str, str]]):
             "then restart the Space."
         )
 
+    log_qa(text, reply, error=errored)
     history.append({"role": "assistant", "content": reply})
     return history, ""
 

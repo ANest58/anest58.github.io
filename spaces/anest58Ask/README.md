@@ -27,10 +27,22 @@ Uses **Hugging Face Inference Providers** with Anthony's portfolio as system con
 
 ## Setup
 
-1. Space secret: `HF_TOKEN` = a Hugging Face token with inference access
+1. Space secret: `HF_TOKEN` = a Hugging Face token with **write** access (inference + dataset uploads)
 2. Optional vars:
    - `ASK_MODEL` (default `Qwen/Qwen2.5-72B-Instruct`)
    - `ASK_PROVIDER` (default `auto`)
+   - `ASK_LOG_DATASET` (default `Andominus58/anest58ask-qa-logs`) — private dataset for Q&A logs
+   - `ASK_LOG_ENABLED` (default `1`) — set to `0` to disable logging
+
+## Q&A logs
+
+Every Ask turn is written as a JSON file under `logs/YYYY/MM/DD/<id>.json` in a **private** dataset:
+
+- https://huggingface.co/datasets/Andominus58/anest58ask-qa-logs
+
+Each record includes `timestamp`, `question`, `answer`, `model`, `provider`, and `error`.
+
+The dataset is created automatically on the first logged turn (keep the Space token private/write-capable).
 
 ## Links
 
