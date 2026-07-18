@@ -32,7 +32,7 @@ src/
   data/            # site.ts, projects.ts
   layouts/         # Layout.astro, PortfolioLayout.astro
   pages/           # index, projects, ask, 404
-  utils/           # images.ts, permalinks.ts, fitAgent.ts, utils.ts
+  utils/           # images.ts, permalinks.ts, utils.ts
   config.yaml      # Site configuration (loaded as virtual module)
   types.d.ts       # TypeScript type definitions
 vendor/integration/    # Custom Astro integration for config loading
