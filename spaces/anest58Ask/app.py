@@ -351,7 +351,8 @@ Paste a job description and ask about fit, or ask open questions about experienc
 Portfolio: [anest58.github.io](https://anest58.github.io/) · GitHub: [ANest58](https://github.com/ANest58)
 """
     )
-    chatbot = gr.Chatbot(height=460, label="Fit agent (LLM)", type="messages")
+    # No fixed height: starts compact and grows with the conversation, capped at 65vh.
+    chatbot = gr.Chatbot(min_height=120, max_height="65vh", label="Fit agent (LLM)", type="messages")
     msg = gr.Textbox(
         label="Your question or job description",
         placeholder='Paste a JD, then ask: "Is this candidate a good fit for this position?"',
