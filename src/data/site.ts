@@ -83,25 +83,6 @@ export const metrics = [
   { value: 'Home Lab', label: 'GPU cluster for local LLMs' },
 ];
 
-/** Predetermined proficiency based on production use and depth of experience. */
-export type SkillLevel = 'beginner' | 'intermediate' | 'professional' | 'exceptional';
-
-export const skillLevelOrder: SkillLevel[] = ['exceptional', 'professional', 'intermediate', 'beginner'];
-
-export const skillLevelLabels: Record<SkillLevel, string> = {
-  exceptional: 'Exceptional',
-  professional: 'Professional',
-  intermediate: 'Intermediate',
-  beginner: 'Beginner',
-};
-
-export type RankedSkill = {
-  name: string;
-  level: SkillLevel;
-  group: string;
-  note?: string;
-};
-
 export const techStack: { group: string; items: string[] }[] = [
   {
     group: 'AI & LLM',

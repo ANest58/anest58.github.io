@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-AstroWind is a free, open-source website template built with **Astro v6** and **Tailwind CSS v4**. It generates a fully static site optimized for performance, SEO, and accessibility.
+Personal portfolio site based on **Astro v6** and **Tailwind CSS v4**. Static site optimized for performance, SEO, and accessibility. Blog/MDX template features have been removed.
 
-**Stack:** Astro v6 | Tailwind CSS v4 | TypeScript 5.9 | MDX | Sharp
+**Stack:** Astro v6 | Tailwind CSS v4 | TypeScript 5.9 | Sharp
 
 ## Quick Reference
 
@@ -26,20 +26,17 @@ AstroWind is a free, open-source website template built with **Astro v6** and **
 src/
   assets/styles/tailwind.css   # Tailwind v4 config (themes, utilities, plugins)
   components/
-    common/        # Shared: Image, Metadata, Analytics, ToggleTheme
-    ui/            # Primitives: Button, Headline, WidgetWrapper, ItemGrid
-    widgets/       # Page sections: Hero, Features, Pricing, Header, Footer
-    blog/          # Blog: SinglePost, List, Pagination, Tags
+    common/        # Shared: Metadata, Analytics, ToggleTheme
+    portfolio/     # Portfolio sections: Hero, Navbar, TechStack, etc.
     CustomStyles.astro  # CSS variables for colors and fonts
-  content.config.ts    # Content Collections schema (Astro v6 location)
-  data/post/           # Blog posts (.md, .mdx)
-  layouts/             # Layout.astro, PageLayout.astro, MarkdownLayout.astro
-  pages/               # File-based routing
-  utils/               # blog.ts, images.ts, permalinks.ts, frontmatter.ts
-  config.yaml          # Site configuration (loaded as virtual module)
-  navigation.ts        # Navigation structure
-  types.d.ts           # TypeScript type definitions
+  data/            # site.ts, projects.ts
+  layouts/         # Layout.astro, PortfolioLayout.astro
+  pages/           # index, projects, ask, 404
+  utils/           # images.ts, permalinks.ts, fitAgent.ts, utils.ts
+  config.yaml      # Site configuration (loaded as virtual module)
+  types.d.ts       # TypeScript type definitions
 vendor/integration/    # Custom Astro integration for config loading
+spaces/anest58Ask/     # Hugging Face Space (Ask LLM)
 ```
 
 ### Path Aliases
@@ -47,13 +44,13 @@ vendor/integration/    # Custom Astro integration for config loading
 Use `~/` to import from `src/`:
 
 ```typescript
-import Image from '~/components/common/Image.astro';
+import Hero from '~/components/portfolio/Hero.astro';
 import { SITE } from 'astrowind:config';
 ```
 
 ### Configuration System
 
-Site config lives in `src/config.yaml` and is loaded as a Vite virtual module `astrowind:config` by the custom integration in `vendor/integration/`. Exports: `SITE`, `I18N`, `METADATA`, `APP_BLOG`, `UI`, `ANALYTICS`.
+Site config lives in `src/config.yaml` and is loaded as a Vite virtual module `astrowind:config` by the custom integration in `vendor/integration/`. Exports: `SITE`, `I18N`, `METADATA`, `UI`, `ANALYTICS`.
 
 ## Tailwind CSS v4
 
@@ -73,29 +70,12 @@ The Vite plugin `@tailwindcss/vite` is configured in `astro.config.ts` (not as a
 
 Components use `twMerge` from `tailwind-merge` v3 for conditional class composition.
 
-## Content Collections
-
-Defined in `src/content.config.ts` using the Astro v6 Content Layer API with `glob()` loader. Posts are in `src/data/post/` as `.md` or `.mdx` files.
-
-Post frontmatter: `title` (required), `publishDate`, `updateDate`, `draft`, `excerpt`, `image`, `category`, `tags`, `author`, `metadata`.
-
 ## Component Patterns
 
-- Props extend interfaces from `~/types`
+- Props extend interfaces from `~/types` when needed
 - Use `class:list` for conditional classes
 - Use `twMerge()` when accepting className overrides
-- Use named slots for layout composition
-- Widget components accept standardized props (see `~/types`)
-
-## Image Handling
-
-`src/components/common/Image.astro` supports:
-
-- Local images via `astro:assets` (optimized by Sharp)
-- Remote images via Unpic CDN
-- Allowed domains (for providers Unpic can't detect, processed by Sharp): `cdn.pixabay.com`
-
-Hero images use `loading="eager"` and `fetchpriority="high"`.
+- Portfolio content lives in `src/data/site.ts` and `src/data/projects.ts`
 
 ## Verification Checklist
 
@@ -103,4 +83,4 @@ After changes, always verify:
 
 1. `npm run build` succeeds
 2. `npm run check` passes (astro check + ESLint + Prettier)
-3. Visual check in browser: homepage, blog, dark mode, mobile menu
+3. Visual check in browser: homepage, projects, ask, dark mode, mobile menu
