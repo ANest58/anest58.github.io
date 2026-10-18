@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "gate_methods": [
+    "metaldock_heme",
+    "metaldock_fepc",
+    "boltz_fepc"
+  ],
+  "gate_methods_present": [
+    "metaldock_fepc",
+    "metaldock_heme"
+  ],
+  "gate_passed": true,
+  "agreeing_methods": [
+    "metaldock_heme",
+    "metaldock_fepc"
+  ],
+  "clusters": [
+    [
+      "metaldock_heme",
+      "metaldock_fepc"
+    ]
+  ],
+  "residues": [
+    338,
+    339,
+    342,
+    343,
+    371,
+    373
+  ],
+  "box": {
+    "center": [
+      -32.125,
+      7.713,
+      27.779
+    ],
+    "size": [
+      22.0,
+      22.0,
+      22.0
+    ],
+    "units": "angstrom",
+    "frame": "protein_pdb",
+    "pdb": "6M0J",
+    "target": "RBD",
+    "center_mode": "stage1_consensus",
+    "residues": [
+      338,
+      339,
+      342,
+      343,
+      371,
+      373
+    ]
+  },
+  "control": {
+    "methods_present": [
+      "metaldock_h2pc"
+    ],
+    "macrocycle_driven": true,
+    "note": "If H2Pc lands at the consensus site, suspect macrocycle-driven binding; if only FePc/heme land there, suspect heme-style axial bias."
+  },
+  "thresholds": {
+    "max_center_dist_A": 10.0,
+    "min_residue_jaccard": 0.4
+  },
+  "dry_run": false,
+  "live_metaldock": true,
+  "live_boltz": false,
+  "pending_methods": [
+    "boltz_fepc"
+  ],
+  "boltz_blocker": "RUNPOD_API_KEY unset on llbeast and Cloud worker; Boltz co-folds not started.",
+  "job_id": "stage1_pocket_live",
+  "engine_note": "MetalDock/Vina Autodocker path, whole-RBD, cpu=4. FePc top-score bimodal; heme-agreeing tied pose used for gate."
+}

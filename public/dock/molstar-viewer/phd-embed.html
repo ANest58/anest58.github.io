@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>PhD Dock · Mol*</title>
+    <link rel="stylesheet" type="text/css" href="molstar.css" />
+    <style>
+      html,
+      body,
+      #app {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0a1210;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./molstar.js"></script>
+    <script>
+      function getParam(name) {
+        var r = new RegExp(name + "=([^&]*)", "i");
+        var m = (window.location.search || "").match(r);
+        return m ? decodeURIComponent(m[1]) : "";
+      }
+
+      function guessFormat(url, fallback) {
+        if (!url) return fallback || "pdb";
+        if (/\.cif($|\?)/i.test(url)) return "mmcif";
+        if (/\.pdb($|\?)/i.test(url)) return "pdb";
+        return fallback || "pdb";
+      }
+
+      var mode = (getParam("mode") || "structure").toLowerCase();
+      var structureUrl = getParam("structure-url").trim();
+      var ligandUrl = getParam("ligand-url").trim();
+      var format = (getParam("format") || "").toLowerCase().trim();
+      var pdb = getParam("pdb").trim();
+      var hideControls = getParam("hide-controls") === "1";
+
+      molstar.Viewer.create("app", {
+        layoutShowControls: !hideControls,
+        viewportShowExpand: false,
+        collapseLeftPanel: true,
+        pdbProvider: "pdbe",
+        emdbProvider: "pdbe",
+      }).then(async function (viewer) {
+        try {
+          if (pdb) {
+            await viewer.loadPdb(pdb);
+          }
+          if (structureUrl) {
+            var fmt = format || guessFormat(structureUrl, "pdb");
+            if (mode === "trajectory" || mode === "traj") {
+              await viewer.loadAllModelsOrAssemblyFromUrl(
+                structureUrl,
+                fmt,
+                false
+              );
+              try {
+                if (viewer.plugin && viewer.plugin.managers && viewer.plugin.managers.animation) {
+                  viewer.plugin.managers.animation.play();
+                }
+              } catch (_) {}
+            } else {
+              await viewer.loadStructureFromUrl(structureUrl, fmt, false);
+            }
+          }
+          if (ligandUrl) {
+            await viewer.loadStructureFromUrl(
+              ligandUrl,
+              guessFormat(ligandUrl, "pdb"),
+              false
+            );
+          }
+        } catch (err) {
+          console.error("PhD Mol* load failed", err);
+        }
+        window.addEventListener("unload", function () {
+          viewer.dispose();
+        });
+      });
+    </script>
+  </body>
+</html>

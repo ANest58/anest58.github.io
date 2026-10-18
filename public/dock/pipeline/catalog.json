@@ -1,0 +1,1265 @@
+{
+  "schema_version": 1,
+  "title": "PhD Dock \u2014 metallophthalocyanine pipeline",
+  "generated_from": "pages-static-publish",
+  "as_of": "2026-10-18",
+  "source_note": "Static snapshot published to anest58.github.io/dock (results-only; no FastAPI hub). Allowlisted publication snapshot through Stage 7 comparative MM/GBSA (pose1). GB ranking is comparative only \u2014 not absolute \u0394G. Stage 8 not started.",
+  "protein": {
+    "pdb": "6M0J",
+    "target": "SARS-CoV-2 spike RBD",
+    "note": "Stage 1 pocket gate uses MetalDock consensus on RBD."
+  },
+  "stages": [
+    {
+      "id": "pocket",
+      "label": "Stage 1 \u00b7 Pocket",
+      "status": "pass",
+      "detail": "MetalDock heme+FePc agree; Boltz FePc structure done (no site vote; \u0394G null)"
+    },
+    {
+      "id": "qm",
+      "label": "Stage 2 \u00b7 QM (Freq/ESP)",
+      "status": "done",
+      "detail": "ZnPc, CuPc, F16-ZnPc \u2014 no imaginary frequencies"
+    },
+    {
+      "id": "ff",
+      "label": "Stage 3 \u00b7 Ligand FF",
+      "status": "done",
+      "detail": "Vacuum gates PASS; water MD accepted (F16 oop +0.02 \u00c5 over gate)"
+    },
+    {
+      "id": "dock",
+      "label": "Stage 4 \u00b7 Dock",
+      "status": "done",
+      "detail": "MetalDock at Stage 1 box; two distinct poses each; READY_FOR_BOLTZ"
+    },
+    {
+      "id": "md",
+      "label": "Stage 5\u20136 \u00b7 MD / survivors",
+      "status": "done",
+      "detail": "MD screen 18/18 complete; 6/6 poses PASS Stage 5 survival; Stage 6 pose1 harvested (ZnPc n=3; CuPc/F16 n=2)"
+    },
+    {
+      "id": "stage6",
+      "label": "Stage 6 \u00b7 Survivors (RunPod)",
+      "status": "partial",
+      "detail": "pose1: ZnPc 2/3 PASS (r1 FAIL 7.07; r2 PASS 1.66; r3 PASS 1.75 \u00c5); CuPc FAIL/FAIL (5.88 / 7.19 \u00c5); F16-ZnPc PASS/PASS (2.20 / 3.10 \u00c5)"
+    },
+    {
+      "id": "stage7",
+      "label": "Stage 7 \u00b7 MM/GBSA",
+      "status": "done",
+      "detail": "Comparative GB (pose1): CuPc (\u221239.1) > ZnPc (\u221230.8) > F16 (\u221225.1); CuPc FAIL MD; F16 most stable \u2014 not absolute \u0394G"
+    },
+    {
+      "id": "stage8",
+      "label": "Stage 8 \u00b7 QM/MM",
+      "status": "not_started",
+      "detail": "No persistent axial donor (mins \u2273 6.9 \u00c5); QM/MM not started"
+    },
+    {
+      "id": "boltz",
+      "label": "Boltz co-fold",
+      "status": "done",
+      "detail": "5 structure samples each; affinity head HTTP 422 (no \u0394G)"
+    }
+  ],
+  "pocket": {
+    "gate_passed": true,
+    "agreeing_methods": [
+      "metaldock_heme",
+      "metaldock_fepc"
+    ],
+    "pending_methods": [],
+    "boltz_blocker": "FePc Boltz co-fold done (5/5 samples); affinity null; mmCIF protein-only \u2014 no residue/center site vote. Pocket gate remains MetalDock heme \u2229 FePc.",
+    "residues": [
+      338,
+      339,
+      342,
+      343,
+      371,
+      373
+    ],
+    "box": {
+      "center": [
+        -32.125,
+        7.713,
+        27.779
+      ],
+      "size": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "units": "angstrom",
+      "frame": "protein_pdb",
+      "pdb": "6M0J",
+      "target": "RBD",
+      "center_mode": "stage1_consensus",
+      "residues": [
+        338,
+        339,
+        342,
+        343,
+        371,
+        373
+      ]
+    },
+    "control": {
+      "macrocycle_driven": true,
+      "methods_present": [
+        "metaldock_h2pc"
+      ]
+    },
+    "job_id": "stage1_pocket_live",
+    "live_metaldock": true,
+    "live_boltz": true
+  },
+  "ligands": [
+    {
+      "id": "ZnPc",
+      "display_name": "ZnPc",
+      "resname": "ZPC",
+      "qm": {
+        "ok": true,
+        "method": "B3LYP/def2-SVP Freq TightSCF NORI + CHELPG",
+        "charge": 0,
+        "multiplicity": 1,
+        "no_imaginary": true,
+        "lowest_real_freq_cm": 21.65,
+        "n_real_vib_modes": 165,
+        "final_sp_energy_Eh": -3444.122798832746,
+        "final_gibbs_Eh": -3443.76190034,
+        "m_n_mean_A": 2.0084,
+        "m_n_distances_A": [
+          2.00826,
+          2.00826,
+          2.00853,
+          2.00853
+        ],
+        "wall_time": "8h51m",
+        "s2": null,
+        "s2_ideal": null
+      },
+      "ff": {
+        "resname": "ZPC",
+        "gate_vacuum": true,
+        "metal_lj": {
+          "rmin_half": 1.269,
+          "epsilon": 0.00321068
+        },
+        "seminario": {
+          "bond_r0_A": 2.0084,
+          "bond_k": 78.04,
+          "cis_k": 16.94,
+          "x_n_m_k": 31.04
+        },
+        "resp": {
+          "metal_charge": 0.787,
+          "rrms": 0.1864
+        },
+        "vacuum": {
+          "max_m_n_dev_A": 0.006,
+          "heavy_atom_rmsd_A": 0.0115,
+          "m_n_mm_mean_A": 2.0025,
+          "m_n_qm_mean_A": 2.0084
+        },
+        "water_md": {
+          "frames": 500,
+          "axial_frac": 0.994,
+          "zn_o": 2.142,
+          "zn_o_sd": 0.123,
+          "zn_oop": 0.4,
+          "zn_oop_axial": 0.402,
+          "zn_n": 2.044,
+          "zn_n_drift": -0.0061,
+          "exchanges": 55,
+          "status": "pass",
+          "note": "Revised water gate PASS; axial water persistent; LJ tuned Rmin/2=1.269"
+        }
+      },
+      "stages": {
+        "pocket": "pass",
+        "qm": "done",
+        "ff": "done",
+        "dock": "done",
+        "md": "pass",
+        "boltz": "done",
+        "stage6": "mixed",
+        "stage7": "done"
+      },
+      "dock": {
+        "gate_two_distinct": true,
+        "best_primary_kcal": -9.6,
+        "best_baseline_kcal": -9.6,
+        "ready_for_boltz": true,
+        "job_id": "stage4_znpc",
+        "poses": [
+          {
+            "rank": 1,
+            "tag": "pose1",
+            "vina_kcal": -9.6,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": null,
+            "metal_xyz": [
+              -31.904,
+              7.606,
+              28.618
+            ],
+            "pdb": "results/dock/stage4/znpc/pose1.pdb",
+            "api_pdb": "/dock/structures/dock/znpc_pose1.pdb"
+          },
+          {
+            "rank": 2,
+            "tag": "pose2",
+            "vina_kcal": -9.6,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": 6.552,
+            "metal_xyz": [
+              -31.906,
+              7.626,
+              28.617
+            ],
+            "pdb": "results/dock/stage4/znpc/pose2.pdb",
+            "api_pdb": "/dock/structures/dock/znpc_pose2.pdb"
+          }
+        ],
+        "pose1_pdb_url": "/dock/structures/dock/znpc_pose1.pdb"
+      },
+      "boltz": {
+        "ok": true,
+        "mode": "structure_cofold",
+        "n_structures": 5,
+        "diffusion_samples": 5,
+        "confidence": {
+          "min": 0.757,
+          "max": 0.7965,
+          "mean": 0.7774,
+          "best": 0.7965,
+          "n": 5
+        },
+        "ptm": {
+          "min": 0.8893,
+          "max": 0.9154,
+          "mean": 0.9026,
+          "best": 0.9154,
+          "n": 5
+        },
+        "iptm": {
+          "min": 0.6308,
+          "max": 0.7408,
+          "mean": 0.6763,
+          "best": 0.7408,
+          "n": 5
+        },
+        "best_sample": {
+          "index": 5,
+          "confidence": "sample_5",
+          "cif": "results/affinity/stage4/znpc/sample_5.cif",
+          "api_cif": "/dock/structures/boltz/znpc/sample_5.cif",
+          "confidence_score": 0.7965,
+          "ptm": 0.9154,
+          "iptm": 0.7408
+        },
+        "samples": [
+          {
+            "index": 1,
+            "confidence": "sample_1",
+            "cif": "results/affinity/stage4/znpc/sample_1.cif",
+            "api_cif": "/dock/structures/boltz/znpc/sample_1.cif",
+            "confidence_score": 0.7815,
+            "ptm": 0.9062,
+            "iptm": 0.6862
+          },
+          {
+            "index": 2,
+            "confidence": "sample_2",
+            "cif": "results/affinity/stage4/znpc/sample_2.cif",
+            "api_cif": "/dock/structures/boltz/znpc/sample_2.cif",
+            "confidence_score": 0.7845,
+            "ptm": 0.9115,
+            "iptm": 0.6902
+          },
+          {
+            "index": 3,
+            "confidence": "sample_3",
+            "cif": "results/affinity/stage4/znpc/sample_3.cif",
+            "api_cif": "/dock/structures/boltz/znpc/sample_3.cif",
+            "confidence_score": 0.7675,
+            "ptm": 0.8907,
+            "iptm": 0.6308
+          },
+          {
+            "index": 4,
+            "confidence": "sample_4",
+            "cif": "results/affinity/stage4/znpc/sample_4.cif",
+            "api_cif": "/dock/structures/boltz/znpc/sample_4.cif",
+            "confidence_score": 0.757,
+            "ptm": 0.8893,
+            "iptm": 0.6333
+          },
+          {
+            "index": 5,
+            "confidence": "sample_5",
+            "cif": "results/affinity/stage4/znpc/sample_5.cif",
+            "api_cif": "/dock/structures/boltz/znpc/sample_5.cif",
+            "confidence_score": 0.7965,
+            "ptm": 0.9154,
+            "iptm": 0.7408
+          }
+        ],
+        "affinity_head": {
+          "attempted": true,
+          "ok": false,
+          "status": "unavailable_http_422",
+          "delta_g": null,
+          "note": "Boltz-2 NIM 1.10 returns HTTP 422 parse_yaml when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works."
+        }
+      }
+    },
+    {
+      "id": "CuPc",
+      "display_name": "CuPc",
+      "resname": "CPC",
+      "qm": {
+        "ok": true,
+        "method": "B3LYP/def2-SVP Freq TightSCF NORI + CHELPG",
+        "charge": 0,
+        "multiplicity": 2,
+        "no_imaginary": true,
+        "lowest_real_freq_cm": 20.52,
+        "n_real_vib_modes": 165,
+        "final_sp_energy_Eh": -3305.264359274796,
+        "final_gibbs_Eh": -3304.90261152,
+        "m_n_mean_A": 1.9778,
+        "m_n_distances_A": [
+          1.97778,
+          1.97778,
+          1.97783,
+          1.97783
+        ],
+        "wall_time": "15h27m",
+        "s2": 0.752905,
+        "s2_ideal": 0.75
+      },
+      "ff": {
+        "resname": "CPC",
+        "gate_vacuum": true,
+        "metal_lj": {
+          "rmin_half": 1.602,
+          "epsilon": 0.08034231
+        },
+        "seminario": {
+          "bond_r0_A": 1.9778,
+          "bond_k": 82.35,
+          "cis_k": 59.5,
+          "x_n_m_k": 90.17
+        },
+        "resp": {
+          "metal_charge": 0.518,
+          "rrms": 0.1915
+        },
+        "vacuum": {
+          "max_m_n_dev_A": 0.0053,
+          "heavy_atom_rmsd_A": 0.0109,
+          "m_n_mm_mean_A": 1.9725,
+          "m_n_qm_mean_A": 1.9778
+        },
+        "water_md": {
+          "frames": 500,
+          "axial_frac": 0.006,
+          "zn_o": 2.558,
+          "zn_o_sd": 0.022,
+          "zn_oop": 0.195,
+          "zn_oop_axial": 0.197,
+          "zn_n": 1.982,
+          "zn_n_drift": -0.0007,
+          "exchanges": 2,
+          "status": "pass",
+          "note": "No persistent axial water (expected for Cu); LJ locked Rmin/2=1.602"
+        }
+      },
+      "stages": {
+        "pocket": "pass",
+        "qm": "done",
+        "ff": "done",
+        "dock": "done",
+        "md": "pass",
+        "boltz": "done",
+        "stage6": "fail",
+        "stage7": "done"
+      },
+      "dock": {
+        "gate_two_distinct": true,
+        "best_primary_kcal": -9.6,
+        "best_baseline_kcal": -9.6,
+        "ready_for_boltz": true,
+        "job_id": "stage4_cupc",
+        "poses": [
+          {
+            "rank": 1,
+            "tag": "pose1",
+            "vina_kcal": -9.6,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": null,
+            "metal_xyz": [
+              -31.907,
+              7.632,
+              28.595
+            ],
+            "pdb": "results/dock/stage4/cupc/pose1.pdb",
+            "api_pdb": "/dock/structures/dock/cupc_pose1.pdb"
+          },
+          {
+            "rank": 2,
+            "tag": "pose2",
+            "vina_kcal": -9.6,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": 6.523,
+            "metal_xyz": [
+              -31.905,
+              7.629,
+              28.597
+            ],
+            "pdb": "results/dock/stage4/cupc/pose2.pdb",
+            "api_pdb": "/dock/structures/dock/cupc_pose2.pdb"
+          }
+        ],
+        "pose1_pdb_url": "/dock/structures/dock/cupc_pose1.pdb"
+      },
+      "boltz": {
+        "ok": true,
+        "mode": "structure_cofold",
+        "n_structures": 5,
+        "diffusion_samples": 5,
+        "confidence": {
+          "min": 0.7274,
+          "max": 0.7862,
+          "mean": 0.754,
+          "best": 0.7862,
+          "n": 5
+        },
+        "ptm": {
+          "min": 0.8681,
+          "max": 0.9045,
+          "mean": 0.8845,
+          "best": 0.9045,
+          "n": 5
+        },
+        "iptm": {
+          "min": 0.4841,
+          "max": 0.7303,
+          "mean": 0.5912,
+          "best": 0.7303,
+          "n": 5
+        },
+        "best_sample": {
+          "index": 1,
+          "confidence": "sample_1",
+          "cif": "results/affinity/stage4/cupc/sample_1.cif",
+          "api_cif": "/dock/structures/boltz/cupc/sample_1.cif",
+          "confidence_score": 0.7862,
+          "ptm": 0.9045,
+          "iptm": 0.7303
+        },
+        "samples": [
+          {
+            "index": 1,
+            "confidence": "sample_1",
+            "cif": "results/affinity/stage4/cupc/sample_1.cif",
+            "api_cif": "/dock/structures/boltz/cupc/sample_1.cif",
+            "confidence_score": 0.7862,
+            "ptm": 0.9045,
+            "iptm": 0.7303
+          },
+          {
+            "index": 2,
+            "confidence": "sample_2",
+            "cif": "results/affinity/stage4/cupc/sample_2.cif",
+            "api_cif": "/dock/structures/boltz/cupc/sample_2.cif",
+            "confidence_score": 0.76,
+            "ptm": 0.8863,
+            "iptm": 0.5859
+          },
+          {
+            "index": 3,
+            "confidence": "sample_3",
+            "cif": "results/affinity/stage4/cupc/sample_3.cif",
+            "api_cif": "/dock/structures/boltz/cupc/sample_3.cif",
+            "confidence_score": 0.7638,
+            "ptm": 0.8928,
+            "iptm": 0.6459
+          },
+          {
+            "index": 4,
+            "confidence": "sample_4",
+            "cif": "results/affinity/stage4/cupc/sample_4.cif",
+            "api_cif": "/dock/structures/boltz/cupc/sample_4.cif",
+            "confidence_score": 0.7274,
+            "ptm": 0.8681,
+            "iptm": 0.4841
+          },
+          {
+            "index": 5,
+            "confidence": "sample_5",
+            "cif": "results/affinity/stage4/cupc/sample_5.cif",
+            "api_cif": "/dock/structures/boltz/cupc/sample_5.cif",
+            "confidence_score": 0.7327,
+            "ptm": 0.8706,
+            "iptm": 0.5098
+          }
+        ],
+        "affinity_head": {
+          "attempted": true,
+          "ok": false,
+          "status": "unavailable_http_422",
+          "delta_g": null,
+          "note": "Boltz-2 NIM 1.10 returns HTTP 422 parse_yaml when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works."
+        }
+      }
+    },
+    {
+      "id": "F16_ZnPc",
+      "display_name": "F16-ZnPc",
+      "resname": "FZP",
+      "qm": {
+        "ok": true,
+        "method": "B3LYP/def2-SVP Freq TightSCF NORI + CHELPG",
+        "charge": 0,
+        "multiplicity": 1,
+        "no_imaginary": true,
+        "lowest_real_freq_cm": 12.57,
+        "n_real_vib_modes": 165,
+        "final_sp_energy_Eh": -5030.044514879617,
+        "final_gibbs_Eh": -5029.82977214,
+        "m_n_mean_A": 2.0114,
+        "m_n_distances_A": [
+          2.01108,
+          2.01108,
+          2.01166,
+          2.01166
+        ],
+        "wall_time": "10h50m",
+        "s2": null,
+        "s2_ideal": null
+      },
+      "ff": {
+        "resname": "FZP",
+        "gate_vacuum": true,
+        "metal_lj": {
+          "rmin_half": 1.269,
+          "epsilon": 0.00321068
+        },
+        "seminario": {
+          "bond_r0_A": 2.0114,
+          "bond_k": 76.19,
+          "cis_k": 17.77,
+          "x_n_m_k": 32.39
+        },
+        "resp": {
+          "metal_charge": 0.99,
+          "rrms": 0.1238
+        },
+        "vacuum": {
+          "max_m_n_dev_A": 0.0066,
+          "heavy_atom_rmsd_A": 0.0255,
+          "m_n_mm_mean_A": 2.005,
+          "m_n_qm_mean_A": 2.0114
+        },
+        "water_md": {
+          "frames": 500,
+          "axial_frac": 1.0,
+          "zn_o": 2.044,
+          "zn_o_sd": 0.088,
+          "zn_oop": 0.52,
+          "zn_oop_axial": 0.52,
+          "zn_n": 2.058,
+          "zn_n_drift": 0.0005,
+          "exchanges": 10,
+          "status": "accepted",
+          "note": "Accepted with shared Zn LJ; out-of-plane 0.52 \u00c5 (0.02 over \u22640.5 gate)"
+        }
+      },
+      "stages": {
+        "pocket": "pass",
+        "qm": "done",
+        "ff": "done",
+        "dock": "done",
+        "md": "pass",
+        "boltz": "done",
+        "stage6": "pass",
+        "stage7": "done"
+      },
+      "dock": {
+        "gate_two_distinct": true,
+        "best_primary_kcal": -10.1,
+        "best_baseline_kcal": -10.1,
+        "ready_for_boltz": true,
+        "job_id": "stage4_f16_znpc",
+        "poses": [
+          {
+            "rank": 1,
+            "tag": "pose1",
+            "vina_kcal": -10.1,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": null,
+            "metal_xyz": [
+              -31.735,
+              6.787,
+              28.797
+            ],
+            "pdb": "results/dock/stage4/f16_znpc/pose1.pdb",
+            "api_pdb": "/dock/structures/dock/f16znpc_pose1.pdb"
+          },
+          {
+            "rank": 2,
+            "tag": "pose2",
+            "vina_kcal": -10.0,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": 7.66,
+            "metal_xyz": [
+              -31.748,
+              6.751,
+              28.787
+            ],
+            "pdb": "results/dock/stage4/f16_znpc/pose2.pdb",
+            "api_pdb": "/dock/structures/dock/f16znpc_pose2.pdb"
+          }
+        ],
+        "pose1_pdb_url": "/dock/structures/dock/f16znpc_pose1.pdb"
+      },
+      "boltz": {
+        "ok": true,
+        "mode": "structure_cofold",
+        "n_structures": 5,
+        "diffusion_samples": 5,
+        "confidence": {
+          "min": 0.6896,
+          "max": 0.748,
+          "mean": 0.7163,
+          "best": 0.748,
+          "n": 5
+        },
+        "ptm": {
+          "min": 0.8454,
+          "max": 0.9235,
+          "mean": 0.8826,
+          "best": 0.9235,
+          "n": 5
+        },
+        "iptm": {
+          "min": 0.5297,
+          "max": 0.7667,
+          "mean": 0.6425,
+          "best": 0.7667,
+          "n": 5
+        },
+        "best_sample": {
+          "index": 1,
+          "confidence": "sample_1",
+          "cif": "results/affinity/stage4/f16_znpc/sample_1.cif",
+          "api_cif": "/dock/structures/boltz/f16_znpc/sample_1.cif",
+          "confidence_score": 0.748,
+          "ptm": 0.9235,
+          "iptm": 0.7667
+        },
+        "samples": [
+          {
+            "index": 1,
+            "confidence": "sample_1",
+            "cif": "results/affinity/stage4/f16_znpc/sample_1.cif",
+            "api_cif": "/dock/structures/boltz/f16_znpc/sample_1.cif",
+            "confidence_score": 0.748,
+            "ptm": 0.9235,
+            "iptm": 0.7667
+          },
+          {
+            "index": 2,
+            "confidence": "sample_2",
+            "cif": "results/affinity/stage4/f16_znpc/sample_2.cif",
+            "api_cif": "/dock/structures/boltz/f16_znpc/sample_2.cif",
+            "confidence_score": 0.7051,
+            "ptm": 0.8696,
+            "iptm": 0.5946
+          },
+          {
+            "index": 3,
+            "confidence": "sample_3",
+            "cif": "results/affinity/stage4/f16_znpc/sample_3.cif",
+            "api_cif": "/dock/structures/boltz/f16_znpc/sample_3.cif",
+            "confidence_score": 0.6896,
+            "ptm": 0.8454,
+            "iptm": 0.5297
+          },
+          {
+            "index": 4,
+            "confidence": "sample_4",
+            "cif": "results/affinity/stage4/f16_znpc/sample_4.cif",
+            "api_cif": "/dock/structures/boltz/f16_znpc/sample_4.cif",
+            "confidence_score": 0.7232,
+            "ptm": 0.9043,
+            "iptm": 0.713
+          },
+          {
+            "index": 5,
+            "confidence": "sample_5",
+            "cif": "results/affinity/stage4/f16_znpc/sample_5.cif",
+            "api_cif": "/dock/structures/boltz/f16_znpc/sample_5.cif",
+            "confidence_score": 0.7158,
+            "ptm": 0.8701,
+            "iptm": 0.6085
+          }
+        ],
+        "affinity_head": {
+          "attempted": true,
+          "ok": false,
+          "status": "unavailable_http_422",
+          "delta_g": null,
+          "note": "Boltz-2 NIM 1.10 returns HTTP 422 parse_yaml when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works."
+        }
+      }
+    }
+  ],
+  "placeholders": {
+    "stage6": {
+      "status": "partial",
+      "message": "Stage 6 pose1: ZnPc rep1\u2013rep3 (2/3 PASS); CuPc/F16 rep1+rep2; pose2 + CuPc/F16 rep3 not yet \u2014 no invented \u0394G"
+    },
+    "stage7": {
+      "status": "done",
+      "message": "Comparative MM/GBSA done \u2014 CuPc > ZnPc > F16 by mean GB; not absolute \u0394G; CuPc MD FAIL; F16 most stable"
+    },
+    "stage8": {
+      "status": "not_started",
+      "message": "QM/MM not started (no persistent axial donor; mins \u2273 6.9 \u00c5)"
+    }
+  },
+  "dock": {
+    "artifacts_ready": true,
+    "allow_live_pod": false,
+    "protein": "6M0J",
+    "box": {
+      "center": [
+        -32.125,
+        7.713,
+        27.779
+      ],
+      "size": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "units": "angstrom",
+      "frame": "protein_pdb",
+      "pdb": "6M0J",
+      "target": "RBD",
+      "center_mode": "stage1_consensus",
+      "residues": [
+        338,
+        339,
+        342,
+        343,
+        371,
+        373
+      ],
+      "source_pocket": "results/pocket/pocket.json",
+      "agreeing_methods": [
+        "metaldock_heme",
+        "metaldock_fepc"
+      ],
+      "exhaustiveness_metaldock": 24,
+      "exhaustiveness_baseline": 16,
+      "num_modes": 20,
+      "cpu": 6
+    },
+    "written_at": "2026-10-07T14:40:11Z",
+    "notes": "Stage 4 docking complete. Poses ready for Agent2 Boltz when user authorizes a live pod. Do not start RunPod/Boltz/NAMD from this handoff alone.",
+    "summary_path": "results/dock/stage4/stage4_summary.json",
+    "ready_path": "results/dock/stage4/READY_FOR_BOLTZ.json"
+  },
+  "boltz": {
+    "artifacts_ready": true,
+    "mode": "structure_cofold_5_samples",
+    "affinity_head": "unsupported_for_metal_pcs_nim_1_10",
+    "affinity_delta_g": null,
+    "affinity_unavailable": true,
+    "affinity_note": "Boltz-2 NIM 1.10 returns HTTP 422 when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works. No \u0394G invented.",
+    "pod_stopped": true,
+    "boltz_template": "xugxd0r9ea",
+    "last_pod_id": "dqfaqsbmpvvavr",
+    "protein": "6M0J",
+    "ready_path": "results/affinity/stage4/READY_FOR_AGENT5.json",
+    "written_at": "2026-10-07T16:03:09Z",
+    "namd_note": "Agent5 prep only (namd_handoff.json). Do not start production MD until Stage 3 gates + Agent5 skill allow."
+  },
+  "md": {
+    "status": "done",
+    "phase": "queue_complete",
+    "authorized": true,
+    "artifacts_ready": true,
+    "production_md_authorized": true,
+    "engine": "pmemd.cuda",
+    "host": "llbeast",
+    "prod_ns": 20.0,
+    "n_replicas": 3,
+    "seeds": [
+      101,
+      202,
+      303
+    ],
+    "n_runs": 18,
+    "n_done": 18,
+    "n_failed": 0,
+    "n_pending": 0,
+    "progress": "18/18",
+    "current": null,
+    "tmux_session": "stage5-md-screen",
+    "updated_at": "2026-10-09T11:52:08Z",
+    "ns_per_day_approx": 239,
+    "mmgbsa": "done_stage7_comparative",
+    "analysis": "complete",
+    "analysis_metrics": null,
+    "survival_gate": {
+      "passed": true,
+      "n_poses_pass": 6,
+      "n_poses_total": 6,
+      "n_replicas_done": 18,
+      "note": "All 6 Stage4 poses PASS Stage5 survival (3/3 reps each)"
+    },
+    "next_step": "Stage 6 pose2 + CuPc/F16 rep3 optional; Stage 8 QM/MM gated",
+    "note": "Stage 5 MD screen complete (18/18). Survival 6/6 PASS. Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS); CuPc FAIL/FAIL; F16 PASS/PASS (see stage6 panel). MM/GBSA at Stage 7 \u2014 no invented \u0394G.",
+    "handoff": "docs/HANDOFF_STAGE5_MD.md",
+    "status_path": "results/dynamics/stage5/status.json",
+    "status_url": null,
+    "ready_path": "results/dynamics/stage5/READY_FOR_DASHBOARD.json",
+    "summary_path": "results/dynamics/stage5/stage5_summary.json",
+    "survival_path": "results/dynamics/stage5/survival/",
+    "n_builds": 6,
+    "queue": [
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "znpc/pose1/rep1"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "znpc/pose1/rep2"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "znpc/pose1/rep3"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose2",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "znpc/pose2/rep1"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose2",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "znpc/pose2/rep2"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose2",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "znpc/pose2/rep3"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "cupc/pose1/rep1"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "cupc/pose1/rep2"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose1",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "cupc/pose1/rep3"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose2",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "cupc/pose2/rep1"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose2",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "cupc/pose2/rep2"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose2",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "cupc/pose2/rep3"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "f16znpc/pose1/rep1"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "f16znpc/pose1/rep2"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose1",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "f16znpc/pose1/rep3"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose2",
+        "replica": "rep1",
+        "seed": 101,
+        "status": "done",
+        "key": "f16znpc/pose2/rep1"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose2",
+        "replica": "rep2",
+        "seed": 202,
+        "status": "done",
+        "key": "f16znpc/pose2/rep2"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose2",
+        "replica": "rep3",
+        "seed": 303,
+        "status": "done",
+        "key": "f16znpc/pose2/rep3"
+      }
+    ]
+  },
+  "stage6": {
+    "status": "partial",
+    "target": "llbeast RTX 3080/3090 (+ A100 seed); ZnPc pose1 n=3; CuPc/F16 n=2",
+    "artifacts_ready": true,
+    "as_of": "2026-10-18",
+    "gate": "mean lig RMSD \u2264 5 \u00c5 and mean COM drift \u2264 6 \u00c5 (Stage 5 survival criteria on ~100 ns)",
+    "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1,rep2[,rep3]}/analysis/",
+    "note": "Pose1 harvested: ZnPc rep1\u2013rep3 (2/3 PASS: r1 FAIL RMSD 7.07 \u00c5; r2 PASS 1.66 / COM 1.12 \u00c5; r3 PASS 1.75 / COM 1.32 \u00c5; T ~300 K). CuPc: rep1 FAIL (5.88) / rep2 FAIL (7.19). F16-ZnPc: rep1 PASS (2.20) / rep2 PASS (3.10). CuPc/F16 rep3 and pose2 not harvested \u2014 no invented \u0394G.",
+    "runs": [
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "status": "fail",
+        "gate": "FAIL",
+        "traj_ns": 100,
+        "temp_mean_K": 300.02,
+        "lig_rmsd_mean_A": 7.07,
+        "lig_rmsd_max_A": 8.42,
+        "com_drift_mean_A": 5.21,
+        "com_drift_max_A": 6.54,
+        "com_pocket_mean_A": 2.62,
+        "note": "Near pocket but reorients/shifts enough to fail RMSD gate"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "status": "pass",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "temp_mean_K": 300.02,
+        "lig_rmsd_mean_A": 1.66,
+        "lig_rmsd_max_A": 4.59,
+        "com_drift_mean_A": 1.12,
+        "com_drift_max_A": 3.82,
+        "com_pocket_mean_A": 6.64,
+        "note": "Strong replica dependence vs rep1 FAIL; seed 102 stays pose-stable"
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep3",
+        "status": "pass",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "temp_mean_K": 300.03,
+        "lig_rmsd_mean_A": 1.75,
+        "lig_rmsd_max_A": 4.49,
+        "com_drift_mean_A": 1.32,
+        "com_drift_max_A": 4.11,
+        "com_pocket_mean_A": 6.58,
+        "note": "2/3 PASS with r2; tracks rep2 (stable), not rep1 FAIL; seed 103"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "status": "fail",
+        "gate": "FAIL",
+        "traj_ns": 100,
+        "temp_mean_K": 300.03,
+        "lig_rmsd_mean_A": 5.88,
+        "lig_rmsd_max_A": 8.87,
+        "com_drift_mean_A": 5.44,
+        "com_drift_max_A": 8.4,
+        "com_pocket_mean_A": 6.3,
+        "note": "RMSD fail (5.88 \u00c5 > 5); COM drift pass (5.44 \u2264 6); T 300 K"
+      },
+      {
+        "ligand_id": "CuPc",
+        "ligand_key": "cupc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "status": "fail",
+        "gate": "FAIL",
+        "traj_ns": 100,
+        "temp_mean_K": 300.02,
+        "lig_rmsd_mean_A": 7.19,
+        "lig_rmsd_max_A": 9.27,
+        "com_drift_mean_A": 5.75,
+        "com_drift_max_A": 7.87,
+        "com_pocket_mean_A": 2.84,
+        "note": "Consistent FAIL with rep1; RMSD worse (7.19); COM drift pass (5.75 \u2264 6); T 300 K"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "status": "pass",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "temp_mean_K": 300.04,
+        "lig_rmsd_mean_A": 2.2,
+        "lig_rmsd_max_A": 6.34,
+        "com_drift_mean_A": 1.64,
+        "com_drift_max_A": 6.12,
+        "com_pocket_mean_A": 7.09,
+        "note": "Both gate criteria pass; closest to starting pose; T 300 K"
+      },
+      {
+        "ligand_id": "F16-ZnPc",
+        "ligand_key": "f16znpc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "status": "pass",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "temp_mean_K": 300.04,
+        "lig_rmsd_mean_A": 3.1,
+        "lig_rmsd_max_A": 5.98,
+        "com_drift_mean_A": 2.16,
+        "com_drift_max_A": 5.57,
+        "com_pocket_mean_A": 7.21,
+        "note": "Consistent PASS with rep1; slightly higher RMSD/drift than rep1; T 300 K"
+      }
+    ]
+  },
+  "campaign_status": {
+    "as_of": "2026-10-18",
+    "headline": "Stages 0\u20137 done (pose1 MM/GBSA comparative) \u00b7 Stage 8 not started",
+    "done": [
+      "Stage 0\u20133: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc",
+      "Stage 4 dock: 2 poses/ligand; Boltz structure co-fold (\u0394G null)",
+      "Stage 5 screen: 18/18, 6/6 poses PASS",
+      "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
+      "Stage 7 MM/GBSA (pose1): comparative GB CuPc (\u221239.1) > ZnPc (\u221230.8) > F16 (\u221225.1) \u2014 not absolute \u0394G; CuPc MD FAIL; F16 most stable",
+      "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)"
+    ],
+    "missing": [
+      "Boltz affinity \u0394G (NIM 422) \u2014 leave null",
+      "Boltz CIF ligand coords / site vote (mmCIF polymer-only)",
+      "Stage 6 pose2 production + CuPc/F16 rep3",
+      "Stage 8 QM/MM (gated; not started \u2014 no persistent axial donor)",
+      "Mol* MD trajectories (viewer still dock pose1\u2192pose2 ensembles)"
+    ],
+    "stage7": "done",
+    "stage8": "not_started",
+    "gaps_doc": "Project store docs/dashboard-gaps.md",
+    "summary_doc": "Project store docs/campaign-summary-stage0-7.md"
+  },
+  "stage7": {
+    "status": "done",
+    "comparative_only": true,
+    "disclaimer": "Comparative only / not absolute \u0394G",
+    "as_of": "2026-10-16",
+    "source": "Project store docs/stage7-mmgbsa.md",
+    "pose": "pose1",
+    "protocol": {
+      "engine": "AmberTools MMPBSA.py",
+      "snapshots": "Last 40 ns of Stage 6 ~100 ns prod; ~100 frames (stride 40 @ 10 ps)",
+      "strip": ":WAT,Na+,Cl-",
+      "ligand_mask": ":195",
+      "radii": "mbondi2",
+      "gb": "igb=5 (OBC2), saltcon=0.15",
+      "entropy_pb_decomp": "off"
+    },
+    "ranking_note": "Raw GB mean favors CuPc > ZnPc > F16-ZnPc, but CuPc fails Stage 6 survival in both reps; F16-ZnPc is the only ligand with both PASS and tight rep agreement.",
+    "ligand_means": [
+      {
+        "rank": 1,
+        "ligand_id": "CuPc",
+        "display_name": "CuPc",
+        "mean_dtotal_kcal": -39.14,
+        "rep_spread_kcal": 14.89,
+        "survival": "FAIL/FAIL",
+        "note": "Stronger GB tracks drifted / non-surviving poses"
+      },
+      {
+        "rank": 2,
+        "ligand_id": "ZnPc",
+        "display_name": "ZnPc",
+        "mean_dtotal_kcal": -30.76,
+        "rep_spread_kcal": 15.51,
+        "survival": "FAIL/PASS",
+        "note": "Large rep disagreement (FAIL \u221238.5 vs PASS \u221223.0)"
+      },
+      {
+        "rank": 3,
+        "ligand_id": "F16_ZnPc",
+        "display_name": "F16-ZnPc",
+        "mean_dtotal_kcal": -25.07,
+        "rep_spread_kcal": 0.5,
+        "survival": "PASS/PASS",
+        "note": "Most stable; only ligand with both PASS and tight spread"
+      }
+    ],
+    "runs": [
+      {
+        "rank": 1,
+        "ligand_id": "CuPc",
+        "display_name": "CuPc",
+        "replica": "rep2",
+        "survival": "FAIL",
+        "dtotal_mean_kcal": -46.59,
+        "dtotal_std_kcal": 2.94,
+        "n": 100
+      },
+      {
+        "rank": 2,
+        "ligand_id": "ZnPc",
+        "display_name": "ZnPc",
+        "replica": "rep1",
+        "survival": "FAIL",
+        "dtotal_mean_kcal": -38.51,
+        "dtotal_std_kcal": 2.95,
+        "n": 100
+      },
+      {
+        "rank": 3,
+        "ligand_id": "CuPc",
+        "display_name": "CuPc",
+        "replica": "rep1",
+        "survival": "FAIL",
+        "dtotal_mean_kcal": -31.69,
+        "dtotal_std_kcal": 2.83,
+        "n": 100
+      },
+      {
+        "rank": 4,
+        "ligand_id": "F16_ZnPc",
+        "display_name": "F16-ZnPc",
+        "replica": "rep2",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -25.33,
+        "dtotal_std_kcal": 2.59,
+        "n": 100
+      },
+      {
+        "rank": 5,
+        "ligand_id": "F16_ZnPc",
+        "display_name": "F16-ZnPc",
+        "replica": "rep1",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -24.82,
+        "dtotal_std_kcal": 2.02,
+        "n": 100
+      },
+      {
+        "rank": 6,
+        "ligand_id": "ZnPc",
+        "display_name": "ZnPc",
+        "replica": "rep2",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -23.0,
+        "dtotal_std_kcal": 2.73,
+        "n": 100
+      }
+    ],
+    "axial": {
+      "min_donor_A": 6.9,
+      "mean_donor_A": 8.0,
+      "note": "Metal\u2013protein donor (His/Cys/Met/Asp/Glu) mins all \u2273 6.9 \u00c5 (means \u2273 8 \u00c5). No persistent axial approach."
+    },
+    "note": "Comparative GB ranking aid only \u2014 not absolute binding free energy. Read with Stage 6 survival context."
+  }
+}
