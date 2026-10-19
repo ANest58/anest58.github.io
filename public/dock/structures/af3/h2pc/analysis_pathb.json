@@ -195,5 +195,109 @@
     "results": "results/af3/h2pc/h2pc_6m0j_rbd/",
     "top_cif": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/seed-1_sample-0/h2pc_6m0j_rbd_seed-1_sample-0_model.cif",
     "ranking": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/h2pc_6m0j_rbd_ranking_scores.csv"
+  },
+  "pocket_geometry": {
+    "units": "angstrom",
+    "note": "Stage4 Autodocker box is in the 6M0J protein_pdb frame. AF3 Path B ligand COM / contact CA centroid are in the AF3 model-local frame (not superimposed onto 6M0J); do not subtract from the dock box center. Boltz H2Pc mmCIFs are protein-only — no ligand COM or hitbox.",
+    "dock_autodocker": {
+      "source": "Stage4 H2Pc / Stage1 consensus (results/dock/stage4/h2pc/selected.json; catalog dock.box)",
+      "frame": "6M0J protein_pdb",
+      "center": [
+        -32.125,
+        7.713,
+        27.779
+      ],
+      "size": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "center_mode": "stage1_consensus",
+      "residues": [
+        338,
+        339,
+        342,
+        343,
+        371,
+        373
+      ],
+      "ligand_com_pose1": [
+        -31.908,
+        7.658,
+        28.624
+      ],
+      "ligand_com_pose2": [
+        -31.909,
+        7.658,
+        28.624
+      ]
+    },
+    "af3_path_b": {
+      "source": "Path B top model seed-1/sample-0 mmCIF",
+      "frame": "af3_model_local",
+      "box_center": null,
+      "box_size": null,
+      "ligand_com": [
+        -11.154,
+        3.861,
+        -8.041
+      ],
+      "ligand_aabb_size": [
+        9.312,
+        9.683,
+        10.445
+      ],
+      "n_lig_heavy": 40,
+      "contact_ca_centroid": [
+        -8.762,
+        4.197,
+        -8.008
+      ],
+      "contact_spike_res": [
+        338,
+        339,
+        342,
+        343,
+        365,
+        368,
+        374,
+        377,
+        434
+      ],
+      "contact_label_seq": [
+        6,
+        7,
+        10,
+        11,
+        33,
+        36,
+        42,
+        45,
+        102
+      ],
+      "note": "No Autodocker hitbox; ligand COM + contact CA centroid (spike numbering via label_seq = spike−332)."
+    },
+    "boltz_h2pc": {
+      "source": "results/affinity/h2pc/ (structure co-fold)",
+      "frame": null,
+      "box_center": null,
+      "box_size": null,
+      "ligand_com": null,
+      "mmcif_protein_only": true,
+      "campaign_box_reference": {
+        "center": [
+          -32.125,
+          7.713,
+          27.779
+        ],
+        "size": [
+          22.0,
+          22.0,
+          22.0
+        ],
+        "note": "Same Stage1/4 Autodocker box used for the campaign dock context — not a Boltz-native hitbox."
+      },
+      "note": "Protein-only mmCIF — no ligand COM or AF3-style contact centroid from ligand."
+    }
   }
 }
