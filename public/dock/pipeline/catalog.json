@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "title": "PhD Dock \u2014 metallophthalocyanine pipeline",
-  "generated_from": "pages-static-publish",
-  "as_of": "2026-10-18",
-  "source_note": "Static snapshot published to anest58.github.io/dock (results-only; no FastAPI hub). Allowlisted publication snapshot through Stage 7 comparative MM/GBSA (pose1). GB ranking is comparative only \u2014 not absolute \u0394G. Stage 8 not started.",
+  "generated_from": "Stages 0\u20136 pose1 (ZnPc rep1\u2013rep3; CuPc/F16 rep1+rep2) (2026-10-18) + FePc Boltz probe; Stage 7 comparative; Stage 8 not started \u2014 no invented \u0394G",
+  "as_of": "2026-10-19",
+  "source_note": "Allowlisted publication snapshot: ZnPc/CuPc/F16-ZnPc through Stage 7 comparative MM/GBSA (pose1); metal-free H2Pc Stage 2\u20134 PASS + Boltz 5 samples; Stage 5 MD screening in progress (no invented survival). GB ranking comparative only \u2014 not absolute \u0394G. Stage 8 not started.",
   "protein": {
     "pdb": "6M0J",
     "target": "SARS-CoV-2 spike RBD",
@@ -20,25 +20,25 @@
       "id": "qm",
       "label": "Stage 2 \u00b7 QM (Freq/ESP)",
       "status": "done",
-      "detail": "ZnPc, CuPc, F16-ZnPc \u2014 no imaginary frequencies"
+      "detail": "ZnPc, CuPc, F16-ZnPc, H2Pc \u2014 no imaginary frequencies"
     },
     {
       "id": "ff",
       "label": "Stage 3 \u00b7 Ligand FF",
       "status": "done",
-      "detail": "Vacuum gates PASS; water MD accepted (F16 oop +0.02 \u00c5 over gate)"
+      "detail": "Vacuum gates PASS; water MD accepted (F16 oop +0.02 \u00c5 over gate; H2Pc metal-free GAFF2)"
     },
     {
       "id": "dock",
       "label": "Stage 4 \u00b7 Dock",
       "status": "done",
-      "detail": "MetalDock at Stage 1 box; two distinct poses each; READY_FOR_BOLTZ"
+      "detail": "MetalDock at Stage 1 box; two distinct poses each (incl. H2Pc \u22129.5 kcal); READY_FOR_BOLTZ"
     },
     {
       "id": "md",
       "label": "Stage 5\u20136 \u00b7 MD / survivors",
-      "status": "done",
-      "detail": "MD screen 18/18 complete; 6/6 poses PASS Stage 5 survival; Stage 6 pose1 harvested (ZnPc n=3; CuPc/F16 n=2)"
+      "status": "partial",
+      "detail": "Zn/Cu/F16 Stage 5 complete (18/18, 6/6 PASS). H2Pc Stage 5 screening: pose1 3/3 done; pose2/rep1 running (~57%); rep2\u20133 pending \u2014 survival not yet scored"
     },
     {
       "id": "stage6",
@@ -62,7 +62,7 @@
       "id": "boltz",
       "label": "Boltz co-fold",
       "status": "done",
-      "detail": "5 structure samples each; affinity head HTTP 422 (no \u0394G)"
+      "detail": "5 structure samples each (Zn/Cu/F16/H2Pc); affinity \u0394G null (metal PCs HTTP 422; H2Pc structure-only)"
     }
   ],
   "pocket": {
@@ -719,6 +719,215 @@
           "note": "Boltz-2 NIM 1.10 returns HTTP 422 parse_yaml when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works."
         }
       }
+    },
+    {
+      "id": "H2Pc",
+      "display_name": "H2Pc",
+      "resname": "HPC",
+      "qm": {
+        "ok": true,
+        "method": "B3LYP/def2-SVP Freq/CHELPG NORI",
+        "charge": 0,
+        "multiplicity": 1,
+        "no_imaginary": true,
+        "lowest_real_freq_cm": 19.34,
+        "n_real_vib_modes": 168,
+        "final_sp_energy_Eh": -1666.153217008539,
+        "final_gibbs_Eh": -1665.76924224,
+        "m_n_mean_A": null,
+        "m_n_distances_A": [],
+        "wall_time": "opt ~9m + freq 6h42m",
+        "s2": null,
+        "s2_ideal": null,
+        "note": "Metal-free free-base phthalocyanine; no M\u2013N distances"
+      },
+      "ff": {
+        "resname": "HPC",
+        "ff": "GAFF2",
+        "mcpb": false,
+        "gate_vacuum": true,
+        "gate_water": true,
+        "improper_boost_k": 100.0,
+        "resp": {
+          "metal_charge": null,
+          "rrms": 0.18542,
+          "net_charge": 0.0
+        },
+        "vacuum": {
+          "max_m_n_dev_A": null,
+          "heavy_atom_rmsd_A": 0.0973,
+          "plane_rms_mm_A": 0.0971,
+          "m_n_mm_mean_A": null,
+          "m_n_qm_mean_A": null,
+          "max_n_h_dev_A": 0.0
+        },
+        "water_md": {
+          "frames": 250,
+          "temp_K": 300.26,
+          "ligand_heavy_rmsd_mean_A": 0.9397,
+          "plane_rms_core_mean_A": 0.2585,
+          "plane_rms_N4_mean_A": 0.1917,
+          "n_h_mean_A": 1.021,
+          "status": "pass",
+          "note": "Metal-free GAFF2 (HPC); vacuum heavy RMSD 0.097 / plane 0.097 PASS; water 5 ns TEMP 300.3, NH 1.021, RMSD 0.94, core plane 0.26 / N4 0.19 (benzo flaps ungated)"
+        }
+      },
+      "stages": {
+        "pocket": "pass",
+        "qm": "done",
+        "ff": "done",
+        "dock": "done",
+        "md": "running",
+        "boltz": "done",
+        "stage6": "pending",
+        "stage7": "not_started"
+      },
+      "dock": {
+        "gate_two_distinct": true,
+        "best_primary_kcal": -9.5,
+        "best_baseline_kcal": -9.5,
+        "ready_for_boltz": true,
+        "job_id": "stage4_h2pc",
+        "distinct_rmsd_heavy_A": 6.609,
+        "poses": [
+          {
+            "rank": 1,
+            "tag": "pose1",
+            "vina_kcal": -9.5,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": null,
+            "metal_xyz": null,
+            "pdb": "results/dock/stage4/h2pc/pose1.pdb",
+            "api_pdb": "/dock/structures/dock/h2pc_pose1.pdb"
+          },
+          {
+            "rank": 2,
+            "tag": "pose2",
+            "vina_kcal": -9.5,
+            "engine": "metaldock",
+            "rmsd_heavy_vs_pose1": 6.609,
+            "metal_xyz": null,
+            "pdb": "results/dock/stage4/h2pc/pose2.pdb",
+            "api_pdb": "/dock/structures/dock/h2pc_pose2.pdb"
+          }
+        ],
+        "pose1_pdb_url": "/dock/structures/dock/h2pc_pose1.pdb"
+      },
+      "boltz": {
+        "ok": true,
+        "mode": "structure_cofold",
+        "n_structures": 5,
+        "diffusion_samples": 5,
+        "confidence": {
+          "min": 0.7303,
+          "max": 0.7647,
+          "mean": 0.7505,
+          "best": 0.7647,
+          "n": 5
+        },
+        "ptm": {
+          "min": 0.8672,
+          "max": 0.9116,
+          "mean": 0.8896,
+          "best": 0.9116,
+          "n": 5
+        },
+        "iptm": {
+          "min": 0.4812,
+          "max": 0.7056,
+          "mean": 0.5762,
+          "best": 0.7056,
+          "n": 5
+        },
+        "best_sample": {
+          "index": 5,
+          "confidence": "sample_5",
+          "filename": "sample_5.cif",
+          "cif": "results/affinity/h2pc/sample_5.cif",
+          "api_cif": "/dock/structures/boltz/h2pc/sample_5.cif",
+          "confidence_score": 0.7647,
+          "ptm": 0.9116,
+          "iptm": 0.7056
+        },
+        "samples": [
+          {
+            "index": 1,
+            "confidence": "sample_1",
+            "filename": "sample_1.cif",
+            "cif": "results/affinity/h2pc/sample_1.cif",
+            "api_cif": "/dock/structures/boltz/h2pc/sample_1.cif",
+            "confidence_score": 0.7465,
+            "ptm": 0.8885,
+            "iptm": 0.5382
+          },
+          {
+            "index": 2,
+            "confidence": "sample_2",
+            "filename": "sample_2.cif",
+            "cif": "results/affinity/h2pc/sample_2.cif",
+            "api_cif": "/dock/structures/boltz/h2pc/sample_2.cif",
+            "confidence_score": 0.7616,
+            "ptm": 0.8916,
+            "iptm": 0.5969
+          },
+          {
+            "index": 3,
+            "confidence": "sample_3",
+            "filename": "sample_3.cif",
+            "cif": "results/affinity/h2pc/sample_3.cif",
+            "api_cif": "/dock/structures/boltz/h2pc/sample_3.cif",
+            "confidence_score": 0.7303,
+            "ptm": 0.8672,
+            "iptm": 0.4812
+          },
+          {
+            "index": 4,
+            "confidence": "sample_4",
+            "filename": "sample_4.cif",
+            "cif": "results/affinity/h2pc/sample_4.cif",
+            "api_cif": "/dock/structures/boltz/h2pc/sample_4.cif",
+            "confidence_score": 0.7496,
+            "ptm": 0.8891,
+            "iptm": 0.5593
+          },
+          {
+            "index": 5,
+            "confidence": "sample_5",
+            "filename": "sample_5.cif",
+            "cif": "results/affinity/h2pc/sample_5.cif",
+            "api_cif": "/dock/structures/boltz/h2pc/sample_5.cif",
+            "confidence_score": 0.7647,
+            "ptm": 0.9116,
+            "iptm": 0.7056
+          }
+        ],
+        "affinity_head": {
+          "attempted": false,
+          "ok": false,
+          "status": "not_required",
+          "delta_g": null,
+          "note": "structure-only; affinity not required for H2Pc gate (null \u2014 not invented)"
+        },
+        "pod_id": "2h1bahgqfkcgfe",
+        "gpu": "NVIDIA A40",
+        "spend_est_usd": 0.08
+      },
+      "md_screen": {
+        "status": "running",
+        "host": "llbeast",
+        "tmux_session": "stage5-md-screen",
+        "prod_ns": 20.0,
+        "n_replicas": 3,
+        "n_poses": 2,
+        "progress": "pose1 3/3 done; pose2/rep1 ~57%; pose2/rep2\u20133 pending",
+        "n_done": 3,
+        "n_running": 1,
+        "n_pending": 2,
+        "n_total": 6,
+        "survival_gate": null,
+        "note": "Stage 5 screening in progress \u2014 no survival PASS/FAIL invented until analysis completes",
+        "as_of": "2026-10-19"
+      }
     }
   ],
   "placeholders": {
@@ -733,6 +942,10 @@
     "stage8": {
       "status": "not_started",
       "message": "QM/MM not started (no persistent axial donor; mins \u2273 6.9 \u00c5)"
+    },
+    "h2pc_stage5": {
+      "status": "running",
+      "message": "H2Pc Stage 5 screening \u2014 pose1 done; pose2/rep1 running; no survival metrics yet"
     }
   },
   "dock": {
@@ -784,7 +997,7 @@
     "affinity_head": "unsupported_for_metal_pcs_nim_1_10",
     "affinity_delta_g": null,
     "affinity_unavailable": true,
-    "affinity_note": "Boltz-2 NIM 1.10 returns HTTP 422 when predict_affinity=true for these metallophthalocyanine ionic SMILES; structure co-fold works. No \u0394G invented.",
+    "affinity_note": "Boltz-2 NIM 1.10 returns HTTP 422 when predict_affinity=true for metallophthalocyanine ionic SMILES; H2Pc ran structure-only (affinity not required). Structure co-fold works. No \u0394G invented.",
     "pod_stopped": true,
     "boltz_template": "xugxd0r9ea",
     "last_pod_id": "dqfaqsbmpvvavr",
@@ -815,7 +1028,7 @@
     "progress": "18/18",
     "current": null,
     "tmux_session": "stage5-md-screen",
-    "updated_at": "2026-10-09T11:52:08Z",
+    "updated_at": "2026-10-19T06:04:00Z",
     "ns_per_day_approx": 239,
     "mmgbsa": "done_stage7_comparative",
     "analysis": "complete",
@@ -827,8 +1040,8 @@
       "n_replicas_done": 18,
       "note": "All 6 Stage4 poses PASS Stage5 survival (3/3 reps each)"
     },
-    "next_step": "Stage 6 pose2 + CuPc/F16 rep3 optional; Stage 8 QM/MM gated",
-    "note": "Stage 5 MD screen complete (18/18). Survival 6/6 PASS. Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS); CuPc FAIL/FAIL; F16 PASS/PASS (see stage6 panel). MM/GBSA at Stage 7 \u2014 no invented \u0394G.",
+    "next_step": "H2Pc Stage 5 finish + survival; Stage 6 pose2 + CuPc/F16 rep3 optional; Stage 8 QM/MM gated",
+    "note": "Stage 5 MD screen complete for ZnPc/CuPc/F16-ZnPc (18/18; survival 6/6 PASS). H2Pc Stage 5 screening on same tmux stage5-md-screen: pose1 3/3 done; pose2/rep1 ~57%; pose2/rep2\u20133 pending \u2014 survival_gate null until analysis (no invented PASS/FAIL). Stage 6 pose1 metals: ZnPc 2/3 PASS; CuPc FAIL/FAIL; F16 PASS/PASS. MM/GBSA at Stage 7 \u2014 no invented \u0394G.",
     "handoff": "docs/HANDOFF_STAGE5_MD.md",
     "status_path": "results/dynamics/stage5/status.json",
     "status_url": null,
@@ -1125,18 +1338,20 @@
     ]
   },
   "campaign_status": {
-    "as_of": "2026-10-18",
-    "headline": "Stages 0\u20137 done (pose1 MM/GBSA comparative) \u00b7 Stage 8 not started",
+    "as_of": "2026-10-19",
+    "headline": "Zn/Cu/F16 Stages 0\u20137 done (pose1 MM/GBSA) \u00b7 H2Pc Stage 2\u20134+Boltz PASS, Stage 5 screening \u00b7 Stage 8 not started",
     "done": [
-      "Stage 0\u20133: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc",
-      "Stage 4 dock: 2 poses/ligand; Boltz structure co-fold (\u0394G null)",
-      "Stage 5 screen: 18/18, 6/6 poses PASS",
+      "Stage 0\u20133: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc + H2Pc (metal-free)",
+      "Stage 4 dock: 2 poses/ligand (H2Pc \u22129.5 kcal, RMSD 6.6 \u00c5); Boltz structure co-fold (\u0394G null)",
+      "H2Pc Boltz: 5 mmcif samples (conf ~0.73\u20130.76; iptm ~0.48\u20130.71); A40 spend ~$0.08",
+      "Stage 5 screen (Zn/Cu/F16): 18/18, 6/6 poses PASS",
       "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
       "Stage 7 MM/GBSA (pose1): comparative GB CuPc (\u221239.1) > ZnPc (\u221230.8) > F16 (\u221225.1) \u2014 not absolute \u0394G; CuPc MD FAIL; F16 most stable",
       "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)"
     ],
     "missing": [
-      "Boltz affinity \u0394G (NIM 422) \u2014 leave null",
+      "H2Pc Stage 5 screen finish + survival analysis (pose2/rep1 running; no invented PASS/FAIL)",
+      "Boltz affinity \u0394G (NIM 422 / H2Pc not required) \u2014 leave null",
       "Boltz CIF ligand coords / site vote (mmCIF polymer-only)",
       "Stage 6 pose2 production + CuPc/F16 rep3",
       "Stage 8 QM/MM (gated; not started \u2014 no persistent axial donor)",
