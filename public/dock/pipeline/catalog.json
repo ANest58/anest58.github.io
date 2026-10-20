@@ -779,7 +779,7 @@
         "dock": "done",
         "md": "running",
         "boltz": "done",
-        "stage6": "pending",
+        "stage6": "partial",
         "stage7": "not_started"
       },
       "dock": {
@@ -927,6 +927,18 @@
         "survival_gate": null,
         "note": "Stage 5 screening in progress — no survival PASS/FAIL invented until analysis completes",
         "as_of": "2026-10-19"
+      },
+      "stage6_timeseries": {
+        "url": "/pipeline/stage6_h2pc_timeseries.json",
+        "series": [
+          "pose1_rep1",
+          "pose2_rep2"
+        ],
+        "pending": [
+          "pose1_rep2",
+          "pose2_rep1"
+        ],
+        "note": "Contacts + lig RMSD vs time (ps) from harvested trajs; pending reps omitted"
       }
     }
   ],
@@ -1221,7 +1233,7 @@
     "as_of": "2026-10-18",
     "gate": "mean lig RMSD ≤ 5 Å and mean COM drift ≤ 6 Å (Stage 5 survival criteria on ~100 ns)",
     "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1,rep2[,rep3]}/analysis/",
-    "note": "Pose1 harvested: ZnPc rep1–rep3 (2/3 PASS: r1 FAIL RMSD 7.07 Å; r2 PASS 1.66 / COM 1.12 Å; r3 PASS 1.75 / COM 1.32 Å; T ~300 K). CuPc: rep1 FAIL (5.88) / rep2 FAIL (7.19). F16-ZnPc: rep1 PASS (2.20) / rep2 PASS (3.10). CuPc/F16 rep3 and pose2 not harvested — no invented ΔG.",
+    "note": "Pose1 harvested: ZnPc rep1–rep3 (2/3 PASS: r1 FAIL RMSD 7.07 Å; r2 PASS 1.66 / COM 1.12 Å; r3 PASS 1.75 / COM 1.32 Å; T ~300 K). CuPc: rep1 FAIL (5.88) / rep2 FAIL (7.19). F16-ZnPc: rep1 PASS (2.20) / rep2 PASS (3.10). CuPc/F16 rep3 and pose2 not harvested — no invented ΔG. · H2Pc time series: pose1/rep1 + pose2/rep2 plotted (contacts + RMSD vs ps); pose1/rep2 + pose2/rep1 pending harvest",
     "runs": [
       {
         "ligand_id": "ZnPc",
@@ -1335,7 +1347,8 @@
         "com_pocket_mean_A": 7.21,
         "note": "Consistent PASS with rep1; slightly higher RMSD/drift than rep1; T 300 K"
       }
-    ]
+    ],
+    "h2pc_timeseries_url": "pipeline/stage6_h2pc_timeseries.json"
   },
   "campaign_status": {
     "as_of": "2026-10-19",
@@ -1348,7 +1361,8 @@
       "Stage 5 screen (Zn/Cu/F16): 18/18, 6/6 poses PASS",
       "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
       "Stage 7 MM/GBSA (pose1): comparative GB CuPc (−39.1) > ZnPc (−30.8) > F16 (−25.1) — not absolute ΔG; CuPc MD FAIL; F16 most stable",
-      "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)"
+      "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)",
+      "H2Pc Stage6 MD time series: pose1/rep1 + pose2/rep2 (contacts + lig RMSD vs ps); other reps pending"
     ],
     "missing": [
       "H2Pc Stage 5 screen finish + survival analysis (pose2/rep1 running; no invented PASS/FAIL)",
