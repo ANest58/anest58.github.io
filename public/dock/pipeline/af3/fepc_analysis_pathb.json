@@ -1,0 +1,49 @@
+{
+  "ligand": "fepc",
+  "ligand_atom_gate": true,
+  "n_lig_heavy": 41,
+  "af3_scores": {
+    "ranking_score": 0.69,
+    "ptm": 0.85,
+    "iptm": 0.65,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.89,
+      0.8
+    ],
+    "chain_iptm": [
+      0.65,
+      0.65
+    ]
+  },
+  "boltz_scores": {
+    "confidence_best": 0.8458213210105896,
+    "ptm_best": 0.9371507167816162,
+    "iptm_best": 0.839338481426239,
+    "iptm_scores": [
+      0.7482091188430786,
+      0.7836504578590393,
+      0.785348653793335,
+      0.839338481426239,
+      0.8294585347175598
+    ],
+    "ptm_scores": [
+      0.9220153093338013,
+      0.9214093685150146,
+      0.9172284603118896,
+      0.9371507167816162,
+      0.9363675713539124
+    ]
+  },
+  "ca_rmsd_AF3_vs_Boltz": [],
+  "ca_rmsd_best_A": null,
+  "ligand_vs_dock": [],
+  "pocket": {
+    "path_b_spike_res": [
+      338,
+      339,
+      342
+    ]
+  }
+}

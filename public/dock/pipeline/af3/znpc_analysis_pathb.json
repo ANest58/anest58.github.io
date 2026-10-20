@@ -1,0 +1,99 @@
+{
+  "ligand": "znpc",
+  "ligand_atom_gate": true,
+  "n_lig_heavy": 41,
+  "af3_scores": {
+    "ranking_score": 0.68,
+    "ptm": 0.85,
+    "iptm": 0.64,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.88,
+      0.79
+    ],
+    "chain_iptm": [
+      0.64,
+      0.64
+    ]
+  },
+  "boltz_scores": {
+    "confidence_best": 0.7965158224105835,
+    "ptm_best": 0.9153532981872559,
+    "iptm_best": 0.7407845854759216,
+    "iptm_scores": [
+      0.6861945986747742,
+      0.690229594707489,
+      0.6308281421661377,
+      0.6332643628120422,
+      0.7407845854759216
+    ],
+    "ptm_scores": [
+      0.9062174558639526,
+      0.9114814400672913,
+      0.890663206577301,
+      0.8893476724624634,
+      0.9153532981872559
+    ]
+  },
+  "ca_rmsd_AF3_vs_Boltz": [
+    {
+      "file": "sample_1.cif",
+      "ca_rmsd_A": 26.715,
+      "n_common": 194,
+      "n_lig": 0
+    },
+    {
+      "file": "sample_2.cif",
+      "ca_rmsd_A": 12.77,
+      "n_common": 194,
+      "n_lig": 0
+    },
+    {
+      "file": "sample_3.cif",
+      "ca_rmsd_A": 21.886,
+      "n_common": 194,
+      "n_lig": 0
+    },
+    {
+      "file": "sample_4.cif",
+      "ca_rmsd_A": 15.601,
+      "n_common": 194,
+      "n_lig": 0
+    },
+    {
+      "file": "sample_5.cif",
+      "ca_rmsd_A": 21.369,
+      "n_common": 194,
+      "n_lig": 0
+    }
+  ],
+  "ca_rmsd_best_A": 12.77,
+  "ligand_vs_dock": [
+    {
+      "pose": "pose1.pdb",
+      "lig_rmsd_vs_pathB_A": 6.653,
+      "pocket_res_ca5": [],
+      "overlap_pathB": [],
+      "jaccard": 0.0
+    },
+    {
+      "pose": "pose2.pdb",
+      "lig_rmsd_vs_pathB_A": 6.725,
+      "pocket_res_ca5": [],
+      "overlap_pathB": [],
+      "jaccard": 0.0
+    }
+  ],
+  "pocket": {
+    "path_b_spike_res": [
+      338,
+      339,
+      342,
+      343,
+      368
+    ],
+    "dock_pose1.pdb": [],
+    "dock_pose2.pdb": []
+  }
+}
