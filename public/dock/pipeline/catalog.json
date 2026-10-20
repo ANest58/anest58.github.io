@@ -1625,8 +1625,8 @@
       "top_model": {
         "seed": 1,
         "sample": 0,
-        "cif": "structures/af3/h2pc/pathb_seed1_sample0_model.cif",
-        "api_cif": "/dock/structures/af3/h2pc/pathb_seed1_sample0_model.cif"
+        "cif": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
+        "api_cif": "/dock/structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif"
       }
     },
     "path_a_footnote": {
@@ -1930,6 +1930,17 @@
           "ca_rmsd_note": null,
           "af3_pocket_spike_res": null
         }
+      ]
+    },
+    "molstar": {
+      "manifest_url": "structures/molstar_curated.json",
+      "as_of": "2026-10-20",
+      "note": "Curated Mol* set: AF3 Path B pose1/pose2 (top + second-best), Boltz sample_1/sample_2 (protein-only), Stage4 dock pose1/pose2. No invented coords.",
+      "n_entries": 28,
+      "highlights": [
+        "AF3 Path B pose1/pose2 for H2Pc, ZnPc, CuPc, F16-ZnPc, FePc (top + second-best ranking)",
+        "Boltz sample_1/sample_2 for all five (protein-only mmCIF)",
+        "Stage4 dock pose1/pose2 for H2Pc/ZnPc/CuPc/F16 (with 6M0J)"
       ]
     }
   }
