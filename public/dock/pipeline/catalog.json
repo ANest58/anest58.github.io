@@ -1935,12 +1935,13 @@
     "molstar": {
       "manifest_url": "structures/molstar_curated.json",
       "as_of": "2026-10-20",
-      "note": "Curated Mol* set: AF3 Path B pose1/pose2 (top + second-best), Boltz sample_1/sample_2 (protein-only), Stage4 dock pose1/pose2. No invented coords.",
-      "n_entries": 28,
+      "note": "Curated Mol* on Structures & media: AF3 Path B pose1/pose2 (ligand+protein) for H2Pc/ZnPc/CuPc/F16/FePc; Stage4 dock pose1/pose2 + 6M0J for docked ligands. Boltz protein-only mmCIFs excluded from Mol*.",
+      "n_entries": 18,
+      "page": "structures",
       "highlights": [
-        "AF3 Path B pose1/pose2 for H2Pc, ZnPc, CuPc, F16-ZnPc, FePc (top + second-best ranking)",
-        "Boltz sample_1/sample_2 for all five (protein-only mmCIF)",
-        "Stage4 dock pose1/pose2 for H2Pc/ZnPc/CuPc/F16 (with 6M0J)"
+        "AF3 Path B pose1/pose2 (ligand+protein) — all five ligands on Structures page",
+        "Stage4 dock pose1/pose2 + 6M0J — H2Pc/ZnPc/CuPc/F16 (FePc no dock)",
+        "Boltz protein-only Mol* removed; comparison table stays on Results"
       ]
     }
   }
