@@ -777,10 +777,10 @@
         "qm": "done",
         "ff": "done",
         "dock": "done",
-        "md": "running",
+        "md": "done",
         "boltz": "done",
         "stage6": "done",
-        "stage7": "not_started"
+        "stage7": "done"
       },
       "dock": {
         "gate_two_distinct": true,
@@ -1232,7 +1232,7 @@
     "as_of": "2026-10-18",
     "gate": "mean lig RMSD ≤ 5 Å and mean COM drift ≤ 6 Å (Stage 5 survival criteria on ~100 ns)",
     "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1,rep2[,rep3]}/analysis/",
-    "note": "H2Pc Stage6 4/4 harvested: pose1/rep1–2 + pose2/rep1–2 time series (contacts + RMSD vs ps, interactive zoom). No Stage7. No invented ΔG.",
+    "note": "H2Pc Stage6 4/4 harvested: pose1/rep1–2 + pose2/rep1–2 time series (contacts + RMSD vs ps, interactive zoom). Stage7 H2Pc comparative MM/GBSA bound. No invented ΔG. Stage8 not started.",
     "runs": [
       {
         "ligand_id": "ZnPc",
@@ -1351,7 +1351,7 @@
   },
   "campaign_status": {
     "as_of": "2026-10-19",
-    "headline": "Zn/Cu/F16 Stages 0–7 done · H2Pc Stage6 4/4 + AF3 Path B vs Boltz · Stage 8 not started",
+    "headline": "Zn/Cu/F16 Stages 0–7 done · H2Pc Stage6 4/4 + Stage7 comparative MM/GBSA · AF3 Path B vs Boltz · Stage 8 not started",
     "done": [
       "Stage 0–3: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc + H2Pc (metal-free)",
       "Stage 4 dock: 2 poses/ligand (H2Pc −9.5 kcal, RMSD 6.6 Å); Boltz structure co-fold (ΔG null)",
@@ -1359,9 +1359,10 @@
       "H2Pc AF3 Path B: ranking 0.72 / ptm 0.86 / iptm 0.68; ligand atoms present; dedicated AF3↔Boltz panel (Boltz mmCIF protein-only)",
       "Stage 5 screen (Zn/Cu/F16): 18/18, 6/6 poses PASS",
       "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
-      "Stage 7 MM/GBSA (pose1): comparative GB CuPc (−39.1) > ZnPc (−30.8) > F16 (−25.1) — not absolute ΔG; CuPc MD FAIL; F16 most stable",
+      "Stage 7 MM/GBSA metals (pose1): comparative GB CuPc (−39.1) > ZnPc (−30.8) > F16 (−25.1) — not absolute ΔG; CuPc MD FAIL; F16 most stable",
       "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)",
-      "H2Pc Stage6 4/4 harvested — MD time series (contacts + lig RMSD vs ps) for pose1/rep1–2 + pose2/rep1–2; interactive zoom; Stage7 not started"
+      "H2Pc Stage6 4/4 harvested — MD time series (contacts + lig RMSD vs ps) for pose1/rep1–2 + pose2/rep1–2; interactive zoom",
+      "H2Pc Stage7 comparative MM/GBSA (4/4): pose1/rep1 −29.24, pose1/rep2 −48.16 (outlier / resume-split), pose2/rep1 −27.11, pose2/rep2 −29.41; mean −33.48 — comparative only; Stage8 skipped (metal-free)"
     ],
     "missing": [
       "Boltz affinity ΔG (NIM 422 / H2Pc not required) — leave null",
@@ -1379,9 +1380,9 @@
     "status": "done",
     "comparative_only": true,
     "disclaimer": "Comparative only / not absolute ΔG",
-    "as_of": "2026-10-16",
-    "source": "Project store docs/stage7-mmgbsa.md",
-    "pose": "pose1",
+    "as_of": "2026-10-19",
+    "source": "Project store docs/stage7-mmgbsa.md + docs/stage7-h2pc-mmgbsa.md; PhD-live-stage1/results/dynamics/stage7/h2pc/",
+    "pose": "metals: pose1; H2Pc: pose1 + pose2",
     "protocol": {
       "engine": "AmberTools MMPBSA.py",
       "snapshots": "Last 40 ns of Stage 6 ~100 ns prod; ~100 frames (stride 40 @ 10 ps)",
@@ -1391,7 +1392,7 @@
       "gb": "igb=5 (OBC2), saltcon=0.15",
       "entropy_pb_decomp": "off"
     },
-    "ranking_note": "Raw GB mean favors CuPc > ZnPc > F16-ZnPc, but CuPc fails Stage 6 survival in both reps; F16-ZnPc is the only ligand with both PASS and tight rep agreement.",
+    "ranking_note": "Metals (pose1): raw GB mean favors CuPc > ZnPc > F16-ZnPc, but CuPc fails Stage 6 survival; F16-ZnPc is the only metal with both PASS and tight rep agreement. H2Pc (metal-free, both poses PASS): 4-rep mean −33.48 sits between CuPc (−39.14) and ZnPc (−30.76) on the comparative GB scale — not absolute affinity; pose1/rep2 (−48.16) is an outlier on a resume-split traj.",
     "ligand_means": [
       {
         "rank": 1,
@@ -1404,6 +1405,15 @@
       },
       {
         "rank": 2,
+        "ligand_id": "H2Pc",
+        "display_name": "H2Pc",
+        "mean_dtotal_kcal": -33.48,
+        "rep_spread_kcal": 21.05,
+        "survival": "PASS/PASS/PASS/PASS",
+        "note": "4 pose/rep rows; pose1 mean −38.70 (spread 18.9, rep2 outlier); pose2 mean −28.26 (spread 2.3). Comparative only."
+      },
+      {
+        "rank": 3,
         "ligand_id": "ZnPc",
         "display_name": "ZnPc",
         "mean_dtotal_kcal": -30.76,
@@ -1412,7 +1422,7 @@
         "note": "Large rep disagreement (FAIL −38.5 vs PASS −23.0)"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "ligand_id": "F16_ZnPc",
         "display_name": "F16-ZnPc",
         "mean_dtotal_kcal": -25.07,
@@ -1424,63 +1434,119 @@
     "runs": [
       {
         "rank": 1,
+        "ligand_id": "H2Pc",
+        "display_name": "H2Pc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -48.16,
+        "dtotal_std_kcal": 4.49,
+        "n": 100,
+        "note": "Outlier vs other H2Pc reps; resume-split traj (prod_pre_restart + prod_resume) — treat with caution.",
+        "resume_split": true,
+        "outlier": true
+      },
+      {
+        "rank": 2,
         "ligand_id": "CuPc",
         "display_name": "CuPc",
         "replica": "rep2",
         "survival": "FAIL",
         "dtotal_mean_kcal": -46.59,
         "dtotal_std_kcal": 2.94,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       },
       {
-        "rank": 2,
+        "rank": 3,
         "ligand_id": "ZnPc",
         "display_name": "ZnPc",
         "replica": "rep1",
         "survival": "FAIL",
         "dtotal_mean_kcal": -38.51,
         "dtotal_std_kcal": 2.95,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "ligand_id": "CuPc",
         "display_name": "CuPc",
         "replica": "rep1",
         "survival": "FAIL",
         "dtotal_mean_kcal": -31.69,
         "dtotal_std_kcal": 2.83,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       },
       {
-        "rank": 4,
+        "rank": 5,
+        "ligand_id": "H2Pc",
+        "display_name": "H2Pc",
+        "pose": "pose2",
+        "replica": "rep2",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -29.41,
+        "dtotal_std_kcal": 4.31,
+        "n": 100,
+        "resume_split": true
+      },
+      {
+        "rank": 6,
+        "ligand_id": "H2Pc",
+        "display_name": "H2Pc",
+        "pose": "pose1",
+        "replica": "rep1",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -29.24,
+        "dtotal_std_kcal": 2.01,
+        "n": 100,
+        "resume_split": false
+      },
+      {
+        "rank": 7,
+        "ligand_id": "H2Pc",
+        "display_name": "H2Pc",
+        "pose": "pose2",
+        "replica": "rep1",
+        "survival": "PASS",
+        "dtotal_mean_kcal": -27.11,
+        "dtotal_std_kcal": 2.43,
+        "n": 100,
+        "resume_split": true
+      },
+      {
+        "rank": 8,
         "ligand_id": "F16_ZnPc",
         "display_name": "F16-ZnPc",
         "replica": "rep2",
         "survival": "PASS",
         "dtotal_mean_kcal": -25.33,
         "dtotal_std_kcal": 2.59,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       },
       {
-        "rank": 5,
+        "rank": 9,
         "ligand_id": "F16_ZnPc",
         "display_name": "F16-ZnPc",
         "replica": "rep1",
         "survival": "PASS",
         "dtotal_mean_kcal": -24.82,
         "dtotal_std_kcal": 2.02,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       },
       {
-        "rank": 6,
+        "rank": 10,
         "ligand_id": "ZnPc",
         "display_name": "ZnPc",
         "replica": "rep2",
         "survival": "PASS",
         "dtotal_mean_kcal": -23.0,
         "dtotal_std_kcal": 2.73,
-        "n": 100
+        "n": 100,
+        "pose": "pose1"
       }
     ],
     "axial": {
@@ -1488,7 +1554,64 @@
       "mean_donor_A": 8.0,
       "note": "Metal–protein donor (His/Cys/Met/Asp/Glu) mins all ≳ 6.9 Å (means ≳ 8 Å). No persistent axial approach."
     },
-    "note": "Comparative GB ranking aid only — not absolute binding free energy. Read with Stage 6 survival context."
+    "note": "Comparative GB ranking aid only — not absolute binding free energy. Read with Stage 6 survival context. H2Pc Stage8 skipped (metal-free).",
+    "h2pc": {
+      "status": "done",
+      "comparative_only": true,
+      "ligand_mean_delta_TOTAL": -33.48,
+      "n_runs": 4,
+      "stage8": "skipped_metal_free",
+      "summary_url": "pipeline/stage7_h2pc_comparative_summary.json",
+      "source_md": "PhD-live-stage1/results/dynamics/stage7/h2pc/H2PC_COMPARATIVE.md",
+      "pose_means": [
+        {
+          "pose": "pose1",
+          "n_reps": 2,
+          "mean_delta_TOTAL": -38.7,
+          "rep_spread": 18.92,
+          "survival": "PASS/PASS",
+          "note": "Large rep disagreement; rep2 outlier on resume-split traj"
+        },
+        {
+          "pose": "pose2",
+          "n_reps": 2,
+          "mean_delta_TOTAL": -28.26,
+          "rep_spread": 2.3,
+          "survival": "PASS/PASS",
+          "note": "Tight spread"
+        }
+      ],
+      "compare_to_metals": {
+        "note": "Optional comparative GB means (pose1 metals vs H2Pc 4-rep mean) — ranking aid only, not absolute ΔG.",
+        "means_kcal": [
+          {
+            "ligand": "CuPc",
+            "mean_dtotal_kcal": -39.14,
+            "survival": "FAIL/FAIL"
+          },
+          {
+            "ligand": "H2Pc",
+            "mean_dtotal_kcal": -33.48,
+            "survival": "PASS×4"
+          },
+          {
+            "ligand": "ZnPc",
+            "mean_dtotal_kcal": -30.76,
+            "survival": "FAIL/PASS"
+          },
+          {
+            "ligand": "F16-ZnPc",
+            "mean_dtotal_kcal": -25.07,
+            "survival": "PASS/PASS"
+          }
+        ]
+      },
+      "caveats": [
+        "pose1/rep2 (−48.16) is an outlier vs other H2Pc reps (−27 to −29); resume-split traj concatenates prod_pre_restart.nc + prod_resume.nc — time continuity after container restart is imperfect.",
+        "Do not claim absolute affinity from these numbers.",
+        "Stage 8 / axial metal screen skipped (metal-free)."
+      ]
+    }
   },
   "af3": {
     "ligand_id": "H2Pc",
