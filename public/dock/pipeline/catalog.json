@@ -779,7 +779,7 @@
         "dock": "done",
         "md": "running",
         "boltz": "done",
-        "stage6": "partial",
+        "stage6": "done",
         "stage7": "not_started"
       },
       "dock": {
@@ -932,13 +932,12 @@
         "url": "/pipeline/stage6_h2pc_timeseries.json",
         "series": [
           "pose1_rep1",
+          "pose1_rep2",
+          "pose2_rep1",
           "pose2_rep2"
         ],
-        "pending": [
-          "pose1_rep2",
-          "pose2_rep1"
-        ],
-        "note": "Contacts + lig RMSD vs time (ps) from harvested trajs; pending reps omitted"
+        "pending": [],
+        "note": "4/4 harvested — contacts + lig RMSD vs ps (interactive zoom)"
       }
     }
   ],
@@ -1233,7 +1232,7 @@
     "as_of": "2026-10-18",
     "gate": "mean lig RMSD ≤ 5 Å and mean COM drift ≤ 6 Å (Stage 5 survival criteria on ~100 ns)",
     "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1,rep2[,rep3]}/analysis/",
-    "note": "Pose1 harvested: ZnPc rep1–rep3 (2/3 PASS: r1 FAIL RMSD 7.07 Å; r2 PASS 1.66 / COM 1.12 Å; r3 PASS 1.75 / COM 1.32 Å; T ~300 K). CuPc: rep1 FAIL (5.88) / rep2 FAIL (7.19). F16-ZnPc: rep1 PASS (2.20) / rep2 PASS (3.10). CuPc/F16 rep3 and pose2 not harvested — no invented ΔG. · H2Pc time series: pose1/rep1 + pose2/rep2 plotted (contacts + RMSD vs ps); pose1/rep2 + pose2/rep1 pending harvest",
+    "note": "H2Pc Stage6 4/4 harvested: pose1/rep1–2 + pose2/rep1–2 time series (contacts + RMSD vs ps, interactive zoom). No Stage7. No invented ΔG.",
     "runs": [
       {
         "ligand_id": "ZnPc",
@@ -1352,7 +1351,7 @@
   },
   "campaign_status": {
     "as_of": "2026-10-19",
-    "headline": "Zn/Cu/F16 Stages 0–7 done (pose1 MM/GBSA) · H2Pc Stage 2–4+Boltz PASS + AF3 Path B vs Boltz · Stage 5 screening · Stage 8 not started",
+    "headline": "Zn/Cu/F16 Stages 0–7 done · H2Pc Stage6 4/4 + AF3 Path B vs Boltz · Stage 8 not started",
     "done": [
       "Stage 0–3: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc + H2Pc (metal-free)",
       "Stage 4 dock: 2 poses/ligand (H2Pc −9.5 kcal, RMSD 6.6 Å); Boltz structure co-fold (ΔG null)",
@@ -1362,10 +1361,9 @@
       "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
       "Stage 7 MM/GBSA (pose1): comparative GB CuPc (−39.1) > ZnPc (−30.8) > F16 (−25.1) — not absolute ΔG; CuPc MD FAIL; F16 most stable",
       "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)",
-      "H2Pc Stage6 MD time series: pose1/rep1 + pose2/rep2 (contacts + lig RMSD vs ps); other reps pending"
+      "H2Pc Stage6 4/4 harvested — MD time series (contacts + lig RMSD vs ps) for pose1/rep1–2 + pose2/rep1–2; interactive zoom; Stage7 not started"
     ],
     "missing": [
-      "H2Pc Stage 5 screen finish + survival analysis (pose2/rep1 running; no invented PASS/FAIL)",
       "Boltz affinity ΔG (NIM 422 / H2Pc not required) — leave null",
       "Boltz CIF ligand coords for metal PCs (H2Pc ligand geometry from AF3 Path B / Stage4 dock)",
       "Stage 6 pose2 production + CuPc/F16 rep3",
