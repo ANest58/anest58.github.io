@@ -1944,5 +1944,62 @@
         "Boltz protein-only Mol* removed; comparison table stays on Results"
       ]
     }
+  },
+  "gpu_throughput": {
+    "title": "GPU vs ns/day (speed)",
+    "system_note": "Campaign-measured pmemd.cuda throughput on ~59k-atom solvated RBD–phthalocyanine boxes (Stage 5/6 class). Rates are measured smokes or production-wave observations — not vendor claims.",
+    "preferred_note": "Production preference: RTX 3090 community (faster ns/day and lower $/h than A40 secure).",
+    "preferred_id": "rtx_3090_community",
+    "as_of": "2026-10-19",
+    "rows": [
+      {
+        "id": "rtx_3090_community",
+        "gpu": "RTX 3090",
+        "short_label": "3090",
+        "host": "RunPod community",
+        "ns_per_day": 252,
+        "usd_per_hour": 0.22,
+        "preferred": true,
+        "kind": "smoke",
+        "note": "Prior Stage 6 smoke; preferred for new pods",
+        "source": "store docs/h2pc-campaign.md; internal/stage6-3090-bench.md"
+      },
+      {
+        "id": "llbeast_3080",
+        "gpu": "RTX 3080",
+        "short_label": "3080",
+        "host": "llbeast (local)",
+        "ns_per_day": 239,
+        "usd_per_hour": 0.0,
+        "preferred": false,
+        "kind": "production",
+        "note": "Stage 5 / H2Pc Stage 6 host measured",
+        "source": "docs/handoff-stage6-1800ns.md; catalog md.ns_per_day_approx; docs/h2pc-campaign.md"
+      },
+      {
+        "id": "a40_secure",
+        "gpu": "NVIDIA A40",
+        "short_label": "A40",
+        "host": "RunPod secure",
+        "ns_per_day": 222,
+        "usd_per_hour": 0.59,
+        "preferred": false,
+        "kind": "production_wave",
+        "note": "H2Pc Stage 6 wave (after 3090 stock-out)",
+        "source": "docs/h2pc-campaign.md"
+      },
+      {
+        "id": "v100_community",
+        "gpu": "Tesla V100-PCIE-16GB",
+        "short_label": "V100",
+        "host": "RunPod community",
+        "ns_per_day": 203,
+        "usd_per_hour": 0.19,
+        "preferred": false,
+        "kind": "smoke",
+        "note": "0.5 ns eval-only smoke; pod deleted; not production pick",
+        "source": "docs/h2pc-campaign.md (report path results/dynamics/stage6/h2pc/v100_smoke/report.json — not in git tree)"
+      }
+    ]
   }
 }
