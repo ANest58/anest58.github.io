@@ -3,28 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PhD Dock — F-MPc / spike</title>
+    <title>PhD Dock</title>
     <script>
-      (function () {
-        try {
-          var t = localStorage.getItem("phd-dock-theme");
-          if (t !== "light" && t !== "dark") {
-            t = window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
-          }
-          document.documentElement.setAttribute("data-theme", t);
-        } catch (_) {}
-      })();
+      document.documentElement.setAttribute("data-theme", "dark");
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/dock/assets/index-C9P4uRwf.js"></script>
-    <link rel="stylesheet" crossorigin href="/dock/assets/index-DkvLam73.css">
+    <script type="module" crossorigin src="/dock/assets/index-RrZUmDsU.js"></script>
+    <link rel="stylesheet" crossorigin href="/dock/assets/index-06Jn_bj6.css">
   </head>
   <body>
     <div id="root"></div>
