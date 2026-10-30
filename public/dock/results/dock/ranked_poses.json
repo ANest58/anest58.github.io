@@ -1,0 +1,338 @@
+{
+  "engine": "AutoDock Vina 1.1.2",
+  "host": "cloud-agent fallback; llbeast Tailscale SSH timed out",
+  "receptor": "pipeline/protein/6m0j_rbd.pdbqt",
+  "box_default": {
+    "center": [
+      -36.656,
+      29.806,
+      5.561
+    ],
+    "size": [
+      22.0,
+      40.588,
+      23.057
+    ]
+  },
+  "no_f64": true,
+  "no_runpod": true,
+  "ligands": {
+    "ZnPc": {
+      "orca_opt": true,
+      "library": "pipeline/ligands/znpc",
+      "n_poses_all_fits": 69,
+      "fits": [
+        {
+          "fit_id": "ace2_exh8",
+          "ligand_id": "ZnPc",
+          "returncode": 0,
+          "wall_s": 0.0,
+          "n_poses": 9,
+          "best_kcal": -9.6,
+          "stdout_tail": "skipped; poses.pdbqt already present"
+        },
+        {
+          "fit_id": "ace2_exh16",
+          "ligand_id": "ZnPc",
+          "returncode": 0,
+          "wall_s": 0.0,
+          "n_poses": 20,
+          "best_kcal": -9.7,
+          "stdout_tail": "skipped; poses.pdbqt already present"
+        },
+        {
+          "fit_id": "ace2_exh24",
+          "ligand_id": "ZnPc",
+          "returncode": 0,
+          "wall_s": 0.0,
+          "n_poses": 20,
+          "best_kcal": -9.6,
+          "stdout_tail": "skipped; poses.pdbqt already present"
+        },
+        {
+          "fit_id": "tight24_exh16",
+          "ligand_id": "ZnPc",
+          "returncode": 0,
+          "wall_s": 0.0,
+          "n_poses": 20,
+          "best_kcal": -9.4,
+          "stdout_tail": "skipped; poses.pdbqt already present"
+        }
+      ],
+      "top3": [
+        {
+          "rank": 1,
+          "vina_kcal": -9.7,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 1,
+          "rmsd_lb": 0.0,
+          "rmsd_ub": 0.0,
+          "zn": [
+            -38.423,
+            22.285,
+            1.281
+          ],
+          "pdbqt": "results/dock/znpc/top1.pdbqt",
+          "pdb": "results/dock/znpc/top1.pdb",
+          "ace2_ca_within_8A": [
+            453,
+            493,
+            498,
+            500,
+            501,
+            505
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 9.43,
+            "453": 7.03,
+            "455": 8.2,
+            "456": 11.97,
+            "486": 17.21,
+            "487": 17.25,
+            "489": 12.09,
+            "493": 5.52,
+            "498": 6.87,
+            "500": 6.08,
+            "501": 3.75,
+            "505": 4.51
+          }
+        },
+        {
+          "rank": 2,
+          "vina_kcal": -9.6,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 2,
+          "rmsd_lb": 0.003,
+          "rmsd_ub": 9.266,
+          "zn": [
+            -38.423,
+            22.284,
+            1.284
+          ],
+          "pdbqt": "results/dock/znpc/top2.pdbqt",
+          "pdb": "results/dock/znpc/top2.pdb",
+          "ace2_ca_within_8A": [
+            453,
+            493,
+            498,
+            500,
+            501,
+            505
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 9.43,
+            "453": 7.03,
+            "455": 8.2,
+            "456": 11.97,
+            "486": 17.21,
+            "487": 17.25,
+            "489": 12.09,
+            "493": 5.52,
+            "498": 6.87,
+            "500": 6.08,
+            "501": 3.75,
+            "505": 4.5
+          }
+        },
+        {
+          "rank": 3,
+          "vina_kcal": -9.4,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 9,
+          "rmsd_lb": 6.056,
+          "rmsd_ub": 9.537,
+          "zn": [
+            -34.719,
+            29.353,
+            3.249
+          ],
+          "pdbqt": "results/dock/znpc/top3.pdbqt",
+          "pdb": "results/dock/znpc/top3.pdb",
+          "ace2_ca_within_8A": [
+            417,
+            455,
+            456,
+            493,
+            498,
+            501,
+            505
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 5.14,
+            "453": 8.86,
+            "455": 6.42,
+            "456": 7.84,
+            "486": 11.3,
+            "487": 9.37,
+            "489": 8.3,
+            "493": 6.43,
+            "498": 7.12,
+            "500": 10.52,
+            "501": 7.66,
+            "505": 4.44
+          }
+        }
+      ],
+      "best_fit": "ace2_exh16"
+    },
+    "F16_ZnPc": {
+      "orca_opt": true,
+      "library": "pipeline/ligands/f16_znpc",
+      "n_poses_all_fits": 69,
+      "fits": [
+        {
+          "fit_id": "ace2_exh8",
+          "ligand_id": "F16_ZnPc",
+          "returncode": 0,
+          "wall_s": 36.4,
+          "n_poses": 9,
+          "best_kcal": -9.8,
+          "stdout_tail": "Performing search ... \n0%   10   20   30   40   50   60   70   80   90   100%\n|----|----|----|----|----|----|----|----|----|----|\n***************************************************\ndone.\nRefining results ... done.\n\nmode |   affinity | dist from best mode\n     | (kcal/mol) | rmsd l.b.| rmsd u.b.\n-----+------------+----------+----------\n   1         -9.8      0.000      0.000\n   2         -9.8      0.007      7.660\n   3         -9.8      0.023      7.658\n   4         -9.8      0.011     10.836\n   5         -9.8      0.011      7.664\n   6         -9.8      0.019      7.671\n   7         -9.8      0.019      7.662\n   8         -9.8      0.039      7.662\n   9         -9.7      1.811      7.978\nWriting output ... done."
+        },
+        {
+          "fit_id": "ace2_exh16",
+          "ligand_id": "F16_ZnPc",
+          "returncode": 0,
+          "wall_s": 72.0,
+          "n_poses": 20,
+          "best_kcal": -9.8,
+          "stdout_tail": "   2         -9.8      0.006      7.660\n   3         -9.8      0.007      7.664\n   4         -9.8      0.020      7.662\n   5         -9.8      0.013     10.836\n   6         -9.8      0.010      7.665\n   7         -9.8      0.026      7.662\n   8         -9.8      0.039      7.665\n   9         -9.7      1.811      2.872\n  10         -9.7      1.813      9.096\n  11         -9.7      1.819      7.961\n  12         -9.7      1.814      7.979\n  13         -9.7      1.817     10.894\n  14         -9.7      1.821      7.955\n  15         -9.7      1.821      7.984\n  16         -9.6      1.862      6.316\n  17         -9.5      3.147      9.008\n  18         -9.5      3.143      9.067\n  19         -9.5      3.145      9.036\n  20         -9.5      3.145     10.231\nWriting output ... done."
+        },
+        {
+          "fit_id": "ace2_exh24",
+          "ligand_id": "F16_ZnPc",
+          "returncode": 0,
+          "wall_s": 107.3,
+          "n_poses": 20,
+          "best_kcal": -9.8,
+          "stdout_tail": "   2         -9.8      0.020      7.663\n   3         -9.8      0.084      7.660\n   4         -9.8      0.013     10.836\n   5         -9.8      0.015      7.664\n   6         -9.8      0.009      7.667\n   7         -9.8      0.021      7.662\n   8         -9.8      0.019      7.662\n   9         -9.7      1.815      9.069\n  10         -9.7      1.807      2.873\n  11         -9.7      1.810      6.642\n  12         -9.7      1.809      7.956\n  13         -9.7      1.810      7.953\n  14         -9.7      1.817      7.985\n  15         -9.7      1.821     10.902\n  16         -9.7      1.819      7.983\n  17         -9.5      3.141      9.066\n  18         -9.5      3.158     11.595\n  19         -9.5      3.144      5.334\n  20         -9.5      3.142      8.970\nWriting output ... done."
+        },
+        {
+          "fit_id": "tight24_exh16",
+          "ligand_id": "F16_ZnPc",
+          "returncode": 0,
+          "wall_s": 69.8,
+          "n_poses": 20,
+          "best_kcal": -9.8,
+          "stdout_tail": "   2         -9.8      0.008      7.658\n   3         -9.8      0.008      7.665\n   4         -9.8      0.008      7.662\n   5         -9.8      0.003      7.664\n   6         -9.8      0.003      7.660\n   7         -9.8      0.003     10.836\n   8         -9.8      0.007      7.662\n   9         -9.7      1.946      2.996\n  10         -9.7      1.947      7.857\n  11         -9.7      1.942      7.908\n  12         -9.7      1.938      7.951\n  13         -9.7      1.946      9.208\n  14         -9.7      1.946     10.770\n  15         -9.7      1.943      6.333\n  16         -9.6      1.932      7.891\n  17         -9.5      3.265      9.113\n  18         -9.5      3.266     11.654\n  19         -9.5      3.266      9.168\n  20         -9.5      3.265      7.799\nWriting output ... done."
+        }
+      ],
+      "top3": [
+        {
+          "rank": 1,
+          "vina_kcal": -9.8,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 1,
+          "rmsd_lb": 0.0,
+          "rmsd_ub": 0.0,
+          "zn": [
+            -38.926,
+            30.571,
+            2.003
+          ],
+          "pdbqt": "results/dock/f16_znpc/top1.pdbqt",
+          "pdb": "results/dock/f16_znpc/top1.pdb",
+          "ace2_ca_within_8A": [
+            455,
+            486,
+            487,
+            489,
+            493,
+            505
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 9.12,
+            "453": 9.47,
+            "455": 7.02,
+            "456": 8.38,
+            "486": 7.08,
+            "487": 7.37,
+            "489": 5.01,
+            "493": 5.55,
+            "498": 8.78,
+            "500": 11.87,
+            "501": 8.93,
+            "505": 6.61
+          }
+        },
+        {
+          "rank": 2,
+          "vina_kcal": -9.8,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 2,
+          "rmsd_lb": 0.006,
+          "rmsd_ub": 7.66,
+          "zn": [
+            -38.924,
+            30.57,
+            2.001
+          ],
+          "pdbqt": "results/dock/f16_znpc/top2.pdbqt",
+          "pdb": "results/dock/f16_znpc/top2.pdb",
+          "ace2_ca_within_8A": [
+            455,
+            486,
+            487,
+            489,
+            493,
+            505
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 9.12,
+            "453": 9.47,
+            "455": 7.02,
+            "456": 8.38,
+            "486": 7.08,
+            "487": 7.37,
+            "489": 5.01,
+            "493": 5.56,
+            "498": 8.78,
+            "500": 11.87,
+            "501": 8.93,
+            "505": 6.61
+          }
+        },
+        {
+          "rank": 3,
+          "vina_kcal": -9.5,
+          "fit_id": "ace2_exh16",
+          "mode_in_file": 17,
+          "rmsd_lb": 3.147,
+          "rmsd_ub": 9.008,
+          "zn": [
+            -34.583,
+            32.494,
+            2.382
+          ],
+          "pdbqt": "results/dock/f16_znpc/top3.pdbqt",
+          "pdb": "results/dock/f16_znpc/top3.pdb",
+          "ace2_ca_within_8A": [
+            417,
+            455,
+            456,
+            486,
+            487,
+            489,
+            493
+          ],
+          "min_dist_to_ace2_ca": {
+            "417": 5.89,
+            "453": 9.09,
+            "455": 6.46,
+            "456": 7.73,
+            "486": 7.67,
+            "487": 7.49,
+            "489": 6.21,
+            "493": 5.92,
+            "498": 10.14,
+            "500": 13.67,
+            "501": 11.06,
+            "505": 8.56
+          }
+        }
+      ],
+      "best_fit": "ace2_exh16"
+    }
+  },
+  "note": "Top 3 are distinct Vina modes from the best ACE2-box fit (exh=16), not near-duplicate copies of the same Zn site. Rank 2 is a ring flip (rmsd_lb~0, rmsd_ub large). Rank 3 is a translated site (rmsd_lb>=2)."
+}
