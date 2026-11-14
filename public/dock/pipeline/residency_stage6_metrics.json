@@ -1,0 +1,212 @@
+{
+  "schema": "residency-stage6-metrics/v1",
+  "campaign": "residency",
+  "cap": {
+    "pose": "pose1",
+    "reps": [
+      "rep1",
+      "rep2"
+    ],
+    "note": "Anthony 2026-11-14: 2-rep Stage6 only; no rep3/pose2"
+  },
+  "pocket": {
+    "spike_residues": [
+      338,
+      339,
+      342,
+      343,
+      368,
+      371,
+      373
+    ],
+    "amber_residues_g1": [
+      13,
+      14,
+      17,
+      18,
+      43,
+      46,
+      48
+    ],
+    "occupancy_R_A": 6.0
+  },
+  "updated_at": "2026-11-14T23:33:38Z",
+  "analysis_status": "DONE_runs_enriched_cpptraj_stride20",
+  "runs": [
+    {
+      "ligand": "f16znpc",
+      "display": "F16-ZnPc",
+      "pose": "pose1",
+      "rep": "rep1",
+      "status": "DONE",
+      "prod_ns": 100.0,
+      "target_ns": 100.0,
+      "vast_id": 60552417,
+      "paths": {
+        "archive": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1",
+        "prod_nc": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1/prod.nc",
+        "prod_out": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1/prod.out",
+        "prod_rst": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1/prod.rst",
+        "md_meta": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1/md_meta.json",
+        "harvest_manifest": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1/harvest_manifest.json",
+        "top": "/home/andon/Projects/PhD-live-stage1/jobs/stage5_residency_f16znpc/stage/dynamics/pose1/complex.prmtop",
+        "analysis_scratch": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/f16znpc_pose1_rep1",
+        "metrics_json": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/f16znpc_pose1_rep1/metrics.json"
+      },
+      "mdout": {
+        "nstep_final": 50000000,
+        "prod_ns": 100.0,
+        "temp_K_mean": 300.022901,
+        "temp_ok": true,
+        "wall_h": 19.56,
+        "ns_per_day": 122.69
+      },
+      "resname": "FZP",
+      "metrics": {
+        "site_occupancy": 0.0,
+        "occupancy_R_A": 6.0,
+        "com_poc_mean_A": 8.631,
+        "com_poc_median_A": 8.566,
+        "com_poc_p95_A": 9.695,
+        "com_poc_max_A": 10.861,
+        "lig_rmsd_mean_A": 3.534,
+        "lig_rmsd_max_A": 6.486,
+        "lig_rmsd_final_A": 4.363,
+        "prot_ca_rmsd_mean_A": 2.631,
+        "com_drift_mean_A": 2.717,
+        "com_drift_max_A": 4.578,
+        "n_frames_analyzed": 500,
+        "stride_frames": 20,
+        "method": "cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0",
+        "gate_stage5": "PASS",
+        "gate_note": "PASS if mean lig heavy RMSD<=5 AND mean COM drift from frame0<=6",
+        "analyzed_at": "2026-11-14T23:33:17Z",
+        "native_contacts_mean": 11.82,
+        "nonnative_contacts_mean": 29.48,
+        "mindist_mean_A": 2.951,
+        "mindist_median_A": 2.942,
+        "occupancy_note": "fraction frames with lig-COM to pocket-res-COM <= R; near-site may score low if dock sits >R from pocket COM"
+      },
+      "gate": "PASS"
+    },
+    {
+      "ligand": "znpc",
+      "display": "ZnPc",
+      "pose": "pose1",
+      "rep": "rep1",
+      "status": "DONE",
+      "prod_ns": 100.0,
+      "target_ns": 100.0,
+      "vast_id": 60550541,
+      "paths": {
+        "archive": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1",
+        "prod_nc": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1/prod.nc",
+        "prod_out": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1/prod.out",
+        "prod_rst": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1/prod.rst",
+        "md_meta": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1/md_meta.json",
+        "harvest_manifest": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1/harvest_manifest.json",
+        "top": "/home/andon/Projects/PhD-live-stage1/jobs/stage5_residency_znpc/stage/dynamics/pose1/complex.prmtop",
+        "analysis_scratch": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/znpc_pose1_rep1",
+        "metrics_json": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/znpc_pose1_rep1/metrics.json"
+      },
+      "mdout": {
+        "nstep_final": 50000000,
+        "prod_ns": 100.0,
+        "temp_K_mean": 300.019115,
+        "temp_ok": true,
+        "wall_h": 23.4,
+        "ns_per_day": 102.55
+      },
+      "resname": "ZPC",
+      "metrics": {
+        "site_occupancy": 0.002,
+        "occupancy_R_A": 6.0,
+        "com_poc_mean_A": 7.682,
+        "com_poc_median_A": 7.551,
+        "com_poc_p95_A": 9.246,
+        "com_poc_max_A": 10.713,
+        "lig_rmsd_mean_A": 4.318,
+        "lig_rmsd_max_A": 7.97,
+        "lig_rmsd_final_A": 4.874,
+        "prot_ca_rmsd_mean_A": 3.491,
+        "com_drift_mean_A": 3.939,
+        "com_drift_max_A": 7.807,
+        "n_frames_analyzed": 500,
+        "stride_frames": 20,
+        "method": "cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0",
+        "gate_stage5": "PASS",
+        "gate_note": "PASS if mean lig heavy RMSD<=5 AND mean COM drift from frame0<=6",
+        "analyzed_at": "2026-11-14T23:33:15Z",
+        "native_contacts_mean": 2.012,
+        "nonnative_contacts_mean": 28.774,
+        "mindist_mean_A": 3.103,
+        "mindist_median_A": 3.092,
+        "occupancy_note": "fraction frames with lig-COM to pocket-res-COM <= R; near-site may score low if dock sits >R from pocket COM"
+      },
+      "gate": "PASS"
+    },
+    {
+      "ligand": "h2pc",
+      "display": "H2Pc",
+      "pose": "pose1",
+      "rep": "rep1",
+      "status": "RUNNING",
+      "prod_ns": 7.45,
+      "target_ns": 100.0,
+      "vast_id": 60550541,
+      "host": "CA",
+      "$/h": 0.294,
+      "paths": {
+        "remote": "/workspace/phd_jobs/jobs/h2pc_pose1_rep1/rep1"
+      },
+      "metrics": null,
+      "gate": null,
+      "note": "RUNNING on 60550541 CA",
+      "nstep": 3725000,
+      "last_check": "2026-11-14T23:32Z"
+    },
+    {
+      "ligand": "f16znpc",
+      "display": "F16-ZnPc",
+      "pose": "pose1",
+      "rep": "rep2",
+      "status": "RUNNING",
+      "prod_ns": 18.35,
+      "target_ns": 100.0,
+      "vast_id": 60552417,
+      "host": "UT",
+      "$/h": 0.27,
+      "paths": {
+        "remote": "/workspace/phd_jobs/jobs/f16znpc_pose1_rep2/rep2"
+      },
+      "metrics": null,
+      "gate": null,
+      "note": "RUNNING on 60552417 UT (job dir rep2/)",
+      "nstep": 9175000,
+      "last_check": "2026-11-14T23:32Z"
+    },
+    {
+      "ligand": "znpc",
+      "display": "ZnPc",
+      "pose": "pose1",
+      "rep": "rep2",
+      "status": "QUEUED",
+      "prod_ns": 0.0,
+      "target_ns": 100.0,
+      "metrics": null,
+      "gate": null
+    },
+    {
+      "ligand": "h2pc",
+      "display": "H2Pc",
+      "pose": "pose1",
+      "rep": "rep2",
+      "status": "QUEUED",
+      "prod_ns": 0.0,
+      "target_ns": 100.0,
+      "metrics": null,
+      "gate": null
+    }
+  ],
+  "analysis_scratch": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis"
+}
