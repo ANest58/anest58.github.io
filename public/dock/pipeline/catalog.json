@@ -2,7 +2,7 @@
   "schema_version": 1,
   "title": "PhD Dock — metallophthalocyanine pipeline",
   "generated_from": "Stages 0–6 pose1 (ZnPc rep1–rep3; CuPc/F16 rep1+rep2) (2026-10-18) + FePc Boltz probe; Stage 7 comparative; Stage 8 not started — no invented ΔG",
-  "as_of": "2026-10-19",
+  "as_of": "2026-10-30",
   "source_note": "Allowlisted publication snapshot: ZnPc/CuPc/F16-ZnPc through Stage 7 comparative MM/GBSA (pose1); metal-free H2Pc Stage 2–4 PASS + Boltz 5 samples + AF3 Path B (full MSA, ligand present) vs Boltz comparison; Stage 5 MD screening in progress (no invented survival). GB ranking comparative only — not absolute ΔG. Stage 8 not started.",
   "protein": {
     "pdb": "6M0J",
@@ -38,13 +38,13 @@
       "id": "md",
       "label": "Stage 5–6 · MD / survivors",
       "status": "partial",
-      "detail": "Zn/Cu/F16 Stage 5 complete (18/18, 6/6 PASS). H2Pc Stage 5 screening: pose1 3/3 done; pose2/rep1 running (~57%); rep2–3 pending — survival not yet scored"
+      "detail": "Zn/Cu/F16 Stage 5 PASS. H2Pc Stage 5 PASS. Stage 6: ZnPc r1_clean FAIL 6.26; H2Pc r2_clean PASS 1.24 (Vast cleans); old resume-splits superseded"
     },
     {
       "id": "stage6",
       "label": "Stage 6 · Survivors (RunPod)",
       "status": "partial",
-      "detail": "pose1: ZnPc 2/3 PASS (r1 FAIL 7.07; r2 PASS 1.66; r3 PASS 1.75 Å); CuPc FAIL/FAIL (5.88 / 7.19 Å); F16-ZnPc PASS/PASS (2.20 / 3.10 Å)"
+      "detail": "pose1: ZnPc 2/3 PASS (r1_clean FAIL 6.26; r2/r3 PASS); CuPc FAIL/FAIL; F16 PASS/PASS; H2Pc pose1/rep2_clean PASS (ligRMSD 1.24; old resume-split superseded)"
     },
     {
       "id": "stage7",
@@ -208,7 +208,7 @@
               28.618
             ],
             "pdb": "results/dock/stage4/znpc/pose1.pdb",
-            "api_pdb": "/dock/structures/dock/znpc_pose1.pdb"
+            "api_pdb": "/api/results/dock/stage4/znpc/pose1.pdb"
           },
           {
             "rank": 2,
@@ -222,10 +222,10 @@
               28.617
             ],
             "pdb": "results/dock/stage4/znpc/pose2.pdb",
-            "api_pdb": "/dock/structures/dock/znpc_pose2.pdb"
+            "api_pdb": "/api/results/dock/stage4/znpc/pose2.pdb"
           }
         ],
-        "pose1_pdb_url": "/dock/structures/dock/znpc_pose1.pdb"
+        "pose1_pdb_url": "/api/results/dock/stage4/znpc/pose1.pdb"
       },
       "boltz": {
         "ok": true,
@@ -257,7 +257,7 @@
           "index": 5,
           "confidence": "sample_5",
           "cif": "results/affinity/stage4/znpc/sample_5.cif",
-          "api_cif": "/dock/structures/boltz/znpc/sample_5.cif",
+          "api_cif": "/api/results/affinity/stage4/znpc/sample_5.cif",
           "confidence_score": 0.7965,
           "ptm": 0.9154,
           "iptm": 0.7408
@@ -267,7 +267,7 @@
             "index": 1,
             "confidence": "sample_1",
             "cif": "results/affinity/stage4/znpc/sample_1.cif",
-            "api_cif": "/dock/structures/boltz/znpc/sample_1.cif",
+            "api_cif": "/api/results/affinity/stage4/znpc/sample_1.cif",
             "confidence_score": 0.7815,
             "ptm": 0.9062,
             "iptm": 0.6862
@@ -276,7 +276,7 @@
             "index": 2,
             "confidence": "sample_2",
             "cif": "results/affinity/stage4/znpc/sample_2.cif",
-            "api_cif": "/dock/structures/boltz/znpc/sample_2.cif",
+            "api_cif": "/api/results/affinity/stage4/znpc/sample_2.cif",
             "confidence_score": 0.7845,
             "ptm": 0.9115,
             "iptm": 0.6902
@@ -285,7 +285,7 @@
             "index": 3,
             "confidence": "sample_3",
             "cif": "results/affinity/stage4/znpc/sample_3.cif",
-            "api_cif": "/dock/structures/boltz/znpc/sample_3.cif",
+            "api_cif": "/api/results/affinity/stage4/znpc/sample_3.cif",
             "confidence_score": 0.7675,
             "ptm": 0.8907,
             "iptm": 0.6308
@@ -294,7 +294,7 @@
             "index": 4,
             "confidence": "sample_4",
             "cif": "results/affinity/stage4/znpc/sample_4.cif",
-            "api_cif": "/dock/structures/boltz/znpc/sample_4.cif",
+            "api_cif": "/api/results/affinity/stage4/znpc/sample_4.cif",
             "confidence_score": 0.757,
             "ptm": 0.8893,
             "iptm": 0.6333
@@ -303,7 +303,7 @@
             "index": 5,
             "confidence": "sample_5",
             "cif": "results/affinity/stage4/znpc/sample_5.cif",
-            "api_cif": "/dock/structures/boltz/znpc/sample_5.cif",
+            "api_cif": "/api/results/affinity/stage4/znpc/sample_5.cif",
             "confidence_score": 0.7965,
             "ptm": 0.9154,
             "iptm": 0.7408
@@ -409,7 +409,7 @@
               28.595
             ],
             "pdb": "results/dock/stage4/cupc/pose1.pdb",
-            "api_pdb": "/dock/structures/dock/cupc_pose1.pdb"
+            "api_pdb": "/api/results/dock/stage4/cupc/pose1.pdb"
           },
           {
             "rank": 2,
@@ -423,10 +423,10 @@
               28.597
             ],
             "pdb": "results/dock/stage4/cupc/pose2.pdb",
-            "api_pdb": "/dock/structures/dock/cupc_pose2.pdb"
+            "api_pdb": "/api/results/dock/stage4/cupc/pose2.pdb"
           }
         ],
-        "pose1_pdb_url": "/dock/structures/dock/cupc_pose1.pdb"
+        "pose1_pdb_url": "/api/results/dock/stage4/cupc/pose1.pdb"
       },
       "boltz": {
         "ok": true,
@@ -458,7 +458,7 @@
           "index": 1,
           "confidence": "sample_1",
           "cif": "results/affinity/stage4/cupc/sample_1.cif",
-          "api_cif": "/dock/structures/boltz/cupc/sample_1.cif",
+          "api_cif": "/api/results/affinity/stage4/cupc/sample_1.cif",
           "confidence_score": 0.7862,
           "ptm": 0.9045,
           "iptm": 0.7303
@@ -468,7 +468,7 @@
             "index": 1,
             "confidence": "sample_1",
             "cif": "results/affinity/stage4/cupc/sample_1.cif",
-            "api_cif": "/dock/structures/boltz/cupc/sample_1.cif",
+            "api_cif": "/api/results/affinity/stage4/cupc/sample_1.cif",
             "confidence_score": 0.7862,
             "ptm": 0.9045,
             "iptm": 0.7303
@@ -477,7 +477,7 @@
             "index": 2,
             "confidence": "sample_2",
             "cif": "results/affinity/stage4/cupc/sample_2.cif",
-            "api_cif": "/dock/structures/boltz/cupc/sample_2.cif",
+            "api_cif": "/api/results/affinity/stage4/cupc/sample_2.cif",
             "confidence_score": 0.76,
             "ptm": 0.8863,
             "iptm": 0.5859
@@ -486,7 +486,7 @@
             "index": 3,
             "confidence": "sample_3",
             "cif": "results/affinity/stage4/cupc/sample_3.cif",
-            "api_cif": "/dock/structures/boltz/cupc/sample_3.cif",
+            "api_cif": "/api/results/affinity/stage4/cupc/sample_3.cif",
             "confidence_score": 0.7638,
             "ptm": 0.8928,
             "iptm": 0.6459
@@ -495,7 +495,7 @@
             "index": 4,
             "confidence": "sample_4",
             "cif": "results/affinity/stage4/cupc/sample_4.cif",
-            "api_cif": "/dock/structures/boltz/cupc/sample_4.cif",
+            "api_cif": "/api/results/affinity/stage4/cupc/sample_4.cif",
             "confidence_score": 0.7274,
             "ptm": 0.8681,
             "iptm": 0.4841
@@ -504,7 +504,7 @@
             "index": 5,
             "confidence": "sample_5",
             "cif": "results/affinity/stage4/cupc/sample_5.cif",
-            "api_cif": "/dock/structures/boltz/cupc/sample_5.cif",
+            "api_cif": "/api/results/affinity/stage4/cupc/sample_5.cif",
             "confidence_score": 0.7327,
             "ptm": 0.8706,
             "iptm": 0.5098
@@ -610,7 +610,7 @@
               28.797
             ],
             "pdb": "results/dock/stage4/f16_znpc/pose1.pdb",
-            "api_pdb": "/dock/structures/dock/f16_znpc_pose1.pdb"
+            "api_pdb": "/api/results/dock/stage4/f16_znpc/pose1.pdb"
           },
           {
             "rank": 2,
@@ -624,10 +624,10 @@
               28.787
             ],
             "pdb": "results/dock/stage4/f16_znpc/pose2.pdb",
-            "api_pdb": "/dock/structures/dock/f16_znpc_pose2.pdb"
+            "api_pdb": "/api/results/dock/stage4/f16_znpc/pose2.pdb"
           }
         ],
-        "pose1_pdb_url": "/dock/structures/dock/f16_znpc_pose1.pdb"
+        "pose1_pdb_url": "/api/results/dock/stage4/f16_znpc/pose1.pdb"
       },
       "boltz": {
         "ok": true,
@@ -659,7 +659,7 @@
           "index": 1,
           "confidence": "sample_1",
           "cif": "results/affinity/stage4/f16_znpc/sample_1.cif",
-          "api_cif": "/dock/structures/boltz/f16_znpc/sample_1.cif",
+          "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_1.cif",
           "confidence_score": 0.748,
           "ptm": 0.9235,
           "iptm": 0.7667
@@ -669,7 +669,7 @@
             "index": 1,
             "confidence": "sample_1",
             "cif": "results/affinity/stage4/f16_znpc/sample_1.cif",
-            "api_cif": "/dock/structures/boltz/f16_znpc/sample_1.cif",
+            "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_1.cif",
             "confidence_score": 0.748,
             "ptm": 0.9235,
             "iptm": 0.7667
@@ -678,7 +678,7 @@
             "index": 2,
             "confidence": "sample_2",
             "cif": "results/affinity/stage4/f16_znpc/sample_2.cif",
-            "api_cif": "/dock/structures/boltz/f16_znpc/sample_2.cif",
+            "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_2.cif",
             "confidence_score": 0.7051,
             "ptm": 0.8696,
             "iptm": 0.5946
@@ -687,7 +687,7 @@
             "index": 3,
             "confidence": "sample_3",
             "cif": "results/affinity/stage4/f16_znpc/sample_3.cif",
-            "api_cif": "/dock/structures/boltz/f16_znpc/sample_3.cif",
+            "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_3.cif",
             "confidence_score": 0.6896,
             "ptm": 0.8454,
             "iptm": 0.5297
@@ -696,7 +696,7 @@
             "index": 4,
             "confidence": "sample_4",
             "cif": "results/affinity/stage4/f16_znpc/sample_4.cif",
-            "api_cif": "/dock/structures/boltz/f16_znpc/sample_4.cif",
+            "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_4.cif",
             "confidence_score": 0.7232,
             "ptm": 0.9043,
             "iptm": 0.713
@@ -705,7 +705,7 @@
             "index": 5,
             "confidence": "sample_5",
             "cif": "results/affinity/stage4/f16_znpc/sample_5.cif",
-            "api_cif": "/dock/structures/boltz/f16_znpc/sample_5.cif",
+            "api_cif": "/api/results/affinity/stage4/f16_znpc/sample_5.cif",
             "confidence_score": 0.7158,
             "ptm": 0.8701,
             "iptm": 0.6085
@@ -798,7 +798,7 @@
             "rmsd_heavy_vs_pose1": null,
             "metal_xyz": null,
             "pdb": "results/dock/stage4/h2pc/pose1.pdb",
-            "api_pdb": "/dock/structures/dock/h2pc_pose1.pdb"
+            "api_pdb": "/api/results/dock/stage4/h2pc/pose1.pdb"
           },
           {
             "rank": 2,
@@ -808,10 +808,10 @@
             "rmsd_heavy_vs_pose1": 6.609,
             "metal_xyz": null,
             "pdb": "results/dock/stage4/h2pc/pose2.pdb",
-            "api_pdb": "/dock/structures/dock/h2pc_pose2.pdb"
+            "api_pdb": "/api/results/dock/stage4/h2pc/pose2.pdb"
           }
         ],
-        "pose1_pdb_url": "/dock/structures/dock/h2pc_pose1.pdb"
+        "pose1_pdb_url": "/api/results/dock/stage4/h2pc/pose1.pdb"
       },
       "boltz": {
         "ok": true,
@@ -844,7 +844,7 @@
           "confidence": "sample_5",
           "filename": "sample_5.cif",
           "cif": "results/affinity/h2pc/sample_5.cif",
-          "api_cif": "/dock/structures/boltz/h2pc/sample_5.cif",
+          "api_cif": "/api/results/affinity/h2pc/sample_5.cif",
           "confidence_score": 0.7647,
           "ptm": 0.9116,
           "iptm": 0.7056
@@ -855,7 +855,7 @@
             "confidence": "sample_1",
             "filename": "sample_1.cif",
             "cif": "results/affinity/h2pc/sample_1.cif",
-            "api_cif": "/dock/structures/boltz/h2pc/sample_1.cif",
+            "api_cif": "/api/results/affinity/h2pc/sample_1.cif",
             "confidence_score": 0.7465,
             "ptm": 0.8885,
             "iptm": 0.5382
@@ -865,7 +865,7 @@
             "confidence": "sample_2",
             "filename": "sample_2.cif",
             "cif": "results/affinity/h2pc/sample_2.cif",
-            "api_cif": "/dock/structures/boltz/h2pc/sample_2.cif",
+            "api_cif": "/api/results/affinity/h2pc/sample_2.cif",
             "confidence_score": 0.7616,
             "ptm": 0.8916,
             "iptm": 0.5969
@@ -875,7 +875,7 @@
             "confidence": "sample_3",
             "filename": "sample_3.cif",
             "cif": "results/affinity/h2pc/sample_3.cif",
-            "api_cif": "/dock/structures/boltz/h2pc/sample_3.cif",
+            "api_cif": "/api/results/affinity/h2pc/sample_3.cif",
             "confidence_score": 0.7303,
             "ptm": 0.8672,
             "iptm": 0.4812
@@ -885,7 +885,7 @@
             "confidence": "sample_4",
             "filename": "sample_4.cif",
             "cif": "results/affinity/h2pc/sample_4.cif",
-            "api_cif": "/dock/structures/boltz/h2pc/sample_4.cif",
+            "api_cif": "/api/results/affinity/h2pc/sample_4.cif",
             "confidence_score": 0.7496,
             "ptm": 0.8891,
             "iptm": 0.5593
@@ -895,7 +895,7 @@
             "confidence": "sample_5",
             "filename": "sample_5.cif",
             "cif": "results/affinity/h2pc/sample_5.cif",
-            "api_cif": "/dock/structures/boltz/h2pc/sample_5.cif",
+            "api_cif": "/api/results/affinity/h2pc/sample_5.cif",
             "confidence_score": 0.7647,
             "ptm": 0.9116,
             "iptm": 0.7056
@@ -1055,7 +1055,7 @@
     "note": "Stage 5 MD screen complete for ZnPc/CuPc/F16-ZnPc (18/18; survival 6/6 PASS). H2Pc Stage 5 screening on same tmux stage5-md-screen: pose1 3/3 done; pose2/rep1 ~57%; pose2/rep2–3 pending — survival_gate null until analysis (no invented PASS/FAIL). Stage 6 pose1 metals: ZnPc 2/3 PASS; CuPc FAIL/FAIL; F16 PASS/PASS. MM/GBSA at Stage 7 — no invented ΔG.",
     "handoff": "docs/HANDOFF_STAGE5_MD.md",
     "status_path": "results/dynamics/stage5/status.json",
-    "status_url": null,
+    "status_url": "/api/results/dynamics/stage5/status.json",
     "ready_path": "results/dynamics/stage5/READY_FOR_DASHBOARD.json",
     "summary_path": "results/dynamics/stage5/stage5_summary.json",
     "survival_path": "results/dynamics/stage5/survival/",
@@ -1227,19 +1227,19 @@
   },
   "stage6": {
     "status": "partial",
-    "target": "llbeast RTX 3080/3090 (+ A100 seed); ZnPc pose1 n=3; CuPc/F16 n=2",
+    "target": "llbeast + Vast 3090 clean re-runs; ZnPc pose1 n=3 (rep1_clean+r2+r3); H2Pc pose1/rep2_clean; CuPc/F16 n=2",
     "artifacts_ready": true,
-    "as_of": "2026-10-18",
+    "as_of": "2026-10-30",
     "gate": "mean lig RMSD ≤ 5 Å and mean COM drift ≤ 6 Å (Stage 5 survival criteria on ~100 ns)",
-    "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1,rep2[,rep3]}/analysis/",
-    "note": "H2Pc Stage6 4/4 harvested: pose1/rep1–2 + pose2/rep1–2 time series (contacts + RMSD vs ps, interactive zoom). Stage7 H2Pc comparative MM/GBSA bound. No invented ΔG. Stage8 not started.",
+    "analysis_path": "results/dynamics/stage6/{znpc,cupc,f16znpc}/pose1/{rep1_clean|rep1,rep2[,rep3]}/analysis/",
+    "note": "ZnPc pose1/rep1_clean FAIL (ligRMSD 6.26); H2Pc pose1/rep2_clean PASS (ligRMSD 1.24). Old ZnPc r1 and H2Pc r2 resume-splits superseded. ZnPc 2/3 PASS (r2+r3). H2Pc Stage7 GB still on prior trajs (p1r2 −48.16 caveat) — not re-run. No invented ΔG.",
     "runs": [
       {
         "ligand_id": "ZnPc",
         "ligand_key": "znpc",
         "pose": "pose1",
         "replica": "rep1",
-        "status": "fail",
+        "status": "superseded",
         "gate": "FAIL",
         "traj_ns": 100,
         "temp_mean_K": 300.02,
@@ -1248,7 +1248,33 @@
         "com_drift_mean_A": 5.21,
         "com_drift_max_A": 6.54,
         "com_pocket_mean_A": 2.62,
-        "note": "Near pocket but reorients/shifts enough to fail RMSD gate"
+        "superseded_by": "rep1_clean",
+        "note": "Superseded by rep1_clean (Vast clean re-run). Old A100+3090 resume-split — excluded from Stage 6 ranking mean."
+      },
+      {
+        "ligand_id": "ZnPc",
+        "ligand_key": "znpc",
+        "pose": "pose1",
+        "replica": "rep1_clean",
+        "status": "fail",
+        "gate": "FAIL",
+        "traj_ns": 100,
+        "temp_mean_K": 300.02,
+        "lig_rmsd_mean_A": 6.261,
+        "lig_rmsd_max_A": 9.307,
+        "com_drift_mean_A": 4.218,
+        "com_drift_max_A": 6.592,
+        "com_pocket_mean_A": 2.795,
+        "n_res_contacts_mean": 10.918,
+        "n_atom_contacts_mean": 27.193,
+        "contact_cutoff_A": 4.0,
+        "clean_rerun": true,
+        "supersedes": "rep1",
+        "host": "vast_rtx3090",
+        "vast_id": 58313115,
+        "ns_per_day": 212.43,
+        "wall_h": 11.3,
+        "note": "Clean Vast 3090 100 ns (58313115). Still FAIL on lig RMSD (6.26>5; improved from old resume-split 7.07). Old pose1/rep1 superseded for ranking."
       },
       {
         "ligand_id": "ZnPc",
@@ -1264,7 +1290,7 @@
         "com_drift_mean_A": 1.12,
         "com_drift_max_A": 3.82,
         "com_pocket_mean_A": 6.64,
-        "note": "Strong replica dependence vs rep1 FAIL; seed 102 stays pose-stable"
+        "note": "Strong replica dependence vs rep1_clean FAIL; seed 102 stays pose-stable"
       },
       {
         "ligand_id": "ZnPc",
@@ -1280,7 +1306,7 @@
         "com_drift_mean_A": 1.32,
         "com_drift_max_A": 4.11,
         "com_pocket_mean_A": 6.58,
-        "note": "2/3 PASS with r2; tracks rep2 (stable), not rep1 FAIL; seed 103"
+        "note": "2/3 PASS with r2; tracks rep2 (stable), not rep1_clean FAIL; seed 103"
       },
       {
         "ligand_id": "CuPc",
@@ -1345,26 +1371,66 @@
         "com_drift_max_A": 5.57,
         "com_pocket_mean_A": 7.21,
         "note": "Consistent PASS with rep1; slightly higher RMSD/drift than rep1; T 300 K"
+      },
+      {
+        "ligand_id": "H2Pc",
+        "ligand_key": "h2pc",
+        "pose": "pose1",
+        "replica": "rep2",
+        "status": "superseded",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "lig_rmsd_mean_A": 5.641,
+        "lig_rmsd_max_A": 10.13,
+        "com_pocket_mean_A": null,
+        "superseded_by": "rep2_clean",
+        "note": "Superseded by rep2_clean. Old resume-split (elevated RMSD 5.64; Stage7 −48.16 caveat) — excluded from Stage 6 ranking mean."
+      },
+      {
+        "ligand_id": "H2Pc",
+        "ligand_key": "h2pc",
+        "pose": "pose1",
+        "replica": "rep2_clean",
+        "status": "pass",
+        "gate": "PASS",
+        "traj_ns": 100,
+        "temp_mean_K": 300.02,
+        "lig_rmsd_mean_A": 1.241,
+        "lig_rmsd_max_A": 2.881,
+        "com_drift_mean_A": 0.829,
+        "com_drift_max_A": 2.584,
+        "com_pocket_mean_A": 6.606,
+        "n_res_contacts_mean": 8.43,
+        "n_atom_contacts_mean": 20.153,
+        "contact_cutoff_A": 4.0,
+        "clean_rerun": true,
+        "supersedes": "rep2",
+        "host": "vast_rtx3090",
+        "vast_id": 58312354,
+        "ns_per_day": 206.2,
+        "wall_h": 11.64,
+        "note": "Clean Vast 3090 100 ns (58312354). PASS — supersedes resume-split pose1/rep2 for survival ranking. Stage7 not re-run."
       }
     ],
     "h2pc_timeseries_url": "pipeline/stage6_h2pc_timeseries.json"
   },
   "campaign_status": {
-    "as_of": "2026-10-20",
+    "as_of": "2026-10-30",
     "headline": "Zn/Cu/F16 Stages 0–7 · H2Pc Stage6/7 · AF3 Path B batch vs Boltz (5 ligands) · Stage 8 not started",
     "done": [
       "Stage 0–3: pocket PASS, QM/FF for ZnPc/CuPc/F16-ZnPc + H2Pc (metal-free)",
       "Stage 4 dock: 2 poses/ligand (H2Pc −9.5 kcal, RMSD 6.6 Å); Boltz structure co-fold (ΔG null)",
       "H2Pc Boltz: 5 mmcif samples (conf ~0.73–0.76; iptm ~0.48–0.71); A40 spend ~$0.08",
       "Stage 5 screen (Zn/Cu/F16): 18/18, 6/6 poses PASS",
-      "Stage 6 pose1: ZnPc 2/3 PASS (r1 FAIL, r2+r3 PASS), CuPc FAIL/FAIL, F16 PASS/PASS",
+      "Stage 6 pose1: ZnPc 2/3 PASS (r1_clean FAIL 6.26 Å; r2+r3 PASS); CuPc FAIL/FAIL; F16 PASS/PASS; H2Pc pose1/rep2_clean PASS (ligRMSD 1.24 Å; old r2 superseded)",
       "Stage 7 MM/GBSA metals (pose1): comparative GB CuPc (−39.1) > ZnPc (−30.8) > F16 (−25.1) — not absolute ΔG; CuPc MD FAIL; F16 most stable",
       "FePc Boltz Stage1 probe: 5/5 CIFs (protein-only; no site vote; ~$0.50)",
-      "H2Pc Stage6 4/4 harvested — MD time series (contacts + lig RMSD vs ps) for pose1/rep1–2 + pose2/rep1–2; interactive zoom",
+      "H2Pc Stage6 4/4 archived + pose1/rep2_clean PASS (ligRMSD 1.24); time series still shows prior pose1/rep2 until clean series exported; old r2 superseded",
       "H2Pc Stage7 comparative MM/GBSA (4/4): pose1/rep1 −29.24, pose1/rep2 −48.16 (outlier / resume-split), pose2/rep1 −27.11, pose2/rep2 −29.41; mean −33.48 — comparative only; Stage8 skipped (metal-free)",
       "AF3 Path B batch vs Boltz (ZnPc/CuPc/F16-ZnPc/FePc/H2Pc): ligand-atom gate PASS all; CA RMSD AF3↔Boltz Cu 2.85 · H2 7.70 · F16 7.59 · Zn 12.77 · Fe N/A (Boltz CIF stub); Boltz mmCIF protein-only; no invented ΔG"
     ],
     "missing": [
+      "H2Pc pose1/rep2_clean full MD time-series arrays (survival summary bound; series export pending)",
       "Boltz affinity ΔG (NIM 422 / H2Pc not required) — leave null",
       "Boltz CIF ligand coords for metal PCs (H2Pc ligand geometry from AF3 Path B / Stage4 dock)",
       "Stage 6 pose2 production + CuPc/F16 rep3",
@@ -1626,7 +1692,7 @@
         "seed": 1,
         "sample": 0,
         "cif": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
-        "api_cif": "/dock/structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif"
+        "api_cif": "/structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif"
       }
     },
     "path_a_footnote": {
