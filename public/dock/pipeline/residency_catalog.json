@@ -1,20 +1,37 @@
 {
   "schema": "phd_dock_residency_v1",
-  "updated_at": "2026-11-16T13:28:00Z",
-  "source_note": "Residency Stage6 glycan-RBD (G1 FA2G2@N331+N343). 2-rep cap pose1/rep1+rep2. Dynamics cpptraj stride20 @ 2026-11-16T13:28Z for all 5 DONE reps. F16 p1r2 FAIL on lig RMSD (7.04 Å). ZnPc p1r2 best site occupancy (25% at R=6 Å). Near-zero occupancy on other PASS reps is not an occupancy win. H2Pc p1r2 still running.",
+  "updated_at": "2026-11-16T22:08:00Z",
+  "source_note": "Residency Stage6 glycan-RBD (G1 FA2G2@N331+N343). 2-rep cap pose1/rep1+rep2. Dynamics cpptraj stride20 @ 2026-11-16T22:08Z for all 6/6 DONE reps. F16 p1r2 FAIL on lig RMSD (7.04 \u00c5). ZnPc p1r2 best site occupancy (25% at R=6 \u00c5). H2Pc p1r2 PASS (ligRMSD 4.53; occ 7.0%). Classical 2-rep COMPLETE. No FM.",
   "policy": {
-    "ligands": ["h2pc", "f16znpc", "znpc"],
-    "poses": ["pose1"],
-    "reps": ["rep1", "rep2"],
+    "ligands": [
+      "h2pc",
+      "f16znpc",
+      "znpc"
+    ],
+    "poses": [
+      "pose1"
+    ],
+    "reps": [
+      "rep1",
+      "rep2"
+    ],
     "ns_target": 100,
     "occupancy_R_A": 6,
     "glycans": "G1 FA2G2 at N331+N343",
     "pocket": "promoted ZnPc MetalDock + AF3 site-OK",
-    "pocket_spike_residues": [338, 339, 342, 343, 368, 371, 373]
+    "pocket_spike_residues": [
+      338,
+      339,
+      342,
+      343,
+      368,
+      371,
+      373
+    ]
   },
-  "campaign_status": "partial",
+  "campaign_status": "complete",
   "archive_root": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/",
-  "analysis_status": "DONE_5of6_cpptraj_stride20",
+  "analysis_status": "DONE_6of6_cpptraj_stride20",
   "runs": [
     {
       "ligand_id": "F16-ZnPc",
@@ -22,7 +39,7 @@
       "pose": "pose1",
       "replica": "rep1",
       "status": "done",
-      "ns_done": 100,
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60552417",
       "archive_path": "f16znpc_pose1_rep1/",
@@ -37,8 +54,8 @@
       "contacts_res_mean": 11.82,
       "temp_mean_K": 299.993,
       "ns_per_day": 122.69,
-      "metrics_source": "COMPTEMP/.../f16znpc_pose1_rep1/metrics.json · cpptraj_stride20",
-      "note": "DONE · gate PASS. Occ 0% at R=6 Å (COM–pocket 8.63 Å) — not an occupancy win."
+      "metrics_source": "COMPTEMP/.../f16znpc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-14T23:33:17Z",
+      "note": "DONE \u00b7 gate PASS. Occ 0.0% at R=6 \u00c5 (COM\u2013pocket 8.631 \u00c5) \u2014 not an occupancy win."
     },
     {
       "ligand_id": "F16-ZnPc",
@@ -46,7 +63,7 @@
       "pose": "pose1",
       "replica": "rep2",
       "status": "done",
-      "ns_done": 100,
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60552417",
       "archive_path": "f16znpc_pose1_rep2/",
@@ -61,8 +78,8 @@
       "contacts_res_mean": 2.666,
       "temp_mean_K": 299.992,
       "ns_per_day": 123.19,
-      "metrics_source": "COMPTEMP/.../f16znpc_pose1_rep2/metrics.json · cpptraj_stride20 · 2026-11-16T13:28:10Z",
-      "note": "DONE · gate FAIL on mean lig RMSD 7.036 Å (>5). Occ 0%; COM–pocket 9.19 Å."
+      "metrics_source": "COMPTEMP/.../f16znpc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "note": "DONE \u00b7 gate FAIL on mean lig RMSD 7.036 \u00c5 (>5). Occ 0.0%; COM\u2013pocket 9.192 \u00c5."
     },
     {
       "ligand_id": "ZnPc",
@@ -70,7 +87,7 @@
       "pose": "pose1",
       "replica": "rep1",
       "status": "done",
-      "ns_done": 100,
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60550541",
       "archive_path": "znpc_pose1_rep1/",
@@ -85,8 +102,8 @@
       "contacts_res_mean": 2.012,
       "temp_mean_K": 299.989,
       "ns_per_day": 102.55,
-      "metrics_source": "COMPTEMP/.../znpc_pose1_rep1/metrics.json · cpptraj_stride20",
-      "note": "DONE · gate PASS. Occ 0.2% at R=6 Å (COM–pocket 7.68 Å)."
+      "metrics_source": "COMPTEMP/.../znpc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-14T23:33:15Z",
+      "note": "DONE \u00b7 gate PASS. Occ 0.2% at R=6 \u00c5 (COM\u2013pocket 7.682 \u00c5) \u2014 not an occupancy win."
     },
     {
       "ligand_id": "ZnPc",
@@ -94,7 +111,7 @@
       "pose": "pose1",
       "replica": "rep2",
       "status": "done",
-      "ns_done": 100,
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60552417",
       "archive_path": "znpc_pose1_rep2/",
@@ -109,8 +126,8 @@
       "contacts_res_mean": 4.122,
       "temp_mean_K": 300.002,
       "ns_per_day": 123.08,
-      "metrics_source": "COMPTEMP/.../znpc_pose1_rep2/metrics.json · cpptraj_stride20 · 2026-11-16T13:28:10Z",
-      "note": "DONE · gate PASS. Best site occupancy so far: 25% at R=6 Å (COM–pocket 6.15 Å)."
+      "metrics_source": "COMPTEMP/.../znpc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "note": "DONE \u00b7 gate PASS. Best site occupancy so far: 25% at R=6 \u00c5 (COM\u2013pocket 6.153 \u00c5)."
     },
     {
       "ligand_id": "H2Pc",
@@ -118,7 +135,7 @@
       "pose": "pose1",
       "replica": "rep1",
       "status": "done",
-      "ns_done": 100,
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60550541",
       "archive_path": "h2pc_pose1_rep1/",
@@ -133,34 +150,36 @@
       "contacts_res_mean": 2.248,
       "temp_mean_K": 299.995,
       "ns_per_day": 102.96,
-      "metrics_source": "COMPTEMP/.../h2pc_pose1_rep1/metrics.json · cpptraj_stride20 · 2026-11-16T13:28:10Z",
-      "note": "DONE · gate PASS. Occ 0% at R=6 Å (COM–pocket 9.11 Å) — not an occupancy win."
+      "metrics_source": "COMPTEMP/.../h2pc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "note": "DONE \u00b7 gate PASS. Occ 0.0% at R=6 \u00c5 (COM\u2013pocket 9.108 \u00c5) \u2014 not an occupancy win."
     },
     {
       "ligand_id": "H2Pc",
       "ligand_key": "h2pc",
       "pose": "pose1",
       "replica": "rep2",
-      "status": "running",
-      "ns_done": 69.83,
+      "status": "done",
+      "ns_done": 100.0,
       "ns_target": 100,
       "vast_id": "60550541",
-      "archive_path": null,
-      "harvest": null,
-      "gate": null,
-      "occupancy_frac": null,
-      "lig_rmsd_mean_A": null,
-      "lig_rmsd_max_A": null,
-      "com_drift_mean_A": null,
-      "com_drift_max_A": null,
-      "com_pocket_mean_A": null,
-      "contacts_res_mean": null,
-      "metrics_source": null,
-      "note": "Running on CA Vast 60550541 · ~69.83/100 ns (check 2026-11-16T13:28Z). Last classical job under 2-rep cap."
+      "archive_path": "h2pc_pose1_rep2/",
+      "harvest": "archived_rezback",
+      "gate": "PASS",
+      "occupancy_frac": 0.07,
+      "lig_rmsd_mean_A": 4.53,
+      "lig_rmsd_max_A": 5.916,
+      "com_drift_mean_A": 3.943,
+      "com_drift_max_A": 5.112,
+      "com_pocket_mean_A": 6.699,
+      "contacts_res_mean": 1.47,
+      "temp_mean_K": 299.98,
+      "ns_per_day": 102.36,
+      "metrics_source": "COMPTEMP/.../h2pc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20 \u00b7 analyzed_at 2026-11-16T22:08:53Z",
+      "note": "DONE \u00b7 gate PASS. Occ 7.0% at R=6 \u00c5 (COM\u2013pocket 6.699 \u00c5). Classical 2-rep COMPLETE."
     }
   ],
   "media": {
-    "note": "No glycan+ligand complex or traj frames published yet. Five of six pose1 reps harvested on REZBACK; H2Pc p1r2 still running.",
+    "note": "No glycan+ligand complex or traj frames published yet. All six pose1 classical 2-rep archives on REZBACK; analysis complete.",
     "slots": []
   },
   "summary": {
@@ -169,13 +188,14 @@
       "f16znpc_p1r2": "FAIL",
       "znpc_p1r1": "PASS",
       "znpc_p1r2": "PASS",
-      "h2pc_p1r1": "PASS"
+      "h2pc_p1r1": "PASS",
+      "h2pc_p1r2": "PASS"
     },
     "best_occupancy": {
       "run": "znpc/pose1/rep2",
       "occupancy_frac": 0.25
     },
-    "classical_2rep": "5/6 DONE; remaining h2pc/pose1/rep2"
+    "classical_2rep": "6/6 DONE \u2014 COMPLETE"
   },
   "instances": {
     "60552417": {
@@ -184,9 +204,9 @@
       "reason": "idle after znpc p1r2 harvest; 2-rep cap"
     },
     "60550541": {
-      "status": "running",
-      "role": "h2pc_pose1_rep2",
-      "label": "residency-s6-b"
+      "status": "destroyed",
+      "destroyed_at": "2026-11-16T22:08Z",
+      "reason": "h2pc p1r2 harvested; classical 2-rep COMPLETE"
     }
   }
 }
