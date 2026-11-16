@@ -179,7 +179,7 @@
     }
   ],
   "media": {
-    "note": "No glycan+ligand complex or traj frames published yet. All six pose1 classical 2-rep archives on REZBACK; analysis complete.",
+    "note": "Static Stage4 dock pose1 + AF3 Path B pose1 overlays wired in Residency Media from /structures/. Glycan+ligand complex / traj frames not published yet. All six pose1 classical 2-rep archives on REZBACK; analysis complete.",
     "slots": []
   },
   "summary": {
