@@ -1,6 +1,6 @@
 {
   "schema": "phd_dock_tragictraj_v1",
-  "updated_at": "2026-11-19T03:29Z",
+  "updated_at": "2026-11-19T04:01Z",
   "title": "TragicTraj \u2014 residency Stage6 cinema",
   "style_ref": {
     "label": "Gleb Novikov LinkedIn capture (style only)",
@@ -35,19 +35,13 @@
     "scratch_confirmed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/"
   },
   "zenodo": {
-    "status": "draft_accepted_pending_publish",
-    "record_url": null,
-    "doi": null,
+    "status": "published",
+    "doi": "10.5281/zenodo.24358155",
+    "record_url": "https://zenodo.org/records/24358155",
+    "archive_zip": "https://zenodo.org/records/24358155/files/ANest58/anest58.github.io-tragictraj-pack-a-v1.zip?download=1",
     "github_release": "https://github.com/ANest58/anest58.github.io/releases/tag/tragictraj-pack-a-v1",
     "github_release_zip": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_pack_a_movies.zip",
-    "webhook": {
-      "event": "release published",
-      "zenodo_http": 202,
-      "message": "Accepted.",
-      "duplicate_released_http": 409,
-      "note": "Zenodo received the GitHub release; public DOI appears only after the deposit is published in the Zenodo account UI."
-    },
-    "note": "GitHub\u2194Zenodo hook on anest58.github.io accepted tragictraj-pack-a-v1 (202). No public DOI yet \u2014 Anthony must open Zenodo \u2192 Uploads/drafts and publish the auto-created deposit. Cinema currently embeds GitHub Release asset URLs (same MP4s) until DOI/file URLs replace them."
+    "note": "Zenodo DOI published via GitHub\u2194Zenodo for tag tragictraj-pack-a-v1. Zenodo auto-deposit is the GitHub source zip at the tag (not the six release MP4 assets). Cinema embeds GitHub Release MP4 URLs; cite DOI 10.5281/zenodo.24358155 for the deposit. Optional follow-up: manually attach the six movie_pocket.mp4 files to the Zenodo record."
   },
   "fm": {
     "status": "in_flight_znpc",
@@ -88,9 +82,10 @@
         "occ_iso": null,
         "path_overlay": null,
         "molstar_stride": "tragictraj-media/znpc_pose1_rep2/molstar_stride.pdb",
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/znpc_pose1_rep2/movie_pocket.mp4",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_pose1_rep2_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_pose1_rep2_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       }
     },
     {
@@ -110,7 +105,7 @@
       "dock_pose": "structures/dock/f16znpc_pose1.pdb",
       "af3_pose": "structures/af3/f16_znpc/pathb_pose1_seed5_sample3_model.cif",
       "media": {
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "interaction_still": "tragictraj-media/f16znpc_pose1_rep1/interaction_still.png",
         "poster": "tragictraj-media/f16znpc_pose1_rep1/poster.png",
         "cv_strip": "tragictraj-media/f16znpc_pose1_rep1/cv_strip.png",
@@ -118,7 +113,8 @@
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep1/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep1_movie_pocket.mp4",
         "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep1/vs_dock_af3.png",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep1_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep1_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       }
     },
     {
@@ -138,7 +134,7 @@
       "dock_pose": "structures/dock/znpc_pose1.pdb",
       "af3_pose": "structures/af3/znpc/pathb_pose1_seed1_sample2_model.cif",
       "media": {
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "interaction_still": "tragictraj-media/znpc_pose1_rep1/interaction_still.png",
         "poster": "tragictraj-media/znpc_pose1_rep1/poster.png",
         "cv_strip": "tragictraj-media/znpc_pose1_rep1/cv_strip.png",
@@ -146,7 +142,8 @@
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/znpc_pose1_rep1/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_pose1_rep1_movie_pocket.mp4",
         "vs_dock_af3": "tragictraj-media/znpc_pose1_rep1/vs_dock_af3.png",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_pose1_rep1_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_pose1_rep1_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       }
     },
     {
@@ -166,7 +163,7 @@
       "dock_pose": "structures/dock/h2pc_pose1.pdb",
       "af3_pose": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
       "media": {
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "interaction_still": "tragictraj-media/h2pc_pose1_rep1/interaction_still.png",
         "poster": "tragictraj-media/h2pc_pose1_rep1/poster.png",
         "cv_strip": "tragictraj-media/h2pc_pose1_rep1/cv_strip.png",
@@ -174,7 +171,8 @@
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/h2pc_pose1_rep1/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep1_movie_pocket.mp4",
         "vs_dock_af3": "tragictraj-media/h2pc_pose1_rep1/vs_dock_af3.png",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep1_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep1_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       }
     },
     {
@@ -194,7 +192,7 @@
       "dock_pose": "structures/dock/h2pc_pose1.pdb",
       "af3_pose": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
       "media": {
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "interaction_still": "tragictraj-media/h2pc_pose1_rep2/interaction_still.png",
         "poster": "tragictraj-media/h2pc_pose1_rep2/poster.png",
         "cv_strip": "tragictraj-media/h2pc_pose1_rep2/cv_strip.png",
@@ -202,7 +200,8 @@
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/h2pc_pose1_rep2/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep2_movie_pocket.mp4",
         "vs_dock_af3": "tragictraj-media/h2pc_pose1_rep2/vs_dock_af3.png",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep2_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_h2pc_pose1_rep2_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       }
     },
     {
@@ -222,7 +221,7 @@
       "dock_pose": "structures/dock/f16znpc_pose1.pdb",
       "af3_pose": "structures/af3/f16_znpc/pathb_pose1_seed5_sample3_model.cif",
       "media": {
-        "status": "rendered_llbeast_release_wired",
+        "status": "rendered_llbeast_zenodo_doi",
         "interaction_still": "tragictraj-media/f16znpc_pose1_rep2/interaction_still.png",
         "poster": "tragictraj-media/f16znpc_pose1_rep2/poster.png",
         "cv_strip": "tragictraj-media/f16znpc_pose1_rep2/cv_strip.png",
@@ -230,7 +229,8 @@
         "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep2/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4",
         "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep2/vs_dock_af3.png",
-        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4"
+        "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4",
+        "zenodo_record": "https://zenodo.org/records/24358155"
       },
       "note": "Include honestly \u2014 gate FAIL on lig RMSD."
     }
