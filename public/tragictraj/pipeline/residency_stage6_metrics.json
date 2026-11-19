@@ -1,0 +1,328 @@
+{
+  "updated_at": "2026-11-16T22:08Z",
+  "schema": "residency-stage6-metrics-for-pitcher/v1",
+  "campaign_status": "classical_2rep_COMPLETE",
+  "source": {
+    "dynamics_harvest": "/cursor/stores/bc-09183127-44ba-435f-85c4-35063258f04e/docs/residency-stage6-metrics.json",
+    "dynamics_updated_at": "2026-11-16T22:08Z",
+    "campaign_log": "/cursor/stores/bc-09183127-44ba-435f-85c4-35063258f04e/docs/residency-run-log.md",
+    "pitcher_note": "All 6/6 classical 2-rep Stage6 archives harvested + cpptraj analyzed. No FM unless Anthony asks."
+  },
+  "policy": {
+    "poses": [
+      "pose1"
+    ],
+    "reps": [
+      "rep1",
+      "rep2"
+    ],
+    "ligands": [
+      "h2pc",
+      "f16znpc",
+      "znpc"
+    ],
+    "ns_target": 100,
+    "occupancy_R_A": 6.0,
+    "cap_note": "Anthony 2026-11-14: 2-rep Stage6 only; no rep3/pose2"
+  },
+  "archive": {
+    "root": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/",
+    "analysis_scratch": "/run/media/andon/COMPTEMP/phd-scratch/residency",
+    "confirmed_entries": [
+      {
+        "name": "f16znpc_pose1_rep1/",
+        "status": "DONE",
+        "prod_nc_bytes": 15832000816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      },
+      {
+        "name": "f16znpc_pose1_rep2/",
+        "status": "DONE",
+        "prod_nc_bytes": 15832000816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      },
+      {
+        "name": "znpc_pose1_rep1/",
+        "status": "DONE",
+        "prod_nc_bytes": 15808480816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      },
+      {
+        "name": "znpc_pose1_rep2/",
+        "status": "DONE",
+        "prod_nc_bytes": 15808480816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      },
+      {
+        "name": "h2pc_pose1_rep1/",
+        "status": "DONE",
+        "prod_nc_bytes": 15809560816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      },
+      {
+        "name": "h2pc_pose1_rep2/",
+        "status": "DONE",
+        "prod_nc_bytes": 15809560816,
+        "confirmed_files": [
+          "prod.nc",
+          "prod.out",
+          "prod.rst",
+          "md_meta.json",
+          "harvest_manifest.json"
+        ]
+      }
+    ]
+  },
+  "runs": [
+    {
+      "ligand": "f16znpc",
+      "pose": 1,
+      "rep": 1,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60552417,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep1",
+      "prod_nc_bytes": 15832000816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 299.992999,
+        "wall_h": 19.56,
+        "ns_per_day": 122.69
+      },
+      "metrics": {
+        "occupancy_frac": 0.0,
+        "survival_gate": "PASS",
+        "lig_rmsd_mean": 3.534,
+        "lig_rmsd_max": 6.486,
+        "com_pocket_mean": 8.631,
+        "com_drift_mean": 2.717,
+        "com_drift_max": 4.578,
+        "contacts_res_mean": 11.82
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/f16znpc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-14T23:33:17Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate PASS. Site occupancy 0.0% at R=6 \u00c5 (mean COM\u2013pocket 8.631 \u00c5).",
+      "harvested_at": "2026-11-14T19:55:50Z"
+    },
+    {
+      "ligand": "f16znpc",
+      "pose": 1,
+      "rep": 2,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60552417,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/f16znpc_pose1_rep2",
+      "prod_nc_bytes": 15832000816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 299.991513,
+        "wall_h": 19.48,
+        "ns_per_day": 123.19
+      },
+      "metrics": {
+        "occupancy_frac": 0.0,
+        "survival_gate": "FAIL",
+        "lig_rmsd_mean": 7.036,
+        "lig_rmsd_max": 9.412,
+        "com_pocket_mean": 9.192,
+        "com_drift_mean": 3.222,
+        "com_drift_max": 5.439,
+        "contacts_res_mean": 2.666
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/f16znpc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate FAIL. Site occupancy 0.0% at R=6 \u00c5 (mean COM\u2013pocket 9.192 \u00c5). Gate FAIL driven by elevated mean lig RMSD.",
+      "harvested_at": "2026-11-15T15:44:29Z"
+    },
+    {
+      "ligand": "znpc",
+      "pose": 1,
+      "rep": 1,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60550541,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep1",
+      "prod_nc_bytes": 15808480816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 299.989214,
+        "wall_h": 23.4,
+        "ns_per_day": 102.55
+      },
+      "metrics": {
+        "occupancy_frac": 0.002,
+        "survival_gate": "PASS",
+        "lig_rmsd_mean": 4.318,
+        "lig_rmsd_max": 7.97,
+        "com_pocket_mean": 7.682,
+        "com_drift_mean": 3.939,
+        "com_drift_max": 7.807,
+        "contacts_res_mean": 2.012
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/znpc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-14T23:33:15Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate PASS. Site occupancy 0.2% at R=6 \u00c5 (mean COM\u2013pocket 7.682 \u00c5).",
+      "harvested_at": "2026-11-14T23:28:38Z"
+    },
+    {
+      "ligand": "znpc",
+      "pose": 1,
+      "rep": 2,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60552417,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/znpc_pose1_rep2",
+      "prod_nc_bytes": 15808480816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 300.001684,
+        "wall_h": 19.5,
+        "ns_per_day": 123.08
+      },
+      "metrics": {
+        "occupancy_frac": 0.25,
+        "survival_gate": "PASS",
+        "lig_rmsd_mean": 2.528,
+        "lig_rmsd_max": 3.215,
+        "com_pocket_mean": 6.153,
+        "com_drift_mean": 2.184,
+        "com_drift_max": 3.011,
+        "contacts_res_mean": 4.122
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/znpc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate PASS. Site occupancy 25.0% at R=6 \u00c5 (mean COM\u2013pocket 6.153 \u00c5). UT destroyed after harvest.",
+      "harvested_at": "2026-11-16T11:30:21Z"
+    },
+    {
+      "ligand": "h2pc",
+      "pose": 1,
+      "rep": 1,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60550541,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/h2pc_pose1_rep1",
+      "prod_nc_bytes": 15809560816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 299.9946,
+        "wall_h": 23.31,
+        "ns_per_day": 102.96
+      },
+      "metrics": {
+        "occupancy_frac": 0.0,
+        "survival_gate": "PASS",
+        "lig_rmsd_mean": 2.962,
+        "lig_rmsd_max": 4.279,
+        "com_pocket_mean": 9.108,
+        "com_drift_mean": 1.619,
+        "com_drift_max": 3.24,
+        "contacts_res_mean": 2.248
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/h2pc_pose1_rep1/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-16T13:28:10Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate PASS. Site occupancy 0.0% at R=6 \u00c5 (mean COM\u2013pocket 9.108 \u00c5).",
+      "harvested_at": "2026-11-16T00:04:32Z"
+    },
+    {
+      "ligand": "h2pc",
+      "pose": 1,
+      "rep": 2,
+      "status": "done",
+      "ns_done": 100.0,
+      "ns_target": 100,
+      "vast_id": 60550541,
+      "archive_path": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/h2pc_pose1_rep2",
+      "prod_nc_bytes": 15809560816,
+      "mdout": {
+        "nstep_final": 50000000,
+        "temp_K_mean": 299.980464,
+        "wall_h": 23.45,
+        "ns_per_day": 102.36
+      },
+      "metrics": {
+        "occupancy_frac": 0.07,
+        "survival_gate": "PASS",
+        "lig_rmsd_mean": 4.53,
+        "lig_rmsd_max": 5.916,
+        "com_pocket_mean": 6.699,
+        "com_drift_mean": 3.943,
+        "com_drift_max": 5.112,
+        "contacts_res_mean": 1.47
+      },
+      "metrics_source": "/run/media/andon/COMPTEMP/phd-scratch/residency/stage6_analysis/h2pc_pose1_rep2/metrics.json \u00b7 cpptraj_stride20_autoimage_anchor_protein_pocketCA_fit_frame0 \u00b7 analyzed_at 2026-11-16T22:08:53Z",
+      "notes": "Harvest DONE+REZBACK. Stage5-style gate PASS. Site occupancy 7.0% at R=6 \u00c5 (mean COM\u2013pocket 6.699 \u00c5). CA destroyed after harvest. Classical 2-rep set COMPLETE.",
+      "harvested_at": "2026-11-16T22:08:00Z"
+    }
+  ],
+  "summary": {
+    "metrics_landed": [
+      "f16znpc/pose1/rep1",
+      "f16znpc/pose1/rep2",
+      "znpc/pose1/rep1",
+      "znpc/pose1/rep2",
+      "h2pc/pose1/rep1",
+      "h2pc/pose1/rep2"
+    ],
+    "metrics_pending": [],
+    "gates": {
+      "f16znpc_p1r1": "PASS",
+      "f16znpc_p1r2": "FAIL",
+      "znpc_p1r1": "PASS",
+      "znpc_p1r2": "PASS",
+      "h2pc_p1r1": "PASS",
+      "h2pc_p1r2": "PASS"
+    },
+    "occupancy_landed": true,
+    "classical_2rep": "6/6 DONE \u2014 COMPLETE",
+    "fm": "deferred_until_Anthony_asks"
+  },
+  "monitor": {
+    "policy": "2rep_cap_complete",
+    "UT_60552417": "destroyed_2026-11-16T11:32Z",
+    "CA_60550541": "destroyed_2026-11-16T22:08Z",
+    "fm": "deferred_until_Anthony_asks",
+    "vast_instances_remaining": 0
+  },
+  "instances": {
+    "60552417": {
+      "status": "destroyed",
+      "destroyed_at": "2026-11-16T11:32Z"
+    },
+    "60550541": {
+      "status": "destroyed",
+      "destroyed_at": "2026-11-16T22:08Z",
+      "reason": "h2pc p1r2 harvested; classical 2-rep COMPLETE"
+    }
+  }
+}

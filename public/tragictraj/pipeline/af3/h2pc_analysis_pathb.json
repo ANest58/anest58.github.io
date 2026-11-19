@@ -1,0 +1,199 @@
+{
+  "run": {
+    "pod_id": "m3nkjjdu4nq6ic",
+    "gpu": "NVIDIA A100 80GB PCIe secure",
+    "rate_usd_per_hr": 1.79,
+    "uptime_s": 1511,
+    "est_usd": 0.75,
+    "cap_usd": 15,
+    "template_id": "q4onrs5rn0",
+    "image": "jurgjn/alphafold3:v3.0.4",
+    "disk_gb": 1000,
+    "msa_s": 598.46,
+    "templates_s": 7.7,
+    "inference_extract_s": 133.17
+  },
+  "path_b_best": {
+    "seed": "1",
+    "sample": "0",
+    "ranking_score": "0.7178759501211239"
+  },
+  "path_b_scores": {
+    "ranking_score": 0.72,
+    "ptm": 0.86,
+    "iptm": 0.68,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.88,
+      0.79
+    ],
+    "chain_iptm": [
+      0.68,
+      0.68
+    ]
+  },
+  "path_a_scores": {
+    "ranking_score": 0.37,
+    "ptm": 0.31,
+    "iptm": 0.38
+  },
+  "ligand_atom_gate": {
+    "path_b": true,
+    "asyms": [
+      "A",
+      "L"
+    ],
+    "n_lig_heavy": 40,
+    "n_hetatm": 40,
+    "boltz": "protein-only (no ligand atoms in mmCIF)"
+  },
+  "rmsd": {
+    "protein_CA_AF3B_vs_Boltz": [
+      {
+        "file": "sample_1.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 8.002,
+        "n_common": 194
+      },
+      {
+        "file": "sample_2.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 18.117,
+        "n_common": 194
+      },
+      {
+        "file": "sample_3.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 24.138,
+        "n_common": 194
+      },
+      {
+        "file": "sample_4.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 7.7,
+        "n_common": 194
+      },
+      {
+        "file": "sample_5.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 18.372,
+        "n_common": 194
+      }
+    ],
+    "protein_CA_AF3B_vs_AF3A": 20.508,
+    "ligand_AF3B_vs_AF3A": 8.249,
+    "ligand_AF3_vs_Stage4_dock": [
+      {
+        "pose": "pose1.pdb",
+        "lig_rmsd_vs_pathB_A": 5.807,
+        "lig_rmsd_vs_pathA_A": 6.169,
+        "pocket_res_ca5": [
+          [
+            338,
+            4.16
+          ],
+          [
+            339,
+            4.19
+          ],
+          [
+            342,
+            4.37
+          ],
+          [
+            371,
+            4.9
+          ]
+        ]
+      },
+      {
+        "pose": "pose2.pdb",
+        "lig_rmsd_vs_pathB_A": 5.808,
+        "lig_rmsd_vs_pathA_A": 6.171,
+        "pocket_res_ca5": [
+          [
+            338,
+            4.16
+          ],
+          [
+            339,
+            4.19
+          ],
+          [
+            342,
+            4.37
+          ],
+          [
+            371,
+            4.9
+          ]
+        ]
+      }
+    ]
+  },
+  "pocket_contacts_CA_le_5A": {
+    "path_b_spike_res": [
+      338,
+      339,
+      342,
+      343,
+      365,
+      368,
+      374,
+      377,
+      434
+    ],
+    "path_a_spike_res": [
+      380,
+      381,
+      388,
+      486
+    ],
+    "dock_pose1": [
+      338,
+      339,
+      342,
+      371
+    ],
+    "dock_pose2": [
+      338,
+      339,
+      342,
+      371
+    ],
+    "overlap_pathB_pose1": [
+      338,
+      339,
+      342
+    ],
+    "overlap_pathB_pose2": [
+      338,
+      339,
+      342
+    ],
+    "jaccard_pathB_pose1": 0.3,
+    "jaccard_pathB_pose2": 0.3
+  },
+  "paths": {
+    "out": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/",
+    "results": "results/af3/h2pc/h2pc_6m0j_rbd/",
+    "top_cif": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/seed-1_sample-0/h2pc_6m0j_rbd_seed-1_sample-0_model.cif",
+    "ranking": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/h2pc_6m0j_rbd_ranking_scores.csv"
+  }
+}

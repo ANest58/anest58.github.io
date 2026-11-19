@@ -1,0 +1,175 @@
+{
+  "spend": {
+    "pod_id": "dsj8tk6aqeb6ep",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "cloud": "SECURE",
+    "rate_usd_per_hr": 1.79,
+    "wall_fold_s": 874.37,
+    "wall_total_approx_min": 18,
+    "balance_before": 9.530921983,
+    "balance_after": 9.127827583,
+    "spent_usd": 0.403,
+    "mode": "path_b_msa_reuse_from_h2pc",
+    "template": "6gqgg9skjs",
+    "image": "jurgjn/alphafold3:v3.0.4",
+    "cap_usd_per_ligand": 15,
+    "note": "MSA/templates reused from H2Pc Path B data.json; --norun_data_pipeline; no DB re-fetch"
+  },
+  "ligands": [
+    {
+      "ligand": "H2Pc",
+      "skip_batch": true,
+      "af3": {
+        "ranking_score": 0.72,
+        "ptm": 0.86,
+        "iptm": 0.68,
+        "fraction_disordered": 0.0,
+        "has_clash": 0.0,
+        "chain_ptm": [
+          0.88,
+          0.79
+        ],
+        "chain_iptm": [
+          0.68,
+          0.68
+        ]
+      },
+      "gate": true,
+      "n_lig": 40,
+      "boltz_iptm_best": 0.7055759429931641,
+      "boltz_ptm_best": 0.9116353988647461,
+      "ca_rmsd_best_A": 7.7,
+      "lig_rmsd_dock": 5.81,
+      "source": "prior Path B m3nkjjdu4nq6ic"
+    },
+    {
+      "ligand": "znpc",
+      "af3": {
+        "ranking_score": 0.68,
+        "ptm": 0.85,
+        "iptm": 0.64,
+        "fraction_disordered": 0.0,
+        "has_clash": 0.0,
+        "chain_ptm": [
+          0.88,
+          0.79
+        ],
+        "chain_iptm": [
+          0.64,
+          0.64
+        ]
+      },
+      "gate": true,
+      "n_lig": 41,
+      "boltz_iptm_best": 0.7407845854759216,
+      "boltz_ptm_best": 0.9153532981872559,
+      "ca_rmsd_best_A": 12.77,
+      "lig_rmsd_dock": 6.653,
+      "af3_pocket": [
+        338,
+        339,
+        342,
+        343,
+        368
+      ]
+    },
+    {
+      "ligand": "cupc",
+      "af3": {
+        "ranking_score": 0.75,
+        "ptm": 0.87,
+        "iptm": 0.71,
+        "fraction_disordered": 0.0,
+        "has_clash": 0.0,
+        "chain_ptm": [
+          0.89,
+          0.8
+        ],
+        "chain_iptm": [
+          0.71,
+          0.71
+        ]
+      },
+      "gate": true,
+      "n_lig": 41,
+      "boltz_iptm_best": 0.730250358581543,
+      "boltz_ptm_best": 0.9044902920722961,
+      "ca_rmsd_best_A": 2.849,
+      "lig_rmsd_dock": 6.499,
+      "af3_pocket": [
+        338,
+        339,
+        342,
+        343,
+        365
+      ]
+    },
+    {
+      "ligand": "f16_znpc",
+      "af3": {
+        "ranking_score": 0.78,
+        "ptm": 0.87,
+        "iptm": 0.75,
+        "fraction_disordered": 0.0,
+        "has_clash": 0.0,
+        "chain_ptm": [
+          0.89,
+          0.84
+        ],
+        "chain_iptm": [
+          0.75,
+          0.75
+        ]
+      },
+      "gate": true,
+      "n_lig": 57,
+      "boltz_iptm_best": 0.7667372822761536,
+      "boltz_ptm_best": 0.9234979748725891,
+      "ca_rmsd_best_A": 7.594,
+      "lig_rmsd_dock": 7.724,
+      "af3_pocket": [
+        338,
+        339,
+        367,
+        368,
+        370,
+        371,
+        372,
+        373,
+        382,
+        383,
+        384,
+        392
+      ]
+    },
+    {
+      "ligand": "fepc",
+      "af3": {
+        "ranking_score": 0.69,
+        "ptm": 0.85,
+        "iptm": 0.65,
+        "fraction_disordered": 0.0,
+        "has_clash": 0.0,
+        "chain_ptm": [
+          0.89,
+          0.8
+        ],
+        "chain_iptm": [
+          0.65,
+          0.65
+        ]
+      },
+      "gate": true,
+      "n_lig": 41,
+      "boltz_iptm_best": 0.839338481426239,
+      "boltz_ptm_best": 0.9371507167816162,
+      "ca_rmsd_best_A": null,
+      "lig_rmsd_dock": null,
+      "af3_pocket": [
+        338,
+        339,
+        342
+      ]
+    }
+  ]
+}

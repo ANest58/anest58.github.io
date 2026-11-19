@@ -1,0 +1,222 @@
+{
+  "schema": "phd_dock_tragictraj_v1",
+  "updated_at": "2026-11-19T03:21Z",
+  "title": "TragicTraj \u2014 residency Stage6 cinema",
+  "style_ref": {
+    "label": "Gleb Novikov LinkedIn capture (style only)",
+    "poster": "tragictraj-media/novikov-style-poster.jpg",
+    "notes": "Surface protein \u00b7 yellow-C sticks \u00b7 white dashed H-bonds \u00b7 beige bg \u00b7 slow rock"
+  },
+  "policy": {
+    "ligands": [
+      "h2pc",
+      "znpc",
+      "f16znpc"
+    ],
+    "poses": [
+      "pose1"
+    ],
+    "reps": [
+      "rep1",
+      "rep2"
+    ],
+    "ns_target": 100,
+    "occupancy_R_A": 6,
+    "absolute_dG_b": false,
+    "heavy_mp4": "zenodo",
+    "stills_posters": "pages",
+    "fm_publish": "when_DONE_only"
+  },
+  "archive": {
+    "stage6_root": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/",
+    "tragictraj_proposed": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/",
+    "scratch_proposed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/",
+    "tragictraj_confirmed": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/",
+    "scratch_confirmed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/"
+  },
+  "zenodo": {
+    "status": "pending_token",
+    "record_url": null,
+    "note": "All 6 Pack A MP4s on REZBACK; deposit blocked until ZENODO_TOKEN on llbeast."
+  },
+  "fm": {
+    "status": "in_flight_znpc",
+    "publish": false,
+    "note": "Ship classical Pack A now; update FM wing only when ZnPc FM (then others) DONE."
+  },
+  "priority_order": [
+    "znpc_pose1_rep2",
+    "f16znpc_pose1_rep1",
+    "znpc_pose1_rep1",
+    "h2pc_pose1_rep1",
+    "h2pc_pose1_rep2",
+    "f16znpc_pose1_rep2"
+  ],
+  "runs": [
+    {
+      "id": "znpc_pose1_rep2",
+      "ligand_id": "ZnPc",
+      "ligand_key": "znpc",
+      "pose": "pose1",
+      "replica": "rep2",
+      "gate": "PASS",
+      "occupancy_frac": 0.25,
+      "lig_rmsd_mean_A": 2.528,
+      "lig_rmsd_max_A": 3.215,
+      "com_drift_mean_A": 2.184,
+      "com_pocket_mean_A": 6.153,
+      "contacts_res_mean": 4.122,
+      "archive_path": "znpc_pose1_rep2/",
+      "dock_pose": "structures/dock/znpc_pose1.pdb",
+      "af3_pose": "structures/af3/znpc/pathb_pose1_seed1_sample2_model.cif",
+      "media": {
+        "movie_mp4_zenodo": null,
+        "poster": "tragictraj-media/znpc_pose1_rep2/poster.png",
+        "interaction_still": "tragictraj-media/znpc_pose1_rep2/interaction_still.png",
+        "vs_dock_af3": "tragictraj-media/znpc_pose1_rep2/vs_dock_af3.png",
+        "cv_strip": "tragictraj-media/znpc_pose1_rep2/cv_strip.png",
+        "occ_iso": null,
+        "path_overlay": null,
+        "molstar_stride": "tragictraj-media/znpc_pose1_rep2/molstar_stride.pdb",
+        "status": "rendered_llbeast",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/znpc_pose1_rep2/movie_pocket.mp4"
+      }
+    },
+    {
+      "id": "f16znpc_pose1_rep1",
+      "ligand_id": "F16-ZnPc",
+      "ligand_key": "f16znpc",
+      "pose": "pose1",
+      "replica": "rep1",
+      "gate": "PASS",
+      "occupancy_frac": 0.0,
+      "lig_rmsd_mean_A": 3.534,
+      "lig_rmsd_max_A": 6.486,
+      "com_drift_mean_A": 2.717,
+      "com_pocket_mean_A": 8.631,
+      "contacts_res_mean": 11.82,
+      "archive_path": "f16znpc_pose1_rep1/",
+      "dock_pose": "structures/dock/f16znpc_pose1.pdb",
+      "af3_pose": "structures/af3/f16_znpc/pathb_pose1_seed5_sample3_model.cif",
+      "media": {
+        "status": "rendered_llbeast",
+        "interaction_still": "tragictraj-media/f16znpc_pose1_rep1/interaction_still.png",
+        "poster": "tragictraj-media/f16znpc_pose1_rep1/poster.png",
+        "cv_strip": "tragictraj-media/f16znpc_pose1_rep1/cv_strip.png",
+        "molstar_stride": "tragictraj-media/f16znpc_pose1_rep1/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep1/movie_pocket.mp4",
+        "movie_mp4_zenodo": null,
+        "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep1/vs_dock_af3.png"
+      }
+    },
+    {
+      "id": "znpc_pose1_rep1",
+      "ligand_id": "ZnPc",
+      "ligand_key": "znpc",
+      "pose": "pose1",
+      "replica": "rep1",
+      "gate": "PASS",
+      "occupancy_frac": 0.002,
+      "lig_rmsd_mean_A": 4.318,
+      "lig_rmsd_max_A": 7.97,
+      "com_drift_mean_A": 3.939,
+      "com_pocket_mean_A": 7.682,
+      "contacts_res_mean": 2.012,
+      "archive_path": "znpc_pose1_rep1/",
+      "dock_pose": "structures/dock/znpc_pose1.pdb",
+      "af3_pose": "structures/af3/znpc/pathb_pose1_seed1_sample2_model.cif",
+      "media": {
+        "status": "rendered_llbeast",
+        "interaction_still": "tragictraj-media/znpc_pose1_rep1/interaction_still.png",
+        "poster": "tragictraj-media/znpc_pose1_rep1/poster.png",
+        "cv_strip": "tragictraj-media/znpc_pose1_rep1/cv_strip.png",
+        "molstar_stride": "tragictraj-media/znpc_pose1_rep1/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/znpc_pose1_rep1/movie_pocket.mp4",
+        "movie_mp4_zenodo": null,
+        "vs_dock_af3": "tragictraj-media/znpc_pose1_rep1/vs_dock_af3.png"
+      }
+    },
+    {
+      "id": "h2pc_pose1_rep1",
+      "ligand_id": "H2Pc",
+      "ligand_key": "h2pc",
+      "pose": "pose1",
+      "replica": "rep1",
+      "gate": "PASS",
+      "occupancy_frac": 0.0,
+      "lig_rmsd_mean_A": 2.962,
+      "lig_rmsd_max_A": 4.279,
+      "com_drift_mean_A": 1.619,
+      "com_pocket_mean_A": 9.108,
+      "contacts_res_mean": 2.248,
+      "archive_path": "h2pc_pose1_rep1/",
+      "dock_pose": "structures/dock/h2pc_pose1.pdb",
+      "af3_pose": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
+      "media": {
+        "status": "rendered_llbeast",
+        "interaction_still": "tragictraj-media/h2pc_pose1_rep1/interaction_still.png",
+        "poster": "tragictraj-media/h2pc_pose1_rep1/poster.png",
+        "cv_strip": "tragictraj-media/h2pc_pose1_rep1/cv_strip.png",
+        "molstar_stride": "tragictraj-media/h2pc_pose1_rep1/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/h2pc_pose1_rep1/movie_pocket.mp4",
+        "movie_mp4_zenodo": null,
+        "vs_dock_af3": "tragictraj-media/h2pc_pose1_rep1/vs_dock_af3.png"
+      }
+    },
+    {
+      "id": "h2pc_pose1_rep2",
+      "ligand_id": "H2Pc",
+      "ligand_key": "h2pc",
+      "pose": "pose1",
+      "replica": "rep2",
+      "gate": "PASS",
+      "occupancy_frac": 0.07,
+      "lig_rmsd_mean_A": 4.53,
+      "lig_rmsd_max_A": 5.916,
+      "com_drift_mean_A": 3.943,
+      "com_pocket_mean_A": 6.699,
+      "contacts_res_mean": 1.47,
+      "archive_path": "h2pc_pose1_rep2/",
+      "dock_pose": "structures/dock/h2pc_pose1.pdb",
+      "af3_pose": "structures/af3/h2pc/pathb_pose1_seed1_sample0_model.cif",
+      "media": {
+        "status": "rendered_llbeast",
+        "interaction_still": "tragictraj-media/h2pc_pose1_rep2/interaction_still.png",
+        "poster": "tragictraj-media/h2pc_pose1_rep2/poster.png",
+        "cv_strip": "tragictraj-media/h2pc_pose1_rep2/cv_strip.png",
+        "molstar_stride": "tragictraj-media/h2pc_pose1_rep2/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/h2pc_pose1_rep2/movie_pocket.mp4",
+        "movie_mp4_zenodo": null,
+        "vs_dock_af3": "tragictraj-media/h2pc_pose1_rep2/vs_dock_af3.png"
+      }
+    },
+    {
+      "id": "f16znpc_pose1_rep2",
+      "ligand_id": "F16-ZnPc",
+      "ligand_key": "f16znpc",
+      "pose": "pose1",
+      "replica": "rep2",
+      "gate": "FAIL",
+      "occupancy_frac": 0.0,
+      "lig_rmsd_mean_A": 7.036,
+      "lig_rmsd_max_A": 9.412,
+      "com_drift_mean_A": 3.222,
+      "com_pocket_mean_A": 9.192,
+      "contacts_res_mean": 2.666,
+      "archive_path": "f16znpc_pose1_rep2/",
+      "dock_pose": "structures/dock/f16znpc_pose1.pdb",
+      "af3_pose": "structures/af3/f16_znpc/pathb_pose1_seed5_sample3_model.cif",
+      "media": {
+        "status": "rendered_llbeast",
+        "interaction_still": "tragictraj-media/f16znpc_pose1_rep2/interaction_still.png",
+        "poster": "tragictraj-media/f16znpc_pose1_rep2/poster.png",
+        "cv_strip": "tragictraj-media/f16znpc_pose1_rep2/cv_strip.png",
+        "molstar_stride": "tragictraj-media/f16znpc_pose1_rep2/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep2/movie_pocket.mp4",
+        "movie_mp4_zenodo": null,
+        "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep2/vs_dock_af3.png"
+      },
+      "note": "Include honestly \u2014 gate FAIL on lig RMSD."
+    }
+  ]
+}

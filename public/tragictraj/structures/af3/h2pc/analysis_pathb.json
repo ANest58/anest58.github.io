@@ -1,0 +1,303 @@
+{
+  "run": {
+    "pod_id": "m3nkjjdu4nq6ic",
+    "gpu": "NVIDIA A100 80GB PCIe secure",
+    "rate_usd_per_hr": 1.79,
+    "uptime_s": 1511,
+    "est_usd": 0.75,
+    "cap_usd": 15,
+    "template_id": "q4onrs5rn0",
+    "image": "jurgjn/alphafold3:v3.0.4",
+    "disk_gb": 1000,
+    "msa_s": 598.46,
+    "templates_s": 7.7,
+    "inference_extract_s": 133.17
+  },
+  "path_b_best": {
+    "seed": "1",
+    "sample": "0",
+    "ranking_score": "0.7178759501211239"
+  },
+  "path_b_scores": {
+    "ranking_score": 0.72,
+    "ptm": 0.86,
+    "iptm": 0.68,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.88,
+      0.79
+    ],
+    "chain_iptm": [
+      0.68,
+      0.68
+    ]
+  },
+  "path_a_scores": {
+    "ranking_score": 0.37,
+    "ptm": 0.31,
+    "iptm": 0.38
+  },
+  "ligand_atom_gate": {
+    "path_b": true,
+    "asyms": [
+      "A",
+      "L"
+    ],
+    "n_lig_heavy": 40,
+    "n_hetatm": 40,
+    "boltz": "protein-only (no ligand atoms in mmCIF)"
+  },
+  "rmsd": {
+    "protein_CA_AF3B_vs_Boltz": [
+      {
+        "file": "sample_1.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 8.002,
+        "n_common": 194
+      },
+      {
+        "file": "sample_2.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 18.117,
+        "n_common": 194
+      },
+      {
+        "file": "sample_3.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 24.138,
+        "n_common": 194
+      },
+      {
+        "file": "sample_4.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 7.7,
+        "n_common": 194
+      },
+      {
+        "file": "sample_5.cif",
+        "asyms": [
+          "A"
+        ],
+        "n_lig": 0,
+        "ca_rmsd_A": 18.372,
+        "n_common": 194
+      }
+    ],
+    "protein_CA_AF3B_vs_AF3A": 20.508,
+    "ligand_AF3B_vs_AF3A": 8.249,
+    "ligand_AF3_vs_Stage4_dock": [
+      {
+        "pose": "pose1.pdb",
+        "lig_rmsd_vs_pathB_A": 5.807,
+        "lig_rmsd_vs_pathA_A": 6.169,
+        "pocket_res_ca5": [
+          [
+            338,
+            4.16
+          ],
+          [
+            339,
+            4.19
+          ],
+          [
+            342,
+            4.37
+          ],
+          [
+            371,
+            4.9
+          ]
+        ]
+      },
+      {
+        "pose": "pose2.pdb",
+        "lig_rmsd_vs_pathB_A": 5.808,
+        "lig_rmsd_vs_pathA_A": 6.171,
+        "pocket_res_ca5": [
+          [
+            338,
+            4.16
+          ],
+          [
+            339,
+            4.19
+          ],
+          [
+            342,
+            4.37
+          ],
+          [
+            371,
+            4.9
+          ]
+        ]
+      }
+    ]
+  },
+  "pocket_contacts_CA_le_5A": {
+    "path_b_spike_res": [
+      338,
+      339,
+      342,
+      343,
+      365,
+      368,
+      374,
+      377,
+      434
+    ],
+    "path_a_spike_res": [
+      380,
+      381,
+      388,
+      486
+    ],
+    "dock_pose1": [
+      338,
+      339,
+      342,
+      371
+    ],
+    "dock_pose2": [
+      338,
+      339,
+      342,
+      371
+    ],
+    "overlap_pathB_pose1": [
+      338,
+      339,
+      342
+    ],
+    "overlap_pathB_pose2": [
+      338,
+      339,
+      342
+    ],
+    "jaccard_pathB_pose1": 0.3,
+    "jaccard_pathB_pose2": 0.3
+  },
+  "paths": {
+    "out": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/",
+    "results": "results/af3/h2pc/h2pc_6m0j_rbd/",
+    "top_cif": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/seed-1_sample-0/h2pc_6m0j_rbd_seed-1_sample-0_model.cif",
+    "ranking": "jobs/af3_h2pc/out/h2pc_6m0j_rbd/h2pc_6m0j_rbd_ranking_scores.csv"
+  },
+  "pocket_geometry": {
+    "units": "angstrom",
+    "note": "Stage4 Autodocker box is in the 6M0J protein_pdb frame. AF3 Path B ligand COM / contact CA centroid are in the AF3 model-local frame (not superimposed onto 6M0J); do not subtract from the dock box center. Boltz H2Pc mmCIFs are protein-only — no ligand COM or hitbox.",
+    "dock_autodocker": {
+      "source": "Stage4 H2Pc / Stage1 consensus (results/dock/stage4/h2pc/selected.json; catalog dock.box)",
+      "frame": "6M0J protein_pdb",
+      "center": [
+        -32.125,
+        7.713,
+        27.779
+      ],
+      "size": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "center_mode": "stage1_consensus",
+      "residues": [
+        338,
+        339,
+        342,
+        343,
+        371,
+        373
+      ],
+      "ligand_com_pose1": [
+        -31.908,
+        7.658,
+        28.624
+      ],
+      "ligand_com_pose2": [
+        -31.909,
+        7.658,
+        28.624
+      ]
+    },
+    "af3_path_b": {
+      "source": "Path B top model seed-1/sample-0 mmCIF",
+      "frame": "af3_model_local",
+      "box_center": null,
+      "box_size": null,
+      "ligand_com": [
+        -11.154,
+        3.861,
+        -8.041
+      ],
+      "ligand_aabb_size": [
+        9.312,
+        9.683,
+        10.445
+      ],
+      "n_lig_heavy": 40,
+      "contact_ca_centroid": [
+        -8.762,
+        4.197,
+        -8.008
+      ],
+      "contact_spike_res": [
+        338,
+        339,
+        342,
+        343,
+        365,
+        368,
+        374,
+        377,
+        434
+      ],
+      "contact_label_seq": [
+        6,
+        7,
+        10,
+        11,
+        33,
+        36,
+        42,
+        45,
+        102
+      ],
+      "note": "No Autodocker hitbox; ligand COM + contact CA centroid (spike numbering via label_seq = spike−332)."
+    },
+    "boltz_h2pc": {
+      "source": "results/affinity/h2pc/ (structure co-fold)",
+      "frame": null,
+      "box_center": null,
+      "box_size": null,
+      "ligand_com": null,
+      "mmcif_protein_only": true,
+      "campaign_box_reference": {
+        "center": [
+          -32.125,
+          7.713,
+          27.779
+        ],
+        "size": [
+          22.0,
+          22.0,
+          22.0
+        ],
+        "note": "Same Stage1/4 Autodocker box used for the campaign dock context — not a Boltz-native hitbox."
+      },
+      "note": "Protein-only mmCIF — no ligand COM or AF3-style contact centroid from ligand."
+    }
+  }
+}
