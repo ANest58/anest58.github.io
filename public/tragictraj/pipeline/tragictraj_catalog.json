@@ -1,7 +1,7 @@
 {
   "schema": "phd_dock_tragictraj_v1",
-  "updated_at": "2026-11-20T22:17Z",
-  "title": "TragicTraj \u2014 residency Stage6 cinema",
+  "updated_at": "2026-11-20T22:32Z",
+  "title": "TragicTraj \u2014 residency Stage6 cinema (both PASS reps)",
   "style_ref": {
     "label": "Gleb Novikov LinkedIn capture (style only)",
     "poster": "tragictraj-media/novikov-style-poster.jpg",
@@ -25,7 +25,9 @@
     "absolute_dG_b": false,
     "heavy_mp4": "zenodo",
     "stills_posters": "pages",
-    "fm_publish": "when_DONE_only"
+    "fm_publish": "when_DONE_only",
+    "dual_reps": "show_both_pass",
+    "dual_reps_note": "Pack A UI shows Stage6 PASS rep1+rep2 per ligand (side-by-side cinema with sequential autoplay; board = ligand mean \u00b1 sample SD). F16 uses f16znpc_pose1_rep2_rerun, not tumble FAIL."
   },
   "archive": {
     "stage6_root": "/run/media/andon/REZBACK/phd-live-stage1/stage6_residency/",
