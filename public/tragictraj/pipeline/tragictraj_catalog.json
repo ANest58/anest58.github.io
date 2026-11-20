@@ -1,6 +1,6 @@
 {
   "schema": "phd_dock_tragictraj_v1",
-  "updated_at": "2026-11-19T14:05Z",
+  "updated_at": "2026-11-20T22:17Z",
   "title": "TragicTraj \u2014 residency Stage6 cinema",
   "style_ref": {
     "label": "Gleb Novikov LinkedIn capture (style only)",
@@ -41,7 +41,7 @@
     "archive_zip": "https://zenodo.org/records/24358155/files/ANest58/anest58.github.io-tragictraj-pack-a-v1.zip?download=1",
     "github_release": "https://github.com/ANest58/anest58.github.io/releases/tag/tragictraj-pack-a-v1",
     "github_release_zip": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_pack_a_movies.zip",
-    "note": "Zenodo DOI published via GitHub\u2194Zenodo for tag tragictraj-pack-a-v1. Zenodo auto-deposit is the GitHub source zip at the tag (not the six release MP4 assets). Cinema embeds GitHub Release MP4 URLs; cite DOI 10.5281/zenodo.24358155 for the deposit. Optional follow-up: manually attach the six movie_pocket.mp4 files to the Zenodo record. Cinema MP4s refreshed 2026-11-19 with peach surface\u2192sticks open fade (~1s @12fps); GitHub Release tragictraj-pack-a-v1 assets replaced in place (URLs unchanged)."
+    "note": "Zenodo DOI published via GitHub\u2194Zenodo for tag tragictraj-pack-a-v1. Zenodo auto-deposit is the GitHub source zip at the tag (not the six release MP4 assets). Cinema embeds GitHub Release MP4 URLs; cite DOI 10.5281/zenodo.24358155 for the deposit. Optional follow-up: manually attach the six movie_pocket.mp4 files to the Zenodo record. Cinema MP4s refreshed 2026-11-19 with peach surface\u2192sticks open fade (~1s @12fps); GitHub Release tragictraj-pack-a-v1 assets replaced in place (URLs unchanged). 2026-11-20: F16 pose1 rep2 FAIL replaced on public Pack A by soft-release PASS `f16znpc_pose1_rep2_rerun`; GitHub Release tragictraj-pack-a-v1 asset `tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4` clobber-replaced (URL unchanged; no new Zenodo)."
   },
   "fm": {
     "status": "in_flight_znpc",
@@ -54,7 +54,7 @@
     "znpc_pose1_rep1",
     "h2pc_pose1_rep1",
     "h2pc_pose1_rep2",
-    "f16znpc_pose1_rep2"
+    "f16znpc_pose1_rep2_rerun"
   ],
   "runs": [
     {
@@ -210,35 +210,35 @@
       }
     },
     {
-      "id": "f16znpc_pose1_rep2",
+      "id": "f16znpc_pose1_rep2_rerun",
       "ligand_id": "F16-ZnPc",
       "ligand_key": "f16znpc",
       "pose": "pose1",
       "replica": "rep2",
-      "gate": "FAIL",
+      "gate": "PASS",
       "occupancy_frac": 0.0,
-      "lig_rmsd_mean_A": 7.036,
-      "lig_rmsd_max_A": 9.412,
-      "com_drift_mean_A": 3.222,
-      "com_pocket_mean_A": 9.192,
-      "contacts_res_mean": 2.666,
-      "archive_path": "f16znpc_pose1_rep2/",
+      "lig_rmsd_mean_A": 3.041,
+      "lig_rmsd_max_A": 4.331,
+      "com_drift_mean_A": 2.263,
+      "com_pocket_mean_A": 8.09,
+      "contacts_res_mean": 5.27,
+      "archive_path": "f16znpc_pose1_rep2_rerun/",
       "dock_pose": "structures/dock/f16znpc_pose1.pdb",
       "af3_pose": "structures/af3/f16_znpc/pathb_pose1_seed5_sample3_model.cif",
       "media": {
         "status": "rendered_llbeast_surface_fade",
-        "interaction_still": "tragictraj-media/f16znpc_pose1_rep2/interaction_still.png",
-        "poster": "tragictraj-media/f16znpc_pose1_rep2/poster.png",
-        "cv_strip": "tragictraj-media/f16znpc_pose1_rep2/cv_strip.png",
-        "molstar_stride": "tragictraj-media/f16znpc_pose1_rep2/molstar_stride.pdb",
-        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep2/movie_pocket.mp4",
+        "interaction_still": "tragictraj-media/f16znpc_pose1_rep2_rerun/interaction_still.png",
+        "poster": "tragictraj-media/f16znpc_pose1_rep2_rerun/poster.png",
+        "cv_strip": "tragictraj-media/f16znpc_pose1_rep2_rerun/cv_strip.png",
+        "molstar_stride": "tragictraj-media/f16znpc_pose1_rep2_rerun/molstar_stride.pdb",
+        "movie_mp4_local": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/f16znpc_pose1_rep2_rerun/movie_pocket.mp4",
         "movie_mp4_zenodo": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4",
-        "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep2/vs_dock_af3.png",
+        "vs_dock_af3": "tragictraj-media/f16znpc_pose1_rep2_rerun/vs_dock_af3.png",
         "movie_mp4_github_release": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4",
         "zenodo_record": "https://zenodo.org/records/24358155",
         "movie_open": "surface_fade_to_sticks"
       },
-      "note": "Include honestly \u2014 gate FAIL on lig RMSD."
+      "note": "Soft-release + reseed (ig=212) replacement for tumble FAIL f16znpc_pose1_rep2; FAIL MD + Pack A renders kept off public pack on REZBACK."
     }
   ]
 }
