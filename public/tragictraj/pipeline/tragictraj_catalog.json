@@ -1,6 +1,6 @@
 {
   "schema": "phd_dock_tragictraj_v1",
-  "updated_at": "2026-11-20T22:32Z",
+  "updated_at": "2026-11-20T22:47Z",
   "title": "TragicTraj \u2014 residency Stage6 cinema (both PASS reps)",
   "style_ref": {
     "label": "Gleb Novikov LinkedIn capture (style only)",
@@ -25,7 +25,7 @@
     "absolute_dG_b": false,
     "heavy_mp4": "zenodo",
     "stills_posters": "pages",
-    "fm_publish": "when_DONE_only",
+    "fm_publish": "when_DONE",
     "dual_reps": "show_both_pass",
     "dual_reps_note": "Pack A UI shows Stage6 PASS rep1+rep2 per ligand (side-by-side cinema with sequential autoplay; board = ligand mean \u00b1 sample SD). F16 uses f16znpc_pose1_rep2_rerun, not tumble FAIL."
   },
@@ -34,7 +34,9 @@
     "tragictraj_proposed": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/",
     "scratch_proposed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/",
     "tragictraj_confirmed": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/stage6/",
-    "scratch_confirmed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/"
+    "scratch_confirmed": "/run/media/andon/COMPTEMP/phd-scratch/residency/tragictraj/",
+    "stage7_fm_root": "/run/media/andon/REZBACK/phd-live-stage1/stage7_fm/",
+    "tragictraj_fm": "/run/media/andon/REZBACK/phd-live-stage1/tragictraj/fm/"
   },
   "zenodo": {
     "status": "published",
@@ -46,9 +48,32 @@
     "note": "Zenodo DOI published via GitHub\u2194Zenodo for tag tragictraj-pack-a-v1. Zenodo auto-deposit is the GitHub source zip at the tag (not the six release MP4 assets). Cinema embeds GitHub Release MP4 URLs; cite DOI 10.5281/zenodo.24358155 for the deposit. Optional follow-up: manually attach the six movie_pocket.mp4 files to the Zenodo record. Cinema MP4s refreshed 2026-11-19 with peach surface\u2192sticks open fade (~1s @12fps); GitHub Release tragictraj-pack-a-v1 assets replaced in place (URLs unchanged). 2026-11-20: F16 pose1 rep2 FAIL replaced on public Pack A by soft-release PASS `f16znpc_pose1_rep2_rerun`; GitHub Release tragictraj-pack-a-v1 asset `tragictraj_f16znpc_pose1_rep2_movie_pocket.mp4` clobber-replaced (URL unchanged; no new Zenodo)."
   },
   "fm": {
-    "status": "in_flight_znpc",
-    "publish": false,
-    "note": "Ship classical Pack A now; update FM wing only when ZnPc FM (then others) DONE."
+    "status": "done_znpc_fm1",
+    "publish": true,
+    "gate": "FAIL",
+    "gate_note": "200 ns COMPLETE; funnel/rmsd unstable; comparative FES only \u2014 no absolute clinical \u0394G; bound_basin_occ(d1<=0.6nm)=0.716",
+    "note": "ZnPc FM1 200 ns shipped for review despite gate FAIL (tight RMSD wall / funnel unstable). Remount or LiGaMD later. Comparative FES only.",
+    "job": "znpc_fm1",
+    "ligand_id": "ZnPc",
+    "ligand_key": "znpc",
+    "prod_ns": 200.0,
+    "bound_occ_frac": 0.7157164214178929,
+    "d1_mean_nm": 0.6316625328673356,
+    "rmsd_mean_nm": 0.1451595750421248,
+    "near_wall_frac": 0.8438807805960971,
+    "fes_dG_unbound_minus_bound_approx_kJ": 116.122945747,
+    "absolute_dG_b": false,
+    "options_later": "funnel remount / LiGaMD fallback",
+    "media": {
+      "movie_mp4": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_fm1_movie_fm.mp4",
+      "poster": "tragictraj-media/znpc_fm1/poster.png",
+      "interaction_still": "tragictraj-media/znpc_fm1/interaction_still.png",
+      "fes_d1": "tragictraj-media/znpc_fm1/fes_d1.png",
+      "cv_strip": "tragictraj-media/znpc_fm1/cv_strip.png",
+      "molstar_stride": "tragictraj-media/znpc_fm1/molstar_stride.pdb",
+      "movie_open": "surface_fade_to_sticks",
+      "status": "rendered_llbeast_surface_fade"
+    }
   },
   "priority_order": [
     "znpc_pose1_rep2",
