@@ -1,6 +1,6 @@
 {
   "schema": "phd_dock_tragictraj_v1",
-  "updated_at": "2026-11-20T22:47Z",
+  "updated_at": "2026-11-21T00:03Z",
   "title": "TragicTraj \u2014 residency Stage6 cinema (both PASS reps)",
   "style_ref": {
     "label": "Gleb Novikov LinkedIn capture (style only)",
@@ -52,7 +52,7 @@
     "publish": true,
     "gate": "FAIL",
     "gate_note": "200 ns COMPLETE; funnel/rmsd unstable; comparative FES only \u2014 no absolute clinical \u0394G; bound_basin_occ(d1<=0.6nm)=0.716",
-    "note": "ZnPc FM1 200 ns shipped for review despite gate FAIL (tight RMSD wall / funnel unstable). Remount or LiGaMD later. Comparative FES only.",
+    "note": "ZnPc FM1 dense dual cinema (transparent ~80% + ribbon) with live FES cursor. Gate FAIL honest; comparative FES only; remount/LiGaMD later.",
     "job": "znpc_fm1",
     "ligand_id": "ZnPc",
     "ligand_key": "znpc",
@@ -71,9 +71,13 @@
       "fes_d1": "tragictraj-media/znpc_fm1/fes_d1.png",
       "cv_strip": "tragictraj-media/znpc_fm1/cv_strip.png",
       "molstar_stride": "tragictraj-media/znpc_fm1/molstar_stride.pdb",
-      "movie_open": "surface_fade_to_sticks",
-      "status": "rendered_llbeast_surface_fade"
-    }
+      "movie_open": "dual_transparent_ribbon_fes_sync",
+      "status": "rendered_llbeast_dense_dual_fes_sync",
+      "movie_transparent": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_fm1_movie_fm_transparent.mp4",
+      "movie_ribbon": "https://github.com/ANest58/anest58.github.io/releases/download/tragictraj-pack-a-v1/tragictraj_znpc_fm1_movie_fm_ribbon.mp4",
+      "fes_sync": "tragictraj-media/znpc_fm1/fes_sync.json"
+    },
+    "cinema_note": "220 frames @12fps (~18.3s); dense early traj sampling; synced d1\u2192FES marker."
   },
   "priority_order": [
     "znpc_pose1_rep2",
